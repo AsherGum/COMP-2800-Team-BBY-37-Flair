@@ -1,97 +1,21 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>ProjectsUpdated</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flair Home</title>
 
-      <!-- Charset -->
-      <meta charset="utf-8">
-    
-      <!-- Viewport -->
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-      <!-- Control of cache errors -->
-      <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-      <meta http-equiv="Pragma" content="no-cache">
-  
-      <!-- Control of expiry date -->
-      <meta http-equiv="Expires" content="0">
+    <!-- Firebase Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-database.js"></script>
+    <script src="javaScript/firebaseScripts/firebaseConfig.js"></script>
+    <script src="javaScript/firebaseScripts/firebaseAuth.js"></script>
 
-  <link href="./javaScript/videoAdapter/video-js.min.css" rel="stylesheet">
-  <link href="./javaScript/videoAdapter/videojs.record.css" rel="stylesheet">
-  <link href="./javaScript/videoAdapter/examples.css" rel="stylesheet">
-
-  <script src="./javaScript/videoAdapter/video.js"></script>
-  <script src="./javaScript/videoAdapter/RecordRTC.js"></script>
-  <script src="./javaScript/videoAdapter/adapter.js"></script>
-
-  <script src="./javaScript/videoAdapter/videojs.record.js"></script>
-
-  <script src="./javaScript/videoAdapter/videojs.record.js"></script>
-  <script src="./javaScript/videoAdapter/browser-workarounds.js"></script>
-
-
-
-
-  <style>
-  /* change player background color */
-  #myVideo {
-      background-color: #9ab87a;
-  }
-  </style>
 </head>
 <body>
-
-<video id="myVideo" playsinline class="video-js vjs-default-skin"></video>
-
-<script>
-var options = {
-    controls: true,
-    width: 320,
-    height: 240,
-    fluid: false,
-    plugins: {
-        record: {
-            audio: true,
-            video: true,
-            maxLength: 10,
-            debug: true
-        }
-    }
-};
-
-// apply some workarounds for opera browser
-applyVideoWorkaround();
-
-var player = videojs('myVideo', options, function() {
-    // print version information at startup
-    var msg = 'Using video.js ' + videojs.VERSION +
-        ' with videojs-record ' + videojs.getPluginVersion('record') +
-        ' and recordrtc ' + RecordRTC.version;
-    videojs.log(msg);
-});
-
-// error handling
-player.on('deviceError', function() {
-    console.log('device error:', player.deviceErrorCode);
-});
-
-player.on('error', function(element, error) {
-    console.error(error);
-});
-
-// user clicked the record button and started recording
-player.on('startRecord', function() {
-    console.log('started recording!');
-});
-
-// user completed recording and stream is available
-player.on('finishRecord', function() {
-    // the blob object contains the recorded data that
-    // can be downloaded by the user, stored on server etc.
-    console.log('finished recording: ', player.recordedData);
-});
-</script>
-
+    
 </body>
 </html>
