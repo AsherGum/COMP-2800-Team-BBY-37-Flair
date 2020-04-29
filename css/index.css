@@ -1,0 +1,15 @@
+#submit {
+    background-color: #222222;
+    color: white;
+    width: 80px;
+    height: 30px;
+    border-radius: 2px;
+    border: none;
+    font-size: small;
+    box-shadow: 0 0 5px #000000;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+    margin-bottom: 0;
+}

@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flair Home</title>
 
+    <!-- Styling -->
+    <link href="./css/index.css" rel="stylesheet">
+
+    <title>Flair Home</title>
     <!-- Firebase Scripts -->
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
@@ -14,8 +17,20 @@
     <script src="javaScript/firebaseScripts/firebaseConfig.js"></script>
     <script src="javaScript/firebaseScripts/firebaseAuth.js"></script>
 
+        <!-- Import JQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+
 </head>
 <body>
+    <form>
+        <div id="submitContainer">
+            <!-- Submit button -->
+            <button type="submit" id="submit">logout</button>
+        </div>
+    </form>
     
+    <!-- Page Scripts -->
+    <script src="./javaScript/userManagement/signout.js"></script>
 </body>
 </html>
