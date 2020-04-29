@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="../css/login.css" rel="stylesheet">
+
+    <title>Login Page</title>
+
+        <!-- Firebase Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-database.js"></script>
+    <script src="../javaScript/firebaseScripts/firebaseConfig.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1 id="greeting">Welcome To Flair</h1>
+        <div class="loginForm">
+            <form>
+                <!-- Email container -->
+                <div id="emailContainer">
+                    <!-- Email input -->
+                    <input type="email" class="form-control" id="email" placeholder="Enter email">
+                </div>
+                <!-- Password container -->
+                <div id="passwordContainer">
+                    <!-- Password input -->
+                    <input type="password" class="form-control" id="password" placeholder="Password">
+                </div>
+                <!-- Submit container -->
+                <div id="submitContainer">
+                    <!-- Submit button -->
+                    <button type="submit" id="submit">Log In</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
