@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+
+    <!-- Firebase Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-database.js"></script>
+    <script src="../javaScript/firebaseScripts/firebaseConfig.js"></script>
+
+    <!-- Import JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+</head>
+<body>
+    <form>
+        <div>
+            <input type="text" id="firstName" placeholder="First Name">
+        </div>
+        <div>
+            <input type="text" id="lastName" placeholder="Last Name">
+        </div>
+        <div>
+            <input type="text" id="username" placeholder="User Name">
+        </div>
+        <div>
+            <input type="email" id="email" placeholder="email">
+        </div>
+        <div>
+            <input type="password" id="password" placeholder="password">
+        </div>
+        <!-- Submit container -->
+        <div id="submitContainer">
+            <!-- Submit button -->
+            <button type="submit" id="submit">Sign Up</button>
+        </div>
+    </form>
+
+    <!-- Page Scripts -->
+    <script src="../javaScript/userManagement/signUp.js"></script>
+</body>
+</html>
