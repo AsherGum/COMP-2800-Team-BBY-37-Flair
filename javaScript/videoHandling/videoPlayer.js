@@ -38,35 +38,52 @@ player.on('startRecord', function() {
     console.log('started recording!');
 });
 
+let data;
 // user completed recording and stream is available
 player.on('finishRecord', function() {
     // the blob object contains the recorded data that
     // can be downloaded by the user, stored on server etc.
-
-    let data = player.recordedData;
+    
+    data = player.recordedData;
     let formData = new FormData();
     formData.append('file', data, data.name);
 
-    
-    
     console.log('finished recording: ', data);
-
-    videoUpload(data);
+        
 });
+    
+
 
 function videoUpload(videoData) {
+    const date = new Date();
+    const userDescription = document.getElementById("inputDescription").value;
+
      firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
-            let userVideo = videoData;
+            if (user.emailVerified === false) {
+                alert("You have not verified your email.\nPlease verify by clicking on the link sent to your email.");
+                return;
+            }
+
+            //Will need to add some sort of data checking here
+            const userVideo = videoData;
+           
             database.collection("userVideos").add({
                 challenge: "testValue",
-                user: "need to authenticate user first",
+                user: user.uid,
+                userEmail: user.email,
+                year: date.getFullYear(),
+                month: date.getMonth(),
+                day: date.getDate(),
+                hour: date.getHours(),
+                minute: date.getMinutes(),
                 videoURL: "",
-
+                upvotes: 0,
+                description: userDescription
 
 
             }).then(function (docRef) {
-                console.log(`Uploaded with docRef: ${docRef}`);
+                console.log(`Uploaded with docRef: ${docRef.id}`);
                 let storageRef = firebase.storage().ref();
                 let uploadTask = storageRef.child('userVideos/' + docRef.id + "/challengeVideo").put(userVideo);
 
@@ -102,13 +119,19 @@ function videoUpload(videoData) {
 
 
                             // NEED TO REDIRECT USER TO ANOTHER PAGE
-                            //window.location.href = "./sell-success.html";
+                            window.location.href = "../index.html";
                         });
                     });
                 })
-            })
+            });
         } else {
+            alert("Please log-in before uploading a video!");
             console.log("User wasn't logged in");
         }
      })
 }
+
+document.getElementById('video_upload_button').addEventListener('click', function() {
+    videoUpload(data);
+});
+

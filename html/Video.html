@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>ProjectsUpdated</title>
+  <title>Flair Video Recorder</title>
 
     <!-- Charset -->
     <meta charset="utf-8">
@@ -39,7 +39,12 @@
 
     <script src="../javaScript/firebaseScripts/firebaseConfig.js"></script>
 
-    
+    <!-- BOOTSTRAP-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+
     <!--
         <script src="../javaScript/firebaseScripts/firebaseAuth.js"></script>
     -->
@@ -56,8 +61,57 @@
   </style>
 </head>
 <body>
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+    <div class="container-fluid">
 
-<video id="myVideo" playsinline class="video-js vjs-default-skin"></video>
+        <a href="main.html" class="navbar-brand"><img src="../images/icons/navbar_logo.png"></a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav">
+                <a href="#" class="nav-item nav-link">Upload</a>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <a href="html/account.html" class="nav-item nav-link">My Account</a>
+            </ul>
+        </div>
+
+    </div>
+</nav>
+
+
+
+
+
+
+<section class="container">
+  <div class="container py-3 d-flex justify-content-center">
+    <video id="myVideo" playsinline class="video-js vjs-default-skin"></video>
+  </div>
+
+  <div class="container-fluid py-3 ">
+    <form>
+      <div class="d-flex justify-content-center">
+        <label for="inputDescription" class="col-form-label">Description:</label>
+      </div>
+      <div class="d-flex justify-content-center">
+      <textarea name="description" id="inputDescription" cols="30" rows="10" class="col-form-label "></textarea>
+      </div>
+    </form>
+
+    <div class="d-flex justify-content-center py-2">
+      <button class="btn btn-primary" id="video_upload_button">Upload</button>
+    </div>
+  </div>
+
+</section>
+
+
+
+
+
 
 <script src="../javaScript/videoHandling/videoPlayer.js"></script>
 
