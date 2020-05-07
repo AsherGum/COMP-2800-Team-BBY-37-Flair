@@ -30,6 +30,7 @@ $("#submit").closest('form').on('submit', function (event) {
 				profilePicture: "",
 				Followers:[],
 				Following:[],
+				Challenges:[],
 				isVerified: false
 
 			});

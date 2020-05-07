@@ -4,7 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../css/account.css" rel="stylesheet">
-    <title>Home</title>
+    <title id="accountName">Account</title>
+    <!-- Suppresses security issues -->
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <!-- Control of cache errors -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
     <!-- Firebase Scripts -->
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
@@ -22,16 +27,20 @@
         <img class="profilePic" src="../images/icons/profile_pic.png" />
     </div>
     <h4 id="username"></h4>
-    <div class="accountStats">
-        <h3 id="followers">0</h3>
-        <h3 id="following">0</h3>
-        <h3 id="challenges">0</h3>
-        <p>Followers</p>
-        <p>Following</p>
-        <p>Challenges</p>
+    <div id="content" style="text-align: center;">
+        <div class="accountStats">
+            <h3 id="followers">0</h3>
+            <h3 id="following">0</h3>
+            <h3 id="challenges">0</h3>
+            <p>Followers</p>
+            <p>Following</p> 
+            <p>Challenges</p>
+        </div>
+        <button type="submit" id="follow">Follow</button>
     </div>
 
-    <button type="submit" id="follow">Follow</button>
+
+    
 
 
 
