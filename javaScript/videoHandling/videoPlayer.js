@@ -1,5 +1,5 @@
-let attempts = 0;
 
+//Video player options
 var options = {
     controls: true,
     width: 320,
@@ -40,6 +40,7 @@ player.on('startRecord', function() {
     console.log('started recording!');
 });
 
+//Stores the video blob. Probably not a  safe method, not sure how else to do this.
 let data;
 // user completed recording and stream is available
 player.on('finishRecord', function() {
@@ -55,15 +56,21 @@ player.on('finishRecord', function() {
 });
     
 
-
+/**
+ * Uploads to the database. Video data and image data goes
+ * into Firestore storage, while a database entry is created
+ * for reference
+ * @param {blob} videoData 
+ * @param {string} imageURI 
+ */
 function videoUpload(videoData, imageURI) {
     const date = new Date();
     const userDescription = document.getElementById("inputDescription").value;
     const image = imageURI;
     let docRefID;
 
-
-     firebase.auth().onAuthStateChanged(function (user) {
+    //check for user state
+    firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             if (user.emailVerified === false) {
                 alert("You have not verified your email.\nPlease verify by clicking on the link sent to your email.");
@@ -88,7 +95,7 @@ function videoUpload(videoData, imageURI) {
                 likedBy: "",
                 comments: "",
 
-                //Uploading the VIDEO here
+            //Uploading the VIDEO here
             }).then(function (docRef) {
                 console.log(`Uploaded with docRef: ${docRef.id}`);
                 docRefID = docRef.id;
