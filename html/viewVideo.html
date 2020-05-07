@@ -10,33 +10,129 @@
     <!----------------------------------------------->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+    <link type="../css/view" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
 
+       <!------------------------>
+    <!-- Your own CSS files -->
+    <!------------------------>
+    <link rel="stylesheet" href="../css/viewVideo.css">
+</head>
     
     <!-- Styling -->
-     <!--------  Nav-Bar       ------>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
         <div class="container-fluid">
-
-            <a href="main.html" class="navbar-brand"><img src="../images/icons/navbar_logo.png"></a>
+  
+            <a href="#" class="navbar-brand"><img src="../images/icons/navbar_logo.png"></a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
+  
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav">
-                    <a href="#" class="nav-item nav-link">Upload</a>
+                    <li class="nav-link">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-link">
+                        <a class="nav-link" href="#">Upload</a>
+                    </li>
+                    <li class="nav-link">
+                        <a class="nav-link" href="#">Leaderboard</a>
+                    </li>
+                    
+  
                 </ul>
                 <ul class="navbar-nav ml-auto">
-                    <a href="html/account.html" class="nav-item nav-link">My Account</a>
+                  <a href="account.html" class="nav-item nav-link">My Account</a>
                 </ul>
+       
             </div>
-
+  
         </div>
     </nav>
-    
- 
-    
+      <div class="container emp-profile">
+        <div class="my-1">
+          <h1 id="#" class="display-3">challenge_title</h1>
+          <h3>Category:</h3>
+      </div>
+  
+      <div class="container-fluid padding">
+          <div class="row padding">
+  
+              <div class="col-lg-8">
+                <div class="container">
+                  <video width="320" height="240" controls id="video_player">
+                      <source type="video/webm">
+                    Your browser does not support the video tag.
+                  </video> 
+              </div>
+              <div class="col-md-4">
+                <div class="profile-work">
+                    <p>Challenge by</p>
+                                       
+                          <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Follow"/><br>
+  
+                    <a href="">Views:</a><br/>
+                    <a href="">Likes:</a><br/>
+                    <a href="">Number of Attempts:</a>
+                </div>
+            </div>
+              <div class="container my-5">
+                <input type="submit" value="Accept Challenge" id="submit" class="btn btn-block btn-warning">
+            </div>
+  
+                  
+              </div>
+              <div class="col-lg-4">
+                  <h2>Tags</h2>
+                  <li id="tag1"></li>
+                  <li id="tag2"></li>
+                  <li id="tag3"></li>
+                  <li id="tag4"></li>
+  
+                  <div>
+                      <hr class="dark">
+                      <h2>Description</h2>
+                      <p id="description"></p>
+                  </div>
+  
+       
+              </div>
+              
+          </div>
+          
+      </div>
+      
+    </div>
+    <!--------  Footer       ------>
+  <footer>
+    <div class="container-fluid padding">
+        <div class="row text-center">
+            <div class="col-md-4">
+                <img src="../images/icons/navbar_logo.png">
+                <hr class="light">
+                <p>flairemail@flair.com</p>
+                <p>772 513 1097</p>
+  
+            </div>
+            <div class="col-md-4">
+                <hr class="light">
+                <h4>Connect</h4>
+                <hr class="light">
+                <p>Instagram</p>
+                <p>Facebook</p>
+  
+            </div>
+            <div class="col-md-4">
+                <hr class="light">
+                <h4><a href="about_us.html">About us</a></h4>
+                <hr class="light">
+                <p>2800 Project</p>
+                <p>Made by Asher, Ben, Francis, Saksham</p>
+  
+            </div>
+        </div>
+    </div>
+  </footer>
 
 
     <link href="./css/index.css" rel="stylesheet">
@@ -57,12 +153,6 @@
 <body>
     
 
-    <div class="container">
-        <video width="320" height="240" controls id="video_player">
-            <source type="video/webm">
-          Your browser does not support the video tag.
-        </video> 
-    </div>
     
 
     

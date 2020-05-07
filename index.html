@@ -13,31 +13,75 @@
 
     
     <!-- Styling -->
-     <!--------  Nav-Bar       ------>
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
-            <div class="container-fluid">
+
     
-                <a href="main.html" class="navbar-brand"><img src="images/icons/navbar_logo.png"></a>
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-    
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <ul class="navbar-nav">
-                        <a href="#" class="nav-item nav-link">Upload</a>
-                    </ul>
-                    <ul class="navbar-nav ml-auto">
-                        <a href="html/account.html" class="nav-item nav-link">My Account</a>
-                    </ul>
-                </div>
-    
+
+    <title>Flair Home</title>
+
+
+
+
+
+
+
+
+    <link href="./css/index.css" rel="stylesheet">
+    <!-- Firebase Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-database.js"></script>
+    <script src="javaScript/firebaseScripts/firebaseConfig.js"></script>
+    <script src="javaScript/firebaseScripts/firebaseAuth.js"></script>
+
+        <!-- Import JQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+
+
+<body>
+        <!--------  Nav-Bar       ------>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+        <div class="container-fluid">
+
+            <a href="#" class="navbar-brand"><img src="../images/icons/navbar_logo.png"></a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav">
+                    <li class="nav-link">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-link">
+                        <a class="nav-link" href="#">Upload</a>
+                    </li>
+                    <li class="nav-link">
+                        <a class="nav-link" href="#">Leaderboard</a>
+                    </li>
+
+
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <a href="account.html" class="nav-item nav-link">My Account</a>
+                </ul>
+
             </div>
-        </nav>
+
+        </div>
+    </nav>
         <!--------  Display Jumbotron       ------>
     <div class="container-fluid padding">
         <div class="row welcome ">
             <div class="col-12">
                 <h2 class="display-4">New Challenges</h2>
+                <div class="col-3">
+                    <div class="container">
+                        <a href="html/categories.html" class="btn btn-block btn-warning">View Categories</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -95,33 +139,6 @@
         </div>
     </div>
     
-    
-
-    <title>Flair Home</title>
-
-
-
-
-
-
-
-
-    <link href="./css/index.css" rel="stylesheet">
-    <!-- Firebase Scripts -->
-    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-storage.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-database.js"></script>
-    <script src="javaScript/firebaseScripts/firebaseConfig.js"></script>
-    <script src="javaScript/firebaseScripts/firebaseAuth.js"></script>
-
-        <!-- Import JQuery -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-
-
-</head>
-<body>
     <form>
         <div id="submitContainer">
             <!-- Submit button -->
