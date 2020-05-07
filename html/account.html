@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>My BCIT Project</title>
+    <title id="accountName">Flair</title>
     <meta name="comp1800 boilerplate code" content="my bcit project">
     <meta name="author" content="BCIT">
 
@@ -17,6 +17,16 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+    <!-- Firebase Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-database.js"></script>
+    <script src="../javaScript/firebaseScripts/firebaseConfig.js"></script>
+
+    <!-- Import JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
     <!------------------------>
     <!-- Your own CSS files -->
@@ -73,10 +83,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="profile-head">
-                                <h5>
-                                    Username
-                                </h5>
-                               
+                                <h5 id="username"></h5>
                                 <p class="proile-rating">BIO : <span>User bio</span></p>
   
                     </div>
@@ -147,7 +154,7 @@
                 
             </div>
         </form>
-        <script src="./javaScript/userManagement/signout.js"></script>
+        <script src="../javaScript/userManagement/signout.js"></script>
 
 
 
