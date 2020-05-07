@@ -1,0 +1,39 @@
+html,
+body {
+    height: 100%;
+    width: 100%;
+    font-family: 'Roboto Slab', serif;
+    color: 222;
+
+}
+
+.navbar {
+    padding: .8rem;
+
+
+}
+hr.dark {
+    border-top: 1px solid #d5d5d5;
+    width: 75%;
+}
+
+.img-fluid {
+    width: 100%;
+}
+
+.nav-link {
+    font-size: 1.3em !important;
+}
+
+
+
+footer {
+    background-color: #3f3f3f;
+    color: #d5d5d5;
+    padding-top: 2rem;
+}
+
+hr.light {
+    border-top: 1px solid #d5d5d5;
+    width: 75%;
+}
