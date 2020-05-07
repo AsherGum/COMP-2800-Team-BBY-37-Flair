@@ -1,6 +1,6 @@
 // Gets the user uid of the clicked account page
-//var globalUser = localStorage.getItem("globalUser")
-var globalUser = '3WFqhgsdkcezIYV9KtIaE4vhWwm2'
+var globalUser = localStorage.getItem("globalUser")
+console.log(globalUser);
 
 // Authentication state observer.
 
@@ -20,11 +20,11 @@ firebase.auth().onAuthStateChanged(function (user) {
                     console.log("found user");
                 }
             }
-        }); */
+        }); 
 
         if (globalUser === user.uid){
             document.getElementById("follow").style.display = "none"
-        }
+        }*/
 
 		// Get User information.
 		var docRef = database.collection("Users").doc(globalUser);
