@@ -28,6 +28,8 @@ $("#submit").closest('form').on('submit', function (event) {
 				PhoneNumber: "",
 				UserName: userName,
 				profilePicture: "",
+				Followers:[],
+				Following:[],
 				isVerified: false
 
 			});
