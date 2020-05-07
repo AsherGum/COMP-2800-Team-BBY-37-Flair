@@ -1,8 +1,9 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="../css/signup.css" rel="stylesheet">
     <title>Sign Up</title>
 
     <!-- Firebase Scripts -->
@@ -17,12 +18,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 </head>
 <body>
+    <div class="container">
+        <h1 id="greeting"><img src="../images/icons/Untitled-1.svg" style="width:700px;height:150px;"><br>SignUp for Flair</h1>
+        <div class="signupForm">
     <form>
         <div>
-            <input type="text" id="firstName" placeholder="First Name">
+            <input type="text" id="firstname" placeholder="First Name">
         </div>
         <div>
-            <input type="text" id="lastName" placeholder="Last Name">
+            <input type="text" id="lastname" placeholder="Last Name">
         </div>
         <div>
             <input type="text" id="username" placeholder="User Name">
@@ -31,12 +35,12 @@
             <input type="email" id="email" placeholder="email">
         </div>
         <div>
-            <input type="password" id="password" placeholder="password">
+            <input type="password" id="passworD" placeholder="password">
         </div>
         <!-- Submit container -->
         <div id="submitContainer">
             <!-- Submit button -->
-            <button type="submit" id="submit">Sign Up</button>
+            <button type="submit" id="submiT">Sign Up</button>
         </div>
     </form>
 
