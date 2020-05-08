@@ -15,7 +15,7 @@ docRef.get().then(function(doc) {
         console.log(postOwner);
         console.log(ownerTag);
     });
-    
+
     // Make sure document exists.
     if(doc.exists) {
         // Create the post on the main page.
@@ -72,6 +72,8 @@ $("#follow").click(function(){
         }
     })
 });
+
+$("")
 
 /* UNCOMMENT AFTER SO WE DON'T WASTE HOSTING
  let url = "https://firebasestorage.googleapis.com/v0/b/mipee-e5ade.appspot.com/o/userVideos%2FOjuArXPajCKPdFrX9ppx%2FchallengeVideo?alt=media&token=3d13082b-55e1-4c9d-9fef-61a69ee16521";
