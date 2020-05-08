@@ -39,12 +39,11 @@ firebase.auth().onAuthStateChanged(function (user) {
             console.log(post.id, " => ", post.data());
             if (post) {
                 console.log("post found");
-
                 // Create the post.
                 createPost(post.data().challenge,
                             post.data().imageURL,
                             post.data().videoURL,
-                            post.id);
+                            post.id, post.data().owner, post.data().upvotes);
             }
         })
     });
@@ -73,7 +72,12 @@ var body = document.getElementsByTagName("body");
 var content = document.getElementsByClassName("content")[0];
 
 //Create a book posting with its title, price, image URL (picture), and unique ID (to keep track of book post) as inputs
-function createPost(title, imageURL, videoURL, id) {
+function createPost(title, imageURL, videoURL, id, owner, likesCount) {
+
+  var docUser = database.collection("Users").doc(owner);
+  docUser.get().then(function (user) {
+
+  // Create the post on the main page.
     var vidBox = document.createElement("div");
     vidBox.className = "card";
 
@@ -88,10 +92,29 @@ function createPost(title, imageURL, videoURL, id) {
     var info = document.createElement("p");
     info.innerHTML = title;
 
+    var accountName = document.createElement("p");
+    accountName.id = "accountName";
+    accountName.innerHTML = '@' + user.data().UserName;
+
+    var eye = document.createElement('img');
+    eye.src = "./images/icons/eye.png"
+    eye.id = "view";
+
+    var likes = document.createElement("h4");
+    likes.id = "likes";
+    likes.innerHTML = likesCount;
+
+
 
     content.appendChild(vidBox);
     vidBox.appendChild(info);
+    vidBox.appendChild(eye);
+    vidBox.appendChild(accountName);
+    vidBox.appendChild(likes);
     vidBox.appendChild(img);
+    
+  });
+
     
 
 }
