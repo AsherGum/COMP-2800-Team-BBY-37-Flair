@@ -13,6 +13,7 @@ body, html {
     grid-template-columns: 256px 256px 256px;
     grid-gap: 25px;
     
+    
 }
 
 .card{
