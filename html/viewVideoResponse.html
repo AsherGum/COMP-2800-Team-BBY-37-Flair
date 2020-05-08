@@ -15,7 +15,6 @@
        <!------------------------>
     <!-- Your own CSS files -->
     <!------------------------>
-    <link rel="stylesheet" href="../css/general.css">
     <link rel="stylesheet" href="../css/viewVideo.css">
 </head>
 
@@ -52,7 +51,7 @@
       <div class="container emp-profile">
         <div class="my-1">
           <h1 id="title" class="display-3"></h1>
-          <h3>Category:</h3>
+          <h3>Original challenge: <span id="challenge_title"></span></h3>
       </div>
 
       <div class="container-fluid padding">
@@ -67,25 +66,23 @@
                 </div>
                 <div class="col-md-4">
                     <div class="profile-work">
-                        <p>Challenge by:</p> <p id='owner'></p>
+                        <p>Video by:</p> <p id='owner'></p>
                             <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Follow" id='follow'/><br>
 
                         <p>Views:</p><p id="views"></p><br/>
                         <p>Likes:</p><p id="likes"></p><br/>
-                        <p>Number of Attempts:</a><p id="attempts"></p>
+                        
                     </div>
                 </div>
                 <div class="container my-5">
                     <a href="" id="view_attempts">
-                        <input type="submit" value="View Attempts" class="btn btn-block btn-outline-warning">
+                        <input type="submit" value="Back to View Attempts" class="btn btn-block btn-outline-warning">
                     </a>
                 </div>
 
 
             </div>
               <div class="col-lg-4">
-                  <h2>Tags</h2>
-                  <ul id="tag_container"></ul>
                   <div>
                       <hr class="dark">
                       <h2>Description</h2>
@@ -93,7 +90,7 @@
                   </div>
                   <div class="container">
                     <a href="" id="submit_link">
-                        <input type="submit" value="Accept Challenge" id="submit" class="btn btn-block btn-warning">
+                        <input type="submit" value="Attempt Challenge" id="submit" class="btn btn-block btn-warning">
                     </a>
                 </div>
 
@@ -171,7 +168,8 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
     </script>
     <!-- Page Scripts -->
-    <script src="../javaScript/videoHandling/viewVideo.js"></script>
+    <script src="../javaScript//general/general.js"></script>
+    <script src="../javaScript/videoHandling/viewVideoResponse.js"></script>
 
 </body>
 </html>
