@@ -62,6 +62,7 @@ function videoUpload(videoData, imageURI, userTags) {
                 comments: "",
                 inappropriateFlags: 0,
                 views: 0,
+                attempts: 0,
                 
 
             //Uploading the VIDEO here
