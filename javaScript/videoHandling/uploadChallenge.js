@@ -232,7 +232,3 @@ document.getElementById('video_upload_button').addEventListener('click', functio
     let imageURI = createImage();
     videoUpload(data, imageURI, inputTags)
 });
-
-
-
-
