@@ -78,22 +78,20 @@ function createPost(title, imageURL, videoURL, id) {
     vidBox.className = "card";
 
     // Getting images.
-    let link = document.createElement("a");
-    link.href = "./html/viewVideo.html?view:" + id;
-
-
     var img = document.createElement("img");
     img.src = imageURL;
     img.id = id;
-
+    img.onclick = function() {
+      window.location.href = "./html/viewVideo.html?view:" + id;
+    }
+ 
     var info = document.createElement("p");
     info.innerHTML = title;
 
 
     content.appendChild(vidBox);
     vidBox.appendChild(info);
-    vidBox.appendChild(link);
-    link.appendChild(img);
+    vidBox.appendChild(img);
     
 
 }
