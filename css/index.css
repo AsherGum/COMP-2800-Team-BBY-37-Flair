@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
 body, html {
-    margin: 0;
-    padding: 0;
+    height: 100%;
+    width: 100%;
+
     background-color: #222222;
     font-family: 'Roboto', sans-serif;
 }
@@ -11,7 +12,7 @@ body, html {
     display: grid;
     grid-template-columns: 256px 256px 256px;
     grid-gap: 25px;
-    justify-content: center;
+    
 }
 
 .card{
@@ -56,6 +57,10 @@ body, html {
     margin-right: auto;
     margin-top: 15px;
     margin-bottom: 0;
+}
+.padding {
+    padding-top: 3rem;
+    padding-left: 3rem;
 }
 
 #newVid {
