@@ -78,7 +78,10 @@ function createPost(title, imageURL, videoURL, id) {
     vidBox.className = "card";
 
     // Getting images.
-    
+    let link = document.createElement("a");
+    link.href = "./html/viewVideo.html?view:" + id;
+
+
     var img = document.createElement("img");
     img.src = imageURL;
     img.id = id;
@@ -89,10 +92,19 @@ function createPost(title, imageURL, videoURL, id) {
 
     content.appendChild(vidBox);
     vidBox.appendChild(info);
-    vidBox.appendChild(img);
+    vidBox.appendChild(link);
+    link.appendChild(img);
     
 
 }
+
+/* Changed it so that the link is created when the card is created,
+so this code is depreciated.
+
+Changed it because the code was causing our Flair icon to link
+to an empty video.
+
+
 
 // Clicker for opening the description post.
 $("body").unbind().on("click", 'img', function (event) {
@@ -107,3 +119,4 @@ function openPage(id) {
     localStorage.setItem("postID", id);
     window.location.href = "./html/viewVideo.html?view:" + id;
 }
+*/
