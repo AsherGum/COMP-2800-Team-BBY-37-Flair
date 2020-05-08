@@ -1,111 +1,128 @@
-@import url('https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2&display=swap');
-
-html, body {
-    margin: 0;
-    padding: 0;
-    background-color: #222222;
-    font-family: 'Baloo Bhaina 2', cursive;
+body{
+    background:#343638;
+    font-size: small;
 }
-
-.container {
-    margin-top: 10%;
+.emp-profile{
+    padding: 3%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    border-radius: 0.5rem;
+    background: #fff;
 }
-
-#greeting{
-    color: white;
+.profile-img{
     text-align: center;
 }
-
-.signupForm {
-    margin: 5%;
-    padding: 10%;
-    background-color: whitesmoke;
-    border-radius: 5px;
-    box-shadow: 0 0 10px #000000;
+.profile-img img{
+    width: 70%;
+    height: 100%;
+}
+.profile-img .file {
+    position: relative;
+    overflow: hidden;
+    margin-top: -20%;
+    width: 70%;
+    border: none;
+    border-radius: 0;
+    font-size: 15px;
+    background: #212529b8;
+}
+.profile-img .file input {
+    position: absolute;
+    opacity: 0;
+    right: 0;
+    top: 0;
+}
+.profile-head h5{
+    color: #333;
+}
+.profile-head h6{
+    color: Black;
+}
+.profile-edit-btn{
+    border: none;
+    border-radius: 1.5rem;
+    width: 70%;
+    padding: 2%;
+    font-weight: 600;
+    color: #6c757d;
+    cursor: pointer;
+}
+.proile-rating{
+    font-size: 12px;
+    color: #818182;
+    margin-top: 5%;
+}
+.proile-rating span{
+    color: #495057;
+    font-size: 15px;
+    font-weight: 600;
+}
+.profile-head .nav-tabs{
+    margin-bottom:5%;
+}
+.profile-head .nav-tabs .nav-link{
+    font-weight:600;
+    border: none;
+}
+.profile-head .nav-tabs .nav-link.active{
+    border: none;
+    border-bottom:2px solid #ff9900;
+}
+.profile-work{
+    padding: 14%;
+    margin-top: -15%;
+}
+.profile-work p{
+    font-size: 12px;
+    color: #818182;
+    font-weight: 600;
+    margin-top: 10%;
+}
+.profile-work a{
+    text-decoration: none;
+    color: #495057;
+    font-weight: 600;
+    font-size: 14px;
+}
+.profile-work ul{
+    list-style: none;
+}
+.profile-tab label{
+    font-weight: 600;
+}
+.profile-tab p{
+    font-weight: 600;
+    color: orange;
 }
 
-#firstname {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 0;
-    margin-bottom: 15px;
-    width: 100%;
-    height: 24px;
-    box-shadow: 0 0 2px #000000;
-    border: none;
-    border-radius: 2px;
-#lastname {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 5;
-    margin-bottom: 15px;
-    width: 100%;
-    height: 24px;
-    box-shadow: 0 0 2px #000000;
-    border: none;
-    border-radius: 2px;
-#username {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 5;
-    margin-bottom: 15px;
-    width: 100%;
-    height: 24px;
-    box-shadow: 0 0 2px #000000;
-    border: none;
-    border-radius: 2px;
-#email {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 5;
-    margin-bottom: 15px;
-    width: 100%;
-    height: 24px;
-    box-shadow: 0 0 2px #000000;
-    border: none;
-    border-radius: 2px;
+
+.navbar {
+    padding: .8rem;
+
+
+}
+hr.dark {
+    border-top: 1px solid #d5d5d5;
+    width: 75%;
 }
 
-#password {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 15px;
-    margin-bottom: 15px;
+.img-fluid {
     width: 100%;
-    height: 24px;
-    box-shadow: 0 0 2px #000000;
-    border: none;
-    border-radius: 2px;
 }
 
-#submit {
-    background-color: #222222;
-    color: white;
-    width: 80px;
-    height: 30px;
-    border-radius: 2px;
-    border: none;
-    font-size: small;
-    box-shadow: 0 0 5px #000000;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 15px;
-    margin-bottom: 0;
+.nav-link {
+    font-size: 1.3em !important;
 }
 
 
 
-
-@media (min-width: 401px) and (max-width: 1024px) {
-
+footer {
+    background-color: #3f3f3f;
+    color: #d5d5d5;
+    padding-top: 2rem;
 }
 
-@media (min-width: 1025px) {
-
+hr.light {
+    border-top: 1px solid #d5d5d5;
+    width: 75%;
 }
