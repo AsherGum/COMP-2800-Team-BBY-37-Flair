@@ -1,41 +1,39 @@
 
 
-function parseCategorySearch() {
-    let queryString = decodeURIComponent(window.location.search);
-    let queries = queryString.split("?");
-    let searchQueries = queries[1].split(":")
-    searchQueries.shift();
-    return searchQueries;
-}
 
-
-//query database for data from the search
-
+/**
+ * Query the database for data that matches the queries string and return those documents.
+ * Create cards for those documents to display on DOM.
+ * @param {array} queries 
+ */
 function searchChallenges(queries) {
     database.collection("Challenges").where("challengeCategory", "==", queries)
     .get()
     .then(function(snapShot) {
+        //counter used to check if nothing was found
+        let counter = 0;
         snapShot.forEach((doc) => {
-            
+            counter++;
             /**
              * relevant fields:
              * doc.challenge
              * doc.description
              * doc.imageURL
                 doc.upvotes
-             * doc.views
+                * doc.views
 
-             */
+                */
             createVideoCard(doc.data().challenge, doc.data().description, 
                 doc.data().imageURL, doc.data().upvotes, doc.data().views, doc.id);
 
         });
 
-
-
+        if (counter === 0) {
+            noVideosFound();
+        }
+        
+        
     })
-
-    
 }
 
 
@@ -89,3 +87,42 @@ function createVideoCard(challengeTitle, challengeDescription,
 
 
 }
+
+/**
+ * is called when there are no videos found
+ * matching the search query. Will create a no videos message
+ * for the user and display it.
+ */
+function noVideosFound() {
+    //Create a container div element to hold the message
+    const container = document.createElement("div");
+    container.classList.add("container");
+    document.getElementById("card_insertion").appendChild(container);
+
+    //The no videos message to display
+    const noVideosMsg = document.createElement("h2");
+    noVideosMsg.innerHTML = "We didn't find any videos with that search. Try a different search?";
+    container.appendChild(noVideosMsg);
+
+}
+
+/**
+ * The function to call the rest of the functions.
+ * Call this function to load the cards from
+ * the search
+ */
+function pageLoad() {
+    //parseSearchURL called from general.js
+    const queries = parseSearchURL();
+    const queryString = queries[0]
+    document.getElementById("search_parameter").innerHTML = queryString;
+
+    if (queryString != undefined) {
+        searchChallenges(queryString);
+    }
+}
+
+pageLoad();
+
+
+
