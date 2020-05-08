@@ -2,13 +2,12 @@
 var globalUser = window.location.href;
 globalUser = globalUser.substring((globalUser.length - 28),globalUser.length);
 
-upImages();
+
 
 // Authentication state observer.
 
 firebase.auth().onAuthStateChanged(function (user) {
 	if (user) {
-        var test = globalUser.substring(1, 5);
         if(globalUser.substring((globalUser.length - 12),globalUser.length) == "account.html"){
             globalUser = user.uid;
         }
@@ -38,9 +37,7 @@ firebase.auth().onAuthStateChanged(function (user) {
 			// Makes sure document exists.
 			if (doc.exists) {
                 // Reads the data required.
-                if(user.uid === globalUser){
-                    document.getElementById("edit").style.display = "none";
-                }
+                upImages();
 				document.getElementById("accountName").innerHTML = doc.data().UserName;
 				//document.getElementById("last").innerHTML = doc.data().LastName;
 				document.getElementById("username").innerHTML = "@" + doc.data().UserName;
@@ -109,16 +106,22 @@ $("#follow").click(function(){
 
 //For about us Images
 function upImages(){
-    if(globalUser = "3WFqhgsdkcezIYV9KtIaE4vhWwm2"){
-        document.getElementById("profilePic").src = "../images/3WFqhgsdkcezIYV9KtIaE4vhWwm2.jpeg";
+
+
+    if(globalUser === "3WFqhgsdkcezIYV9KtIaE4vhWwm2"){
+        document.getElementById("profilePic").src = "../images/3WFqhgsdkcezIYV9KtIaE4vhWwm2.jpg";
+        document.getElementById("edit").style.display = "none";
     }
-    if(globalUser = "3o3C8MnIdpezpx2xIciORkIMmKt1"){
+    if(globalUser === "3o3C8MnIdpezpx2xIciORkIMmKt1"){
         document.getElementById("profilePic").src = "../images/3o3C8MnIdpezpx2xIciORkIMmKt1.jpeg";
+        document.getElementById("edit").style.display = "none";
     }
-    if(globalUser = "YjdDZklmHceFXMz9vaG1P0WwIru2"){
-        document.getElementById("profilePic").src = "../images/YjdDZklmHceFXMz9vaG1P0WwIru2.jpeg";
+    if(globalUser === "YjdDZklmHceFXMz9vaG1P0WwIru2"){
+        document.getElementById("profilePic").src = "../images/YjdDZklmHceFXMz9vaG1P0WwIru2.JPG";
+        document.getElementById("edit").style.display = "none";
     }
-    if(globalUser = "opEcJE3d0jZQbFgWNfo5Va1lt6z2"){
-        document.getElementById("profilePic").src = "../images/opEcJE3d0jZQbFgWNfo5Va1lt6z2.jpeg";
+    if(globalUser ==="opEcJE3d0jZQbFgWNfo5Va1lt6z2"){
+        document.getElementById("profilePic").src = "../images/opEcJE3d0jZQbFgWNfo5Va1lt6z2.jpg";
+        document.getElementById("edit").style.display = "none";
     }
 }
