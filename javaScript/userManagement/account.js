@@ -1,11 +1,17 @@
 // Gets the user uid of the clicked account page
-var globalUser = localStorage.getItem("globalUser")
-console.log(globalUser);
+var globalUser = window.location.href;
+globalUser = globalUser.substring((globalUser.length - 28),globalUser.length);
+
+upImages();
 
 // Authentication state observer.
 
 firebase.auth().onAuthStateChanged(function (user) {
 	if (user) {
+        var test = globalUser.substring(1, 5);
+        if(globalUser.substring((globalUser.length - 12),globalUser.length) == "account.html"){
+            globalUser = user.uid;
+        }
         //globalUser = user.uid;
         // User is signed in.
 
@@ -31,16 +37,22 @@ firebase.auth().onAuthStateChanged(function (user) {
 		docRef.get().then(function (doc) {
 			// Makes sure document exists.
 			if (doc.exists) {
-				// Reads the data required.
+                // Reads the data required.
+                if(user.uid === globalUser){
+                    document.getElementById("edit").style.display = "none";
+                }
 				document.getElementById("accountName").innerHTML = doc.data().UserName;
 				//document.getElementById("last").innerHTML = doc.data().LastName;
 				document.getElementById("username").innerHTML = "@" + doc.data().UserName;
 				//document.getElementById("email").innerHTML = doc.data().Email;
 				//document.getElementById("university").innerHTML = doc.data().UserName;
                 //document.getElementById("phone").innerHTML = doc.data().PhoneNumber;
-                document.getElementById("followers").innerHTML = doc.data().Followers.length;
-                document.getElementById("following").innerHTML = doc.data().Following.length;
-                document.getElementById("challenges").innerHTML = doc.data().Challenges.length;
+                document.getElementById("userBio").innerHTML = doc.data().Bio;
+                //document.getElementById("followers").innerHTML = doc.data().Followers.length;
+                //document.getElementById("following").innerHTML = doc.data().Following.length;
+                //document.getElementById("challenges").innerHTML = doc.data().Challenges.length;
+
+
 			} else {
 				// doc.data() will be undefined in this case.
 				console.log("No such document!");
@@ -94,3 +106,19 @@ $("#follow").click(function(){
         }
     })
 });
+
+//For about us Images
+function upImages(){
+    if(globalUser = "3WFqhgsdkcezIYV9KtIaE4vhWwm2"){
+        document.getElementById("profilePic").src = "../images/3WFqhgsdkcezIYV9KtIaE4vhWwm2.jpeg";
+    }
+    if(globalUser = "3o3C8MnIdpezpx2xIciORkIMmKt1"){
+        document.getElementById("profilePic").src = "../images/3o3C8MnIdpezpx2xIciORkIMmKt1.jpeg";
+    }
+    if(globalUser = "YjdDZklmHceFXMz9vaG1P0WwIru2"){
+        document.getElementById("profilePic").src = "../images/YjdDZklmHceFXMz9vaG1P0WwIru2.jpeg";
+    }
+    if(globalUser = "opEcJE3d0jZQbFgWNfo5Va1lt6z2"){
+        document.getElementById("profilePic").src = "../images/opEcJE3d0jZQbFgWNfo5Va1lt6z2.jpeg";
+    }
+}
