@@ -1,3 +1,9 @@
+
+
+
+
+
+
 /**
  * Upload Functionality for uploading a
  * RESPONSE VIDEO TO A CHALLENGE
@@ -9,11 +15,15 @@
  * @param {blob} videoData 
  * @param {string} imageURI 
  */
-function videoUpload(videoData, imageURI) {
+function videoUpload(videoData, imageURI, challengeDocID) {
     const date = new Date();
     const userDescription = document.getElementById("inputDescription").value;
     const image = imageURI;
     let docRefID;
+    let userInfo;
+    let userEmail;
+    let userVideoURL;
+    let userImageURL;
 
     //check for user state
     firebase.auth().onAuthStateChanged(function (user) {
@@ -25,9 +35,12 @@ function videoUpload(videoData, imageURI) {
 
             //Will need to add some sort of data checking here
             const userVideo = videoData;
+            userInfo = user.uid;
+            userEmail = user.email;
            
             database.collection("userVideos").add({
-                challenge: "testValue",
+                challenge: challengeDocID,
+                title: "",
                 user: user.uid,
                 userEmail: user.email,
                 year: date.getFullYear(),
@@ -40,6 +53,7 @@ function videoUpload(videoData, imageURI) {
                 description: userDescription,
                 likedBy: "",
                 comments: "",
+                inAppropriateFlags: 0,
 
             //Uploading the VIDEO here
             }).then(function (docRef) {
@@ -70,6 +84,8 @@ function videoUpload(videoData, imageURI) {
                     // Handle successful uploads on complete.
                     uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
                         console.log('File available at', downloadURL);
+                        userVideoURL = downloadURL;
+
                         // Add image URL location.
                         database.collection("userVideos").doc(docRef.id).update({
                             videoURL: downloadURL,
@@ -103,17 +119,29 @@ function videoUpload(videoData, imageURI) {
                                 // Handle successful uploads on complete.
                                 uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
                                     console.log('File available at', downloadURL);
+                                    userImageURL = downloadURL;
+
                                     // Add image URL location.
                                     database.collection("userVideos").doc(docRefID).update({
                                         imageURL: downloadURL,
+
+                                        //Add this challenge video reference to the
+                                        //challenge video collection document
                                     }).then(function () {
-                                        console.log("image URL successfully updated!");
+                                        database.collection('Challenges').doc(challengeDocID).collection('Responses').add({
+                                            userVideo: docRefID,
+                                            user: userInfo,
+                                            userEmail: userEmail,
+                                            videoURL: userVideoURL,
+                                            imageURL: userImageURL
 
 
+                                        }).then(function() {
+                                            console.log("wrote to challenge document succesfully");
 
-
-                                        // NEED TO REDIRECT USER TO ANOTHER PAGE
-                                        window.location.href = "../index.html";
+                                            // NEED TO REDIRECT USER TO ANOTHER PAGE
+                                            window.location.href = "../index.html";
+                                        })
                                     });
                                 });
                             })
@@ -137,8 +165,16 @@ function videoUpload(videoData, imageURI) {
  * Button handling for just the challenge video response upload page
  */
 document.getElementById('video_upload_button').addEventListener('click', function() {
+    /*parseSearchURL called from general.js
+    input URL should be similar to: 
+    /html/uploadChallenge.html?challenge:docID
+    */
+    const challengeDocIDArray = parseSearchURL();
+    const challengeDocIDString = challengeDocIDArray[0];
+
+
     let imageURI = createImage();
-    videoUpload(data, imageURI);
+    videoUpload(data, imageURI, challengeDocIDString);
 });
 
 
