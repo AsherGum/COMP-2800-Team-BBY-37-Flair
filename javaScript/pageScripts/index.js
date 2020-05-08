@@ -1,3 +1,4 @@
+
 // Initializes the post.
 var storage = firebase.storage();
 console.log("Getting Posts");
@@ -30,7 +31,7 @@ firebase.auth().onAuthStateChanged(function (user) {
     }
 
     // User is found now get Posts from their Uni.
-    var getPosts = database.collection("userVideos");
+    var getPosts = database.collection("Challenges");
     // Gets the book postings. Query where() function.
     getPosts.get().then(function (querySnapshot) {
         querySnapshot.forEach(function (post) {
@@ -40,7 +41,7 @@ firebase.auth().onAuthStateChanged(function (user) {
                 console.log("post found");
 
                 // Create the post.
-                createPost(post.data().description,
+                createPost(post.data().challenge,
                             post.data().imageURL,
                             post.data().videoURL,
                             post.id);
@@ -69,12 +70,12 @@ function openAccountPage(id) {
 var body = document.getElementsByTagName("body");
 
 // Main container.
-var container = document.getElementsByClassName("content")[0];
+var content = document.getElementsByClassName("content")[0];
 
 //Create a book posting with its title, price, image URL (picture), and unique ID (to keep track of book post) as inputs
 function createPost(title, imageURL, videoURL, id) {
     var vidBox = document.createElement("div");
-    vidBox.style.scrollSnapAlign = "start";
+    vidBox.className = "card";
 
     // Getting images.
     
@@ -83,9 +84,11 @@ function createPost(title, imageURL, videoURL, id) {
     img.id = id;
 
     var info = document.createElement("p");
+    info.innerHTML = title;
 
 
-    container.appendChild(vidBox);
+    content.appendChild(vidBox);
+    vidBox.appendChild(info);
     vidBox.appendChild(img);
     
 
