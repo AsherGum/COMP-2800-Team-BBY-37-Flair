@@ -2,8 +2,8 @@
 //Video player options
 var options = {
     controls: true,
-    width: 320,
-    height: 240,
+    width: 256,
+    height: 380,
     fluid: false,
     plugins: {
         record: {
