@@ -1,13 +1,15 @@
+
+//Video player options
 var options = {
     controls: true,
-    width: 320,
-    height: 240,
+    width: 256,
+    height: 380,
     fluid: false,
     plugins: {
         record: {
             audio: true,
             video: true,
-            maxLength: 5,
+            maxLength: 20,
             debug: true
         }
     }
@@ -38,77 +40,37 @@ player.on('startRecord', function() {
     console.log('started recording!');
 });
 
+//Stores the video blob. Probably not a  safe method, not sure how else to do this.
+let data;
 // user completed recording and stream is available
 player.on('finishRecord', function() {
     // the blob object contains the recorded data that
     // can be downloaded by the user, stored on server etc.
-
-    let data = player.recordedData;
+    
+    data = player.recordedData;
     let formData = new FormData();
     formData.append('file', data, data.name);
 
-    
-    
     console.log('finished recording: ', data);
-
-    videoUpload(data);
+        
 });
+    
 
-function videoUpload(videoData) {
-     firebase.auth().onAuthStateChanged(function (user) {
-        if (user) {
-            let userVideo = videoData;
-            database.collection("userVideos").add({
-                challenge: "testValue",
-                user: "need to authenticate user first",
-                videoURL: "",
+//Creates the thumbnail image for the video. 
+//Currently just takes the image at 0s of the video
+function createImage() {
+    const canvas = document.createElement('canvas');
+    canvas.width = 320;
+    canvas.height = 240;
+    const ctx = canvas.getContext('2d');
+    const video = document.getElementById("myVideo_html5_api");
 
+    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+    let dataURI = canvas.toDataURL('image/jpeg');
 
-
-            }).then(function (docRef) {
-                console.log(`Uploaded with docRef: ${docRef}`);
-                let storageRef = firebase.storage().ref();
-                let uploadTask = storageRef.child('userVideos/' + docRef.id + "/challengeVideo").put(userVideo);
-
-                // Register three observers:
-                // 1. 'state_changed' observer, called any time the state changes.
-                // 2. Error observer, called on failure.
-                // 3. Completion observer, called on successful completion.
-                uploadTask.on('state_changed', function (snapshot) {
-                    // Observe state change events such as progress, pause, and resume.
-                    // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded.
-                    switch (snapshot.state) {
-                        case firebase.storage.TaskState.PAUSED: // or 'paused'
-                            console.log('Upload is paused');
-                            break;
-                        case firebase.storage.TaskState.RUNNING: // or 'running'
-                            console.log('Upload is running');
-                            break;
-                    }
-                }, function (error) {
-                    // Handle unsuccessful uploads.
-                    console.log("upload failed");
-                }, function () {
-                    // Handle successful uploads on complete.
-                    uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
-                        console.log('File available at', downloadURL);
-                        // Add image URL location.
-                        database.collection("userVideos").doc(docRef.id).update({
-                            videoURL: downloadURL,
-                        }).then(function () {
-                            console.log("URL successfully updated!");
-
-
-
-
-                            // NEED TO REDIRECT USER TO ANOTHER PAGE
-                            //window.location.href = "./sell-success.html";
-                        });
-                    });
-                })
-            })
-        } else {
-            console.log("User wasn't logged in");
-        }
-     })
+    return dataURI;
 }
+
+
+
+

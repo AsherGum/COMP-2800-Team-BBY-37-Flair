@@ -1,46 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title id="accountName">Flair</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Video</title>
         <link rel="shortcut icon" href="../images/icons/favicon.png" />
-    <meta name="comp1800 boilerplate code" content="my bcit project">
-    <meta name="author" content="BCIT">
-
-    <!----------------------------------------------->
-    <!--  Meta tag for rendering on mobile devices -->
-    <!----------------------------------------------->
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!----------------------------------------------->
     <!-- CSS: Bootstrap, Firebase, other API -->
     <!----------------------------------------------->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
-    <!-- Firebase Scripts -->
-    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-storage.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-database.js"></script>
-    <script src="../javaScript/firebaseScripts/firebaseConfig.js"></script>
+    <link type="../css/view" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
 
-    <!-- Import JQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-
-    <!------------------------>
+       <!------------------------>
     <!-- Your own CSS files -->
     <!------------------------>
-    <link href="../css/account.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="../css/general.css">
+    <link rel="stylesheet" href="../css/viewVideo.css">
 </head>
-<body>
-    <!----------------------->
-    <!--  HTML Section -->
-    <!----------------------->
-     <!--------  Nav-Bar       ------>
- <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+
+    <!-- Styling -->
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
         <div class="container-fluid">
 
             <a href="../index.html" class="navbar-brand"><img src="../images/icons/Untitled-1.svg" width="100" height="80"></a>
@@ -70,56 +51,64 @@
         </div>
     </nav>
       <div class="container emp-profile">
-        <form method="post">
-            <div class="row">
+        <div class="my-1">
+          <h1 id="title" class="display-3"></h1>
+          <h3>Category:</h3>
+      </div>
+
+      <div class="container-fluid padding">
+          <div class="row padding">
+
+            <div class="col-lg-8">
+                <div class="container">
+                  <video width="320" height="240" controls id="video_player">
+                      <source type="video/webm">
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
                 <div class="col-md-4">
-                    <div class="profile-img">
-                        <img id="profilePic" src="https://via.placeholder.com/500x500" alt=""/>
-                        <div id="edit" class="file btn btn-lg btn-primary">
-                            Change Photo
-                            <input type="file" name="file"/>
-                        </div>
+                    <div class="profile-work">
+                        <p>Challenge by:</p> <p id='owner'></p>
+                            <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Follow" id='follow'/><br>
+
+                        <p>Views:</p><p id="views"></p><br/>
+                        <p>Likes:</p><p id="likes"></p><br/>
+                        <p>Number of Attempts:</a><p id="attempts"></p>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="profile-head">
-                                <h5 id="username"></h5>
-                                <p class="proile-rating">BIO: <span id="userBio"></span></p>
-
-                    </div>
+                <div class="container my-5">
+                    <a href="" id="view_attempts">
+                        <input type="submit" value="View Attempts" class="btn btn-block btn-outline-warning">
+                    </a>
                 </div>
-                <div class="col-md-2">
-                    <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
-
-                    <button type="submit" id="submit">logout</button>
 
 
-                </div>
             </div>
-            <div class="profile-head row padding">
-
-              <ul class="nav nav-tabs" id="myTab" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Uploaded Challenges</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Challenge Attempts</a>
-                </li>
-            </ul>
-
-                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-
-
-                        </div>
-
-                    </div>
+              <div class="col-lg-4">
+                  <h2>Tags</h2>
+                  <ul id="tag_container"></ul>
+                  <div>
+                      <hr class="dark">
+                      <h2>Description</h2>
+                      <p id="description"></p>
+                  </div>
+                  <div class="container">
+                    <a href="" id="submit_link">
+                        <input type="submit" value="Accept Challenge" id="submit" class="btn btn-block btn-warning">
+                    </a>
                 </div>
-            </div>
-        </form>
+
+              </div>
+
+            
+
+          </div>
+
+      </div>
+
     </div>
-
-        <!--------  Footer       ------>
-<footer>
+    <!--------  Footer       ------>
+  <footer>
     <div class="container-fluid padding">
         <div class="row text-center">
             <div class="col-md-4">
@@ -150,18 +139,26 @@
   </footer>
 
 
-                <!-- Submit button -->
+    <!-- Firebase Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-database.js"></script>
+    <script src="../javaScript/firebaseScripts/firebaseConfig.js"></script>
 
-            </div>
-        </form>
-        <script src="../javaScript/userManagement/signout.js"></script>
+        <!-- Import JQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+
+</head>
+<body>
 
 
 
 
 
 
-    <!---------------------------------------------->
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related    -->
     <!----------------------------------------------->
@@ -174,12 +171,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
     </script>
+    <!-- Page Scripts -->
+    <script src="../javaScript/videoHandling/viewVideo.js"></script>
 
-
-
-
-
-
-    <script src="../javaScript/userManagement/account.js"></script>
 </body>
 </html>

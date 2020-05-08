@@ -9,95 +9,14 @@
     <!----------------------------------------------->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
 
-    
+
+
     <!-- Styling -->
-     <!--------  Nav-Bar       ------>
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
-            <div class="container-fluid">
-    
-                <a href="main.html" class="navbar-brand"><img src="images/icons/navbar_logo.png"></a>
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-    
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <ul class="navbar-nav">
-                        <a href="#" class="nav-item nav-link">Upload</a>
-                    </ul>
-                    <ul class="navbar-nav ml-auto">
-                        <a href="html/account.html" class="nav-item nav-link">My Account</a>
-                    </ul>
-                </div>
-    
-            </div>
-        </nav>
-        <!--------  Display Jumbotron       ------>
-    <div class="container-fluid padding">
-        <div class="row welcome ">
-            <div class="col-12">
-                <h2 class="display-4">New Challenges</h2>
-            </div>
-        </div>
-    </div>
-    <hr>
-    <div class="jumbotron-fluid">
-        <div class="container-fluid padding">
 
-            <div class="row padding">
-
-                <div class="col-md-3">
-                    <div class="card">
-                        <img class="card-img-top" src="#">
-                        <div class="card-body">
-                            <h4 class="card-title">Challenge Name</h4>
-                            <p class="card-text">Challenge Description</p>
-                            <a href="#" class="btn btn-outline-warning">View Challenge</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="card">
-                        <img class="card-img-top" src="#">
-                        <div class="card-body">
-                            <h4 class="card-title">Challenge Name</h4>
-                            <p class="card-text">Challenge Description</p>
-                            <a href="#" class="btn btn-outline-warning">View Challenge</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="card">
-                        <img class="card-img-top" src="#">
-                        <div class="card-body">
-                            <h4 class="card-title">Challenge Name</h4>
-                            <p class="card-text">Challenge Description</p>
-                            <a href="#" class="btn btn-outline-warning">View Challenge</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="card">
-                        <img class="card-img-top" src="#">
-                        <div class="card-body">
-                            <h4 class="card-title">Challenge Name</h4>
-                            <p class="card-text">Challenge Description</p>
-                            <a href="#" class="btn btn-outline-warning">View Challenge</a>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-    
-    
 
     <title>Flair Home</title>
+        <link rel="shortcut icon" href="images/icons/favicon.png" />
 
 
 
@@ -122,16 +41,41 @@
 
 </head>
 <body>
-    <form>
-        <div id="submitContainer">
-            <!-- Submit button -->
-            <button type="submit" id="submit">logout</button>
-        </div>
-    </form>
+        <!--------  Nav-Bar       ------>
+ <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+        <div class="container-fluid">
 
-    <a href="./html/Video.html">quick link to get to the video page</a> 
+            <a href="index.html" class="navbar-brand"><img src="images/icons/Untitled-1.svg" width="100" height="80"></a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav">
+                    <li class="nav-link">
+                        <a class="nav-link" href="html/uploadChallenge.html">Create Challenge</a>
+                    </li>
+                    <li class="nav-link">
+                        <a class="nav-link" href="html/categories.html">Categories</a>
+                    </li>
+                    <li class="nav-link">
+                        <a class="nav-link" href="#">Leaderboard</a>
+                    </li>
+
+
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <a href="html/account.html" class="nav-item nav-link">My Account</a>
+                </ul>
+
+            </div>
+
+        </div>
+    </nav>
     
-    
+    <h2>New Challenges</h2>
+    <div class="content"></div>
+
+
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related    -->
     <!----------------------------------------------->
@@ -144,7 +88,41 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
     </script>
+
     <!-- Page Scripts -->
     <script src="./javaScript/userManagement/signout.js"></script>
+    <script src="./javaScript/pageScripts/index.js"></script>
 </body>
+
+        <!--------  Footer       ------>
+        <footer>
+            <div class="container-fluid padding">
+                <div class="row text-center">
+                    <div class="col-md-4">
+                        <img src="./images/icons/navbar_logo.png">
+                        <hr class="light">
+                        <p>flairemail@flair.com</p>
+                        <p>772 513 1097</p>
+        
+                    </div>
+                    <div class="col-md-4">
+                        <hr class="light">
+                        <h4>Connect</h4>
+                        <hr class="light">
+                        <p>Instagram</p>
+                        <p>Facebook</p>
+        
+                    </div>
+                    <div class="col-md-4">
+                        <hr class="light">
+                        <h4><a href="./html/about_us.html">About us</a></h4>
+                        <hr class="light">
+                        <p>2800 Project</p>
+                        <p>Made by Asher, Ben, Francis, Saksham</p>
+        
+                    </div>
+                </div>
+            </div>
+          </footer>
+
 </html>
