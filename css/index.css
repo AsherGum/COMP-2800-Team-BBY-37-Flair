@@ -1,3 +1,37 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    background-color: #222222;
+}
+
+video::-webkit-media-controls-volume-slider {
+    display:none;
+}
+video::-webkit-media-controls-mute-button {
+    display:none;
+}
+
+video::-webkit-media-controls-fullscreen-button {
+    display: none;
+}
+
+video::-webkit-media-controls-timeline {
+    display: none;
+}
+
+
+.content >img {
+    
+
+}
+
+#content{
+    scroll-snap-type: mandatory;
+    scroll-snap-points-y: repeat(100vh);
+    scroll-snap-type: y mandatory;
+    
+}
+
 #submit {
     background-color: #222222;
     color: white;
@@ -12,4 +46,22 @@
     margin-right: auto;
     margin-top: 15px;
     margin-bottom: 0;
+}
+
+@media (min-width: 540px) and (max-width: 1024px) {
+    body, html{
+        background-color: white;
+    }
+    #container{
+        
+    }
+}
+
+@media (min-width: 1025px) {
+    body, html{
+        background-color: white;
+    }
+    #container{
+        
+    }
 }
