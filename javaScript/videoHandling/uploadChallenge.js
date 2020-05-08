@@ -61,6 +61,8 @@ function videoUpload(videoData, imageURI, userTags) {
                 likedBy: "",
                 comments: "",
                 inappropriateFlags: 0,
+                views: 0,
+                
 
             //Uploading the VIDEO here
             }).then(function (docRef) {
