@@ -2,41 +2,53 @@ var docID = window.location.href;
 docID = docID.substring((docID.length - 20),docID.length);
 console.log(docID);
 
+document.getElementById("submit_link").href = "./uploadResponse.html?challenge:" + docID;
+
 var postOwner;
 var ownerTag;
 
 var docRef = database.collection("Challenges").doc(docID);
 // Get the document.
 docRef.get().then(function(doc) {
+    const dataDoc = doc;
+
     var docUser = database.collection("Users").doc(doc.data().owner);
     docUser.get().then(function (user) {
         ownerTag = user.data().UserName;
         postOwner = doc.data().owner;
         console.log(postOwner);
         console.log(ownerTag);
+
+    // Create the post on the main page.
+    
+    }).then(function() {
+        createPost(dataDoc);
     });
 
-    // Make sure document exists.
-    if(doc.exists) {
-        // Create the post on the main page.
-        createPost(doc.data().challenge, doc.data().description, doc.data().videoURL,
-                doc.data().likes, doc.data().views, doc.data().attempts, ownerTag);
-
-    } else {
-        // doc.data() will be undefined in this case.
-        console.log("No such document!");
-    }
+    
 });
 
-function createPost(title, description, url, likes, views, attempts, ownerTag){
+function createPost(doc){
     // Set page title to post title.
-    document.title = title;
-    document.getElementById('title').innerHTML = title;
-    document.getElementById('video_player').src = url;
-    document.getElementById('likes').innerHTML = likes;
-    document.getElementById('views').innerHTML = views;
-    document.getElementById('attempts').innerHTML = attempts;
+    document.title = doc.data().challenge;
+    document.getElementById('title').innerHTML = doc.data().challenge;
+    document.getElementById('video_player').src = doc.data().videoURL;
+    document.getElementById('likes').innerHTML = doc.data().upvotes;
+    document.getElementById('views').innerHTML = doc.data().views;
+    document.getElementById('attempts').innerHTML = doc.data().attempts;
     document.getElementById('owner').innerHTML = '@' + ownerTag;
+    document.getElementById('description').innerHTML = doc.data().description;
+
+    let tagsArray = doc.data().tags;
+    let tagsContainer = document.getElementById("tag_container");
+
+    tagsArray.forEach(element => {
+        const listItem = document.createElement("li");
+        listItem.innerHTML = element;
+        tagsContainer.appendChild(listItem);
+    });
+    
+
 }
 
 // When user clicks Follow button
