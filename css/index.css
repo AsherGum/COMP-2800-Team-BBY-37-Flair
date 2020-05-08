@@ -13,6 +13,7 @@ body, html {
     justify-content: center;
     grid-template-columns: 100%;
     grid-gap: 25px;
+    margin-bottom: 24px;
     
 }
 
@@ -71,6 +72,17 @@ h2 {
     top: 18px;
     left: 18px;
     color: white;
+}
+
+footer {
+    background-color: #3f3f3f;
+    color: #d5d5d5;
+    padding-top: 2rem;
+}
+
+hr.light {
+    border-top: 1px solid #d5d5d5;
+    width: 75%;
 }
 
 #submit {
