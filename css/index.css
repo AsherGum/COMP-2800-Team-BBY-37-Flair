@@ -10,9 +10,16 @@ body, html {
 
 .content {
     display: grid;
-    grid-template-columns: 256px 256px 256px;
+    justify-content: center;
+    grid-template-columns: 100%;
     grid-gap: 25px;
     
+}
+
+h2 {
+    color: white;
+    text-align: center;
+    margin: 12px;
 }
 
 .card{
@@ -32,7 +39,30 @@ body, html {
 }
 
 .card img{
-    height: 380px;
+    height: 60vh;
+}
+
+.card #accountName{
+    font-size: small;
+    position: absolute;
+    color: white;
+    top: 55vh;
+}
+
+.card #likes{
+    font-size: small;
+    position: absolute;
+    color: white;
+    top: 55vh;
+    left: 85%;
+}
+
+.card #view{
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 54.3vh;
+    left: 78%;
 }
 
 .card p {
@@ -71,16 +101,41 @@ body, html {
     height: 50px;
 }
 
-@media (min-width: 540px) and (max-width: 1024px) {
+@media (min-width: 400px) and (max-width: 840px) {
     body, html{
-        background-color: white;
+    }
+
+    .content {
+        
     }
 
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 841px) {
     body, html{
-        background-color: white;
+    }
+
+    .content {
+        display: grid;
+        grid-template-columns: 256px 256px 256px;
+        grid-gap: 25px;
+        
+    }
+
+    .card #likes{
+        font-size: small;
+        position: absolute;
+        color: white;
+        top: 55vh;
+        left: 220px;
+    }
+    
+    .card #view{
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        top: 54.3vh;
+        left: 190px;
     }
 
 }
