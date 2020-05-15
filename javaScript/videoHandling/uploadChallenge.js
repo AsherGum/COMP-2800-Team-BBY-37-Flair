@@ -14,8 +14,8 @@ let inputTags = [];
  */
 function videoUpload(videoData, imageURI, userTags) {
     const date = new Date();
-    const userTitle = document.getElementById("inputTitle").value;
-    const userDescription = document.getElementById("inputDescription").value;
+    const userTitle = document.getElementById("inputTitle").value.trim();
+    const userDescription = document.getElementById("inputDescription").value.trim();
     const userCategory = document.getElementById("inputCategory").value;
 
     const image = imageURI;
@@ -24,11 +24,8 @@ function videoUpload(videoData, imageURI, userTags) {
     //Quick check for empty strings; Need better validation
     if (userTitle.length === 0 || 
         userDescription.length === 0 || 
-        userCategory == null)  {
+        userCategory == undefined)  {
             //need more elegance than alert in the future
-            console.log(userTitle);
-            console.log(userDescription);
-            console.log(userCategory.value);
             alert("Please complete Title, Category, and Description");
             return;
     }
@@ -58,7 +55,7 @@ function videoUpload(videoData, imageURI, userTags) {
                 videoURL: "",
                 upvotes: 0,
                 description: userDescription,
-                likedBy: "",
+                //likedBy: "",
                 comments: "",
                 inappropriateFlags: 0,
                 views: 0,
@@ -157,15 +154,12 @@ function videoUpload(videoData, imageURI, userTags) {
 
 /**
  * The handler that is called when add tag button is clicked
- * or enter button is clicked. Checks if there is a blank string
- * and checks if there are already 5 tags attached. 
+ * or enter button is clicked. Checks if it is a blank string
+ * 
  */
 function addTag() {
-    let tagValue = document.getElementById("inputTag").value;
+    let tagValue = document.getElementById("inputTag").value.trim();
     if (tagValue.length === 0) {
-        return;
-    }
-    if (inputTags.length === 5) {
         return;
     }
     inputTags.push(tagValue);
@@ -220,10 +214,24 @@ document.getElementById("add_tag").addEventListener('click', function() {
 //Typing ENTER instead of clicking the "Add Tag" button
 document.getElementById("inputTag").addEventListener('keypress', function(event) {
     if (event.key === 'Enter') {
+        event.preventDefault();
         addTag();
         document.getElementById("inputTag").value = "";
     }
 });
+
+
+
+//event listener for title input to check if it's empty
+document.getElementById('inputTitle').addEventListener('focusout', function() {
+    checkEmptyInput("inputTitle");
+})
+
+//event listener for description input to check if it's empty
+document.getElementById('inputDescription').addEventListener('focusout', function() {
+    checkEmptyInput("inputDescription");
+})
+
 
 
 /**
@@ -231,5 +239,33 @@ document.getElementById("inputTag").addEventListener('keypress', function(event)
  */
 document.getElementById('video_upload_button').addEventListener('click', function() {
     let imageURI = createImage();
-    videoUpload(data, imageURI, inputTags)
+    let confirmation = window.confirm("Are you sure you want to upload the challenge?");
+
+    if (confirmation) {
+        videoUpload(data, imageURI, inputTags)
+    } else {
+        return;
+    }
 });
+
+/**
+ * Button handling for the reset button to rest all fields
+ */
+document.getElementById("reset_button").addEventListener('click', function() {
+    let confirm = window.confirm("Are you sure you want to reset your data?");
+
+    if (confirm) {
+        clearInputField("inputTitle");
+        clearInputField("inputDescription");
+        document.getElementById("inputCategory").selectedIndex = "0";
+        inputTags = [];
+        let tagContainer = document.getElementById("tags_container");
+
+        while (tagContainer.firstChild) {
+            tagContainer.removeChild(tagContainer.lastChild);
+        }
+
+    } else {
+        return;
+    }
+})

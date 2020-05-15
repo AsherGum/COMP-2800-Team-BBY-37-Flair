@@ -104,6 +104,10 @@
             Create a new challenge!
         </h1>
     </div>
+
+    <div class="d-flex justify-content-center my-3">
+        <p>Record yourself demonstrating the challenge using the webcam recorder below!</p>
+    </div>
   <div class="container py-3 d-flex justify-content-center">
     <video id="myVideo" playsinline class="video-js vjs-default-skin"></video>
   </div>
@@ -114,7 +118,8 @@
             <label for="inputTitle" class="col-form-label">Challenge Title:</label>
         </div>
         <div class="d-flex justify-content-center">
-            <input type="text" name="title" id="inputTitle">
+            <textarea name="title" id="inputTitle" col="1" rows="1">
+            </textarea>
         </div>
 
         <div class="d-flex justify-content-center">
@@ -124,12 +129,14 @@
         <!-- These will need to be finalized later-->
         <div class="d-flex justify-content-center">
             <select name="general_category" id="inputCategory">
-                <option value = "null" selected>Choose a general category</option>
+                <option value = "null" selected>Choose a general category that matches best</option>
                 <option value="physical">Physical</option>
-                <option value="tricks">Tricks</option>
-                <option value="singing">Singing</option>
-                <option value="will">Test of Will</option>
-                <option value="funny">Funny</option>
+                <option value="talent">Skills/Talents</option>
+                <option value="comedy">Comedy</option>
+                <option value="games">Video Games</option>
+                <option value="pets">Pets</option>
+                <option value="arts">Arts and Crafts</option>
+                <option value="edu">Education</option>
                 <option value="other">Other</option>
             </select>
         </div>
@@ -142,14 +149,14 @@
         </div>
 
         <div class="d-flex justify-content-center">
-            <label for="inputTag" class="col-form-label">Tag to describe your challenge (5 max)</label>
+            <label for="inputTag" class="col-form-label">Add useful Tags to describe your challenge (enter 1 at a time)</label>
         </div>
         <div class="d-flex justify-content-center">
             <input type="text" name="tags" id="inputTag">
         </div>
 
         <div class="d-flex justify-content-center py-2">
-            <button class="btn btn-secondary" id="add_tag" type="button">Add Tag</button>
+            <button class="btn btn-secondary" id="add_tag" type="button">Add Tags</button>
         </div>
 
         <div class="d-flex justify-content-center py-1">
@@ -163,7 +170,8 @@
     </form>
 
     <div class="d-flex justify-content-center py-5">
-      <button class="btn btn-warning" id="video_upload_button">Upload Challenge</button>
+        <button class="btn btn-danger mx-3" id="reset_button">Reset form</button>
+        <button class="btn btn-warning" id="video_upload_button">Upload Challenge</button>
     </div>
   </div>
 
