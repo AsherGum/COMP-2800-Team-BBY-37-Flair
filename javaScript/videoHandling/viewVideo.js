@@ -19,6 +19,8 @@ docRef.get().then(function(doc) {
     newViewCount++;
     console.log(newViewCount);
 
+    
+
     //update the view challenge attempts link
     document.getElementById("view_attempts").href = "./viewChallengeResponses.html?challenge:" + docID + "?" + doc.data().challenge;
 
@@ -27,6 +29,12 @@ docRef.get().then(function(doc) {
         userData = user;
         ownerTag = user.data().UserName;
         postOwner = doc.data().owner;
+
+        var currentUser = firebase.auth().currentUser;
+
+        if(postOwner == currentUser.uid){
+            document.getElementById("follow").style.display = "none";
+        }
         
 
         console.log(postOwner);
@@ -75,6 +83,10 @@ function createPost(doc){
         tagsContainer.appendChild(listItem);
     });
     
+    //Goes to post owners profile page
+    document.getElementById('owner').addEventListener('click', function(){
+        window.location.href = "../html/account.html?view:" + doc.data().owner;
+    })
 
 }
 

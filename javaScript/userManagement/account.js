@@ -10,6 +10,9 @@ firebase.auth().onAuthStateChanged(function (user) {
 	if (user) {
         if(globalUser.substring((globalUser.length - 12),globalUser.length) == "account.html"){
             globalUser = user.uid;
+            
+        } else{
+            document.getElementById("editProf").style.display = 'none';
         }
         //globalUser = user.uid;
         // User is signed in.

@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+html,body {
+    height: 100%;
+    width: 100%;
+    color: 222;
+    
+    font-family: 'Roboto', sans-serif;
+
+}
+
+.navbar {
+    font-size: x-small;
+    padding: .8rem;
+
+
+}
+hr.dark {
+    border-top: 1px solid #d5d5d5;
+    width: 75%;
+}
+
+.img-fluid {
+    width: 100%;
+}
+
+.nav-link {
+    font-size: 1.3em !important;
+}
+
+
+
+footer {
+    background-color: #3f3f3f;
+    color: #d5d5d5;
+    padding-top: 2rem;
+}
+
+hr.light {
+    border-top: 1px solid #d5d5d5;
+    width: 75%;
+}
+
+
+
+
+
+
+
+
+
+
+
+.content {
+
+    
+}
+
+h2 {
+    margin: 24px;
+}
+
+.card{
+    margin: 12px;
+    width: 256px;
+    height: 500px;
+    cursor: pointer;
+    display: inline-flex;
+
+}
+
+.card img{
+    height: 500px;
+}
+
+.card #accountName{
+    font-size: small;
+    position: absolute;
+    color: white;
+    top: 36px;
+}
+
+
+.card p {
+    font-size: small;
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    color: white;
+}
+
+
+
+@media (min-width: 400px) and (max-width: 840px) {
+
+    .content {
+        
+    }
+
+}
+
+@media (min-width: 841px) {
+
+    .content {
+        overflow: auto;
+        white-space: nowrap;
+    }
+
+    .card #likes{
+        font-size: small;
+        position: absolute;
+        color: white;
+        top: 55vh;
+        left: 220px;
+    }
+    
+    .card #view{
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        top: 54.3vh;
+        left: 190px;
+    }
+
+}

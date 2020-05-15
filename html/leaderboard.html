@@ -3,8 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-        <link rel="shortcut icon" href="../images/icons/favicon.png" />
+
+    <!----------------------------------------------->
+    <!-- CSS: Bootstrap, Firebase, other API -->
+    <!----------------------------------------------->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- Styling -->
+    <link href="../css/leaderboard.css" rel="stylesheet">
+
+    <title>Leaderboard</title>
+    <link rel="shortcut icon" href="../images/icons/favicon.png" />
+
+
+    <!-- Firebase Scripts -->
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-firestore.js"></script>
@@ -12,8 +25,10 @@
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-database.js"></script>
     <script src="../javaScript/firebaseScripts/firebaseConfig.js"></script>
 
-    <!-- Import JQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <!-- Import JQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+
 </head>
 <body>
         <!--------  Nav-Bar       ------>
@@ -39,18 +54,30 @@
 
                 </ul>
                 <ul class="navbar-nav ml-auto">
-                    <a href="account.html" class="nav-item nav-link">My Account</a>
+                    <a href="html/account.html" class="nav-item nav-link">My Account</a>
                 </ul>
 
             </div>
 
         </div>
     </nav>
-    <p>Home Page</p>
 
-    <script src="../javaScript/firebaseScripts/firebaseAuth.js"></script>
-</body>
-    <!--------  Footer       ------>
+
+    <!--------  Top Categories      ------>
+    <h2>Top 10 Clips For This Week</h2>
+    <div class="content"></div>
+
+    <h2>Top 10 Comedy Clips This Week </h2>
+
+    <h2>Top 10 Physical Clips This Week </h2>
+
+    <h2>Top 10 Gaming Clips This Week </h2>
+
+    <h2>Top 10 Pet Clips This Week </h2>
+        
+
+
+<!--------  Footer       ------>
 <footer>
   <div class="container-fluid padding">
       <div class="row text-center">
@@ -80,4 +107,26 @@
       </div>
   </div>
 </footer>
+
+
+
+
+    <!----------------------------------------------->
+    <!-- JS: Boostrap, Firebase, API related    -->
+    <!----------------------------------------------->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <!--------------------------------------------------------------------->
+    <!-- JS files: Your own JavaScript functions included here    -->
+    <!--------------------------------------------------------------------->
+
+     <!--------------------------------------------------------------------->
+    <!-- Make calls to your own JavaScript functions, here below-->
+    <!---------------------------------------------------------------------->
+    <script src="../javaScript/pageScripts/leaderboard.js"></script>
+
+
+</body>
 </html>

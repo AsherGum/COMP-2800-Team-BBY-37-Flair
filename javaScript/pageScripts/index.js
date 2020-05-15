@@ -30,7 +30,6 @@ firebase.auth().onAuthStateChanged(function (user) {
       window.location.href = "../html/login.html";
     }
 
-    // User is found now get Posts from their Uni.
     var getPosts = database.collection("Challenges");
     // Gets the book postings. Query where() function.
     getPosts.get().then(function (querySnapshot) {
@@ -97,7 +96,7 @@ function createPost(title, imageURL, videoURL, id, owner, likesCount) {
     accountName.innerHTML = '@' + user.data().UserName;
 
     var eye = document.createElement('img');
-    eye.src = "./images/icons/eye.png"
+    eye.src = "./images/icons/like.png"
     eye.id = "view";
 
     var likes = document.createElement("h4");
