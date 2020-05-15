@@ -214,6 +214,7 @@ document.getElementById("add_tag").addEventListener('click', function() {
 //Typing ENTER instead of clicking the "Add Tag" button
 document.getElementById("inputTag").addEventListener('keypress', function(event) {
     if (event.key === 'Enter') {
+        event.preventDefault();
         addTag();
         document.getElementById("inputTag").value = "";
     }
@@ -245,5 +246,26 @@ document.getElementById('video_upload_button').addEventListener('click', functio
     } else {
         return;
     }
-    
 });
+
+/**
+ * Button handling for the reset button to rest all fields
+ */
+document.getElementById("reset_button").addEventListener('click', function() {
+    let confirm = window.confirm("Are you sure you want to reset your data?");
+
+    if (confirm) {
+        clearInputField("inputTitle");
+        clearInputField("inputDescription");
+        document.getElementById("inputCategory").selectedIndex = "0";
+        inputTags = [];
+        let tagContainer = document.getElementById("tags_container");
+
+        while (tagContainer.firstChild) {
+            tagContainer.removeChild(tagContainer.lastChild);
+        }
+
+    } else {
+        return;
+    }
+})

@@ -205,6 +205,20 @@ document.getElementById('video_upload_button').addEventListener('click', functio
     
 });
 
+/**
+ * button handling for the reset button
+ */
 
+document.getElementById("reset_button").addEventListener('click', function() {
+    let confirm = window.confirm("Are you sure you want to reset your data?");
+
+    if (confirm) {
+        clearInputField("inputTitle");
+        clearInputField("inputDescription");
+        
+    } else {
+        return;
+    }
+})
 
 

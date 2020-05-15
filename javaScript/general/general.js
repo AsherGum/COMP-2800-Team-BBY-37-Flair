@@ -79,3 +79,20 @@ function checkEmptyInput(elementId) {
         element.style.border = "";
     }
 }
+
+
+/**
+ * Used to clear form input forms
+ * Tied to the reset button
+ * @param {string} elementId 
+ */
+function clearInputField(elementId) {
+    let element = document.getElementById(elementId);
+    element.value = "";
+}
+
+
+
+
+
+
