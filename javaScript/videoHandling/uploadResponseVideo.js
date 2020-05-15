@@ -54,6 +54,7 @@ function videoUpload(videoData, imageURI, challengeDocID) {
                 likedBy: "",
                 comments: "",
                 inAppropriateFlags: 0,
+                views: 0,
 
             //Uploading the VIDEO here
             }).then(function (docRef) {

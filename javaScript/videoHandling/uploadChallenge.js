@@ -24,7 +24,7 @@ function videoUpload(videoData, imageURI, userTags) {
     //Quick check for empty strings; Need better validation
     if (userTitle.length === 0 || 
         userDescription.length === 0 || 
-        userCategory == null)  {
+        userCategory == undefined)  {
             //need more elegance than alert in the future
             console.log(userTitle);
             console.log(userDescription);
@@ -58,7 +58,7 @@ function videoUpload(videoData, imageURI, userTags) {
                 videoURL: "",
                 upvotes: 0,
                 description: userDescription,
-                likedBy: "",
+                //likedBy: "",
                 comments: "",
                 inappropriateFlags: 0,
                 views: 0,
@@ -157,15 +157,12 @@ function videoUpload(videoData, imageURI, userTags) {
 
 /**
  * The handler that is called when add tag button is clicked
- * or enter button is clicked. Checks if there is a blank string
- * and checks if there are already 5 tags attached. 
+ * or enter button is clicked. Checks if it is a blank string
+ * 
  */
 function addTag() {
     let tagValue = document.getElementById("inputTag").value;
     if (tagValue.length === 0) {
-        return;
-    }
-    if (inputTags.length === 5) {
         return;
     }
     inputTags.push(tagValue);

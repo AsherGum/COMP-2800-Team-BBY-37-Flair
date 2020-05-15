@@ -28,6 +28,7 @@ $("#submit").closest('form').on('submit', function (event) {
 				PhoneNumber: "",
 				UserName: userName,
 				profilePicture: "",
+				likedVideos: [],
 				Followers:[],
 				Following:[],
 				Challenges:[],
