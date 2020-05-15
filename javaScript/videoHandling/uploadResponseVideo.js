@@ -162,6 +162,39 @@ function videoUpload(videoData, imageURI, challengeDocID) {
 
 
 
+//event listener for title input to check if it's empty
+document.getElementById('inputTitle').addEventListener('focusout', function() {
+    console.log("focus lost in title");
+    let title = document.getElementById('inputTitle');
+    title.style.borderColor = "red";
+
+    console.log(title.value);
+    if (title.value.trim() == "" || title.value.trim() == undefined) {
+        title.style.border = "3px solid red";
+    } else {
+        title.style.border = "";
+    }
+})
+
+//event listener for description input to check if it's empty
+document.getElementById('inputDescription').addEventListener('focusout', function() {
+    let description = document.getElementById('inputDescription');
+    description.style.borderColor = "red";
+
+    if (description.value.trim() == "" || description.value.trim() == undefined) {
+        description.style.border = "3px solid red";
+    } else {
+        description.style.border = "";
+    }
+})
+
+
+
+
+
+
+
+
 /**
  * Button handling for just the challenge video response upload page
  */
@@ -175,7 +208,14 @@ document.getElementById('video_upload_button').addEventListener('click', functio
 
 
     let imageURI = createImage();
-    videoUpload(data, imageURI, challengeDocIDString);
+
+    let confirmation = window.confirm("Are you sure you want to upload your video?");
+    if (confirmation) {
+        videoUpload(data, imageURI, challengeDocIDString);
+    } else {
+        return;
+    }
+    
 });
 
 
