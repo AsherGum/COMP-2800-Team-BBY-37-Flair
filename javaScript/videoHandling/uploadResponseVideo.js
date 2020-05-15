@@ -17,7 +17,8 @@
  */
 function videoUpload(videoData, imageURI, challengeDocID) {
     const date = new Date();
-    const userDescription = document.getElementById("inputDescription").value;
+    const userDescription = document.getElementById("inputDescription").value.trim();
+    const userTitle = document.getElementById("inputTitle").value.trim();
     const image = imageURI;
     let docRefID;
     let userInfo;
@@ -37,10 +38,17 @@ function videoUpload(videoData, imageURI, challengeDocID) {
             const userVideo = videoData;
             userInfo = user.uid;
             userEmail = user.email;
+
+            if (userTitle.length === 0 || 
+                userDescription.length === 0)  {
+                    //need more elegance than alert in the future
+                    alert("Please complete Title, and Description");
+                    return;
+            }
            
             database.collection("userVideos").add({
                 challenge: challengeDocID,
-                title: "",
+                title: userTitle,
                 user: user.uid,
                 userEmail: user.email,
                 year: date.getFullYear(),

@@ -14,8 +14,8 @@ let inputTags = [];
  */
 function videoUpload(videoData, imageURI, userTags) {
     const date = new Date();
-    const userTitle = document.getElementById("inputTitle").value;
-    const userDescription = document.getElementById("inputDescription").value;
+    const userTitle = document.getElementById("inputTitle").value.trim();
+    const userDescription = document.getElementById("inputDescription").value.trim();
     const userCategory = document.getElementById("inputCategory").value;
 
     const image = imageURI;
@@ -26,9 +26,6 @@ function videoUpload(videoData, imageURI, userTags) {
         userDescription.length === 0 || 
         userCategory == undefined)  {
             //need more elegance than alert in the future
-            console.log(userTitle);
-            console.log(userDescription);
-            console.log(userCategory.value);
             alert("Please complete Title, Category, and Description");
             return;
     }
@@ -161,7 +158,7 @@ function videoUpload(videoData, imageURI, userTags) {
  * 
  */
 function addTag() {
-    let tagValue = document.getElementById("inputTag").value;
+    let tagValue = document.getElementById("inputTag").value.trim();
     if (tagValue.length === 0) {
         return;
     }
