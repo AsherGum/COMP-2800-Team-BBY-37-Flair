@@ -223,28 +223,12 @@ document.getElementById("inputTag").addEventListener('keypress', function(event)
 
 //event listener for title input to check if it's empty
 document.getElementById('inputTitle').addEventListener('focusout', function() {
-    console.log("focus lost in title");
-    let title = document.getElementById('inputTitle');
-    title.style.borderColor = "red";
-
-    console.log(title.value);
-    if (title.value.trim() == "" || title.value.trim() == undefined) {
-        title.style.border = "3px solid red";
-    } else {
-        title.style.border = "";
-    }
+    checkEmptyInput("inputTitle");
 })
 
 //event listener for description input to check if it's empty
 document.getElementById('inputDescription').addEventListener('focusout', function() {
-    let description = document.getElementById('inputDescription');
-    description.style.borderColor = "red";
-
-    if (description.value.trim() == "" || description.value.trim() == undefined) {
-        description.style.border = "3px solid red";
-    } else {
-        description.style.border = "";
-    }
+    checkEmptyInput("inputDescription");
 })
 
 

@@ -58,6 +58,24 @@ function convertCategoryValue(categoryValue) {
         default:
             return categoryValue;
     }
+}
 
+/**
+ * Checks if the input field is empty and colours the 
+ * border red if true. Otherwise, it makes the border 
+ * back to default style.
+ * 
+ * 
+ * @param {string} elementId 
+ *  The DOM element ID
+ */
+function checkEmptyInput(elementId) {
+    let element = document.getElementById(elementId);
+    element.style.borderColor = "red";
 
+    if (element.value.trim() == "" || element.value.trim() == undefined) {
+        element.style.border = "3px solid red";
+    } else {
+        element.style.border = "";
+    }
 }
