@@ -1,28 +1,32 @@
-var easterEgg = 
+let easterEgg = 
 { str: "amir",
   length: 4,
   got: 0,
-  blockId: "hideaway",
+  blockId: "amirHidden",
 
-  test: function(event)
+  amir: function(event)
   {  event = event || window.event;
-     var c = event.key;
-     if(!c) // legacy method
-     {  var keyCode = event.keyCode || event.which;
+     let c = event.key;
+     console.log(c)
+     if(!c) 
+     {  let keyCode = event.keyCode || event.which;
         c = String.fromCharCode(keyCode);
+        
+        
      }
      if( c.toLowerCase() != this.str.charAt(this.got))
         this.got = 0;  // start again
      else
         if(  ++this.got == this.length)
         {   document.getElementById(this.blockId).style.display="block";
-            window.removeEventListener("keydown", this.test, false);
+            window.removeEventListener("keydown", this.amir, false);
         };
      return true;
   },
 }
-easterEgg.test = easterEgg.test.bind(easterEgg);
+
+easterEgg.amir = easterEgg.amir.bind(easterEgg);
 
 window.addEventListener("load", function()
-   { window.addEventListener("keydown", easterEgg.test, false);
+   { window.addEventListener("keydown", easterEgg.amir, false);
    }, false);
