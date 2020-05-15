@@ -115,7 +115,7 @@ function pageLoad() {
     //parseSearchURL called from general.js
     const queries = parseSearchURL();
     const queryString = queries[0]
-    document.getElementById("search_parameter").innerHTML = queryString;
+    document.getElementById("search_parameter").innerHTML = convertCategoryValue(queryString);
 
     if (queryString != undefined) {
         searchChallenges(queryString);

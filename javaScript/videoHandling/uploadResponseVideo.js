@@ -17,7 +17,8 @@
  */
 function videoUpload(videoData, imageURI, challengeDocID) {
     const date = new Date();
-    const userDescription = document.getElementById("inputDescription").value;
+    const userDescription = document.getElementById("inputDescription").value.trim();
+    const userTitle = document.getElementById("inputTitle").value.trim();
     const image = imageURI;
     let docRefID;
     let userInfo;
@@ -37,10 +38,17 @@ function videoUpload(videoData, imageURI, challengeDocID) {
             const userVideo = videoData;
             userInfo = user.uid;
             userEmail = user.email;
+
+            if (userTitle.length === 0 || 
+                userDescription.length === 0)  {
+                    //need more elegance than alert in the future
+                    alert("Please complete Title, and Description");
+                    return;
+            }
            
             database.collection("userVideos").add({
                 challenge: challengeDocID,
-                title: "",
+                title: userTitle,
                 user: user.uid,
                 userEmail: user.email,
                 year: date.getFullYear(),
@@ -54,6 +62,7 @@ function videoUpload(videoData, imageURI, challengeDocID) {
                 likedBy: "",
                 comments: "",
                 inAppropriateFlags: 0,
+                views: 0,
 
             //Uploading the VIDEO here
             }).then(function (docRef) {
@@ -161,6 +170,18 @@ function videoUpload(videoData, imageURI, challengeDocID) {
 
 
 
+//event listener for title input to check if it's empty
+document.getElementById('inputTitle').addEventListener('focusout', function() {
+    checkEmptyInput("inputTitle");
+})
+
+//event listener for description input to check if it's empty
+document.getElementById('inputDescription').addEventListener('focusout', function() {
+    checkEmptyInput("inputDescription");
+})
+
+
+
 /**
  * Button handling for just the challenge video response upload page
  */
@@ -174,9 +195,30 @@ document.getElementById('video_upload_button').addEventListener('click', functio
 
 
     let imageURI = createImage();
-    videoUpload(data, imageURI, challengeDocIDString);
+
+    let confirmation = window.confirm("Are you sure you want to upload your video?");
+    if (confirmation) {
+        videoUpload(data, imageURI, challengeDocIDString);
+    } else {
+        return;
+    }
+    
 });
 
+/**
+ * button handling for the reset button
+ */
 
+document.getElementById("reset_button").addEventListener('click', function() {
+    let confirm = window.confirm("Are you sure you want to reset your data?");
+
+    if (confirm) {
+        clearInputField("inputTitle");
+        clearInputField("inputDescription");
+        
+    } else {
+        return;
+    }
+})
 
 

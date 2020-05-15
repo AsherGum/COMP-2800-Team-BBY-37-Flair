@@ -4,8 +4,8 @@ $("#submit").closest('form').on('submit', function (event) {
 	// Loading in email, password, first and last name, and university of user.
 	var userEmail = document.getElementById("email").value;
 	var userPassword = document.getElementById("password").value;
-	var userFirstName = document.getElementById("firstName").value;
-	var userLastName = document.getElementById("lastName").value;
+	var userFirstName = document.getElementById("firstname").value;
+	var userLastName = document.getElementById("lastname").value;
 	var userName = document.getElementById("username").value;
 
 	// Create user.
@@ -28,6 +28,7 @@ $("#submit").closest('form').on('submit', function (event) {
 				PhoneNumber: "",
 				UserName: userName,
 				profilePicture: "",
+				likedVideos: [],
 				Followers:[],
 				Following:[],
 				Challenges:[],
@@ -47,7 +48,7 @@ $("#submit").closest('form').on('submit', function (event) {
 					if (doc.exists) {
 						console.log("Document data:", doc.data());
 						if (userFirstName == doc.data().FirstName) {
-							window.location.href = "./home.html";
+							window.location.href = "../index.html";
 						}
 					} else {
 						// doc.data() will be undefined in this case.

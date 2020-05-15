@@ -114,6 +114,13 @@ hr.dark {
     font-size: 1.3em !important;
 }
 
+#thumbsUp {
+    background: url(../images/icons/thumbs.svg);
+    background-repeat: no-repeat;
+    height: 2em;
+
+}
+
 
 
 footer {

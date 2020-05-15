@@ -10,6 +10,9 @@ firebase.auth().onAuthStateChanged(function (user) {
 	if (user) {
         if(globalUser.substring((globalUser.length - 12),globalUser.length) == "account.html"){
             globalUser = user.uid;
+            
+        } else{
+            document.getElementById("editProf").style.display = 'none';
         }
         //globalUser = user.uid;
         // User is signed in.
@@ -112,16 +115,16 @@ function upImages(){
         document.getElementById("profilePic").src = "../images/3WFqhgsdkcezIYV9KtIaE4vhWwm2.jpg";
         document.getElementById("edit").style.display = "none";
     }
-    if(globalUser === "3o3C8MnIdpezpx2xIciORkIMmKt1"){
-        document.getElementById("profilePic").src = "../images/3o3C8MnIdpezpx2xIciORkIMmKt1.jpeg";
+    if(globalUser === "NNeTyFBC1SS9xbV41tCYfxcjWjA2"){
+        document.getElementById("profilePic").src = "../images/NNeTyFBC1SS9xbV41tCYfxcjWjA2.jpeg";
         document.getElementById("edit").style.display = "none";
     }
     if(globalUser === "YjdDZklmHceFXMz9vaG1P0WwIru2"){
         document.getElementById("profilePic").src = "../images/YjdDZklmHceFXMz9vaG1P0WwIru2.JPG";
         document.getElementById("edit").style.display = "none";
     }
-    if(globalUser ==="opEcJE3d0jZQbFgWNfo5Va1lt6z2"){
-        document.getElementById("profilePic").src = "../images/opEcJE3d0jZQbFgWNfo5Va1lt6z2.jpg";
+    if(globalUser ==="TRNhtP0v5pYfNDnBeaY19CfPmwu2"){
+        document.getElementById("profilePic").src = "../images/TRNhtP0v5pYfNDnBeaY19CfPmwu2.jpg";
         document.getElementById("edit").style.display = "none";
     }
 }
