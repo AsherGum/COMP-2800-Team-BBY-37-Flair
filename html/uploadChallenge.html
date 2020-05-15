@@ -51,123 +51,154 @@
         <script src="../javaScript/firebaseScripts/firebaseAuth.js"></script>
     -->
 
+    <!------------------------>
+    <!-- Your own CSS files -->
+    <!------------------------>
+    <link rel="stylesheet" href="../css/responses.css">
 
 
 
 
-  <style>
-  /* change player background color */
-  #myVideo {
-      background-color: #9ab87a;
-  }
-  </style>
+
 </head>
 <body>
- <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
-        <div class="container-fluid">
+   
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+          <div class="container-fluid">
+      
+              <a href="../index.html" class="navbar-brand"><img src="../images/icons/Untitled-1.svg" width="100" height="40"></a>
+              <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarCollapse">
+                  <ul class="navbar-nav">
+                      <li class="nav-link">
+                          <a class="nav-link" href="uploadChallenge.html">Create Challenge</a>
+                      </li>
+                      <li class="nav-link">
+                          <a class="nav-link" href="categories.html">Categories</a>
+                      </li>
+                      <li class="nav-link">
+                          <a class="nav-link" href="#">Leaderboard</a>
+                      </li>
+      
+      
+                  </ul>
+                  <ul class="navbar-nav ml-auto">
+                      <a href="account.html" class="nav-item nav-link">My Account</a>
+                  </ul>
+      
+              </div>
+      
+          </div>
+      </nav>
 
-            <a href="../index.html" class="navbar-brand"><img src="../images/icons/Untitled-1.svg" width="100" height="80"></a>
-            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav">
-                    <li class="nav-link">
-                        <a class="nav-link" href="uploadChallenge.html">Create Challenge</a>
-                    </li>
-                    <li class="nav-link">
-                        <a class="nav-link" href="categories.html">Categories</a>
-                    </li>
-                    <li class="nav-link">
-                        <a class="nav-link" href="#">Leaderboard</a>
-                    </li>
-
-
-                </ul>
-                <ul class="navbar-nav ml-auto">
-                    <a href="account.html" class="nav-item nav-link">My Account</a>
-                </ul>
-
-            </div>
-
-        </div>
-    </nav>
-
-
-
-
-
-
-<section class="container">
-    <div class="d-flex justify-content-center">
+    <div class="text-center">
         <h1>
             Create a new challenge!
         </h1>
+      </div>
+
+    <div class="container emp-profile">
+        <div class="row">
+            <div class="col-sm-5">
+                <div class="container py-3 d-flex justify-content-center">
+                    <video id="myVideo" playsinline class="video-js vjs-default-skin"></video>
+                  </div>
+            </div>
+            <div class="col-sm-7">
+                <form>
+                    <div class="d-flex justify-content-center">
+                        <label for="inputTitle" class="col-form-label">Challenge Title:</label>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <input type="text" name="title" id="inputTitle">
+                    </div>
+            
+                    <div class="d-flex justify-content-center">
+                        <label for="general_category_input" class="col-form-label">Which Category matches your challenge?</label>
+                    </div>
+            
+                    <!-- These will need to be finalized later-->
+                    <div class="d-flex justify-content-center">
+                        <select name="general_category" id="inputCategory">
+                            <option value = "null" selected>Choose a general category</option>
+                            <option value="physical">Physical</option>
+                            <option value="tricks">Tricks</option>
+                            <option value="singing">Singing</option>
+                            <option value="will">Test of Will</option>
+                            <option value="funny">Funny</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+            
+                    <div class="d-flex justify-content-center">
+                        <label for="inputDescription" class="col-form-label">Description:</label>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <textarea name="description" id="inputDescription" cols="30" rows="10" class="col-form-label "></textarea>
+                    </div>
+            
+                    <div class="d-flex justify-content-center">
+                        <label for="inputTag" class="col-form-label">Tag to describe your challenge (5 max)</label>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <input type="text" name="tags" id="inputTag">
+                    </div>
+            
+                    <div class="d-flex justify-content-center py-2">
+                        <button class="btn btn-secondary" id="add_tag" type="button">Add Tag</button>
+                    </div>
+            
+                    <div class="d-flex justify-content-center py-1">
+                        <p>Current tags (click to remove)</p>
+                    </div>
+                    <div class="d-flex justify-content-center py-1" id="tags_container">
+                    </div>
+            
+            
+            
+                </form>
+                <div class="d-flex justify-content-center py-5">
+                    <button class="btn btn-warning" id="video_upload_button">Upload Challenge</button>
+                  </div>
+
+            </div>
+        </div>
     </div>
-  <div class="container py-3 d-flex justify-content-center">
-    <video id="myVideo" playsinline class="video-js vjs-default-skin"></video>
-  </div>
-
-  <div class="container-fluid py-3 ">
-    <form>
-        <div class="d-flex justify-content-center">
-            <label for="inputTitle" class="col-form-label">Challenge Title:</label>
-        </div>
-        <div class="d-flex justify-content-center">
-            <input type="text" name="title" id="inputTitle">
-        </div>
-
-        <div class="d-flex justify-content-center">
-            <label for="general_category_input" class="col-form-label">Which Category matches your challenge?</label>
-        </div>
-
-        <!-- These will need to be finalized later-->
-        <div class="d-flex justify-content-center">
-            <select name="general_category" id="inputCategory">
-                <option value = "null" selected>Choose a general category</option>
-                <option value="physical">Physical</option>
-                <option value="tricks">Tricks</option>
-                <option value="singing">Singing</option>
-                <option value="will">Test of Will</option>
-                <option value="funny">Funny</option>
-                <option value="other">Other</option>
-            </select>
-        </div>
-
-        <div class="d-flex justify-content-center">
-            <label for="inputDescription" class="col-form-label">Description:</label>
-        </div>
-        <div class="d-flex justify-content-center">
-            <textarea name="description" id="inputDescription" cols="30" rows="10" class="col-form-label "></textarea>
-        </div>
-
-        <div class="d-flex justify-content-center">
-            <label for="inputTag" class="col-form-label">Tag to describe your challenge (5 max)</label>
-        </div>
-        <div class="d-flex justify-content-center">
-            <input type="text" name="tags" id="inputTag">
-        </div>
-
-        <div class="d-flex justify-content-center py-2">
-            <button class="btn btn-secondary" id="add_tag" type="button">Add Tag</button>
-        </div>
-
-        <div class="d-flex justify-content-center py-1">
-            <p>Current tags (click to remove)</p>
-        </div>
-        <div class="d-flex justify-content-center py-1" id="tags_container">
-        </div>
 
 
-
-    </form>
-
-    <div class="d-flex justify-content-center py-5">
-      <button class="btn btn-warning" id="video_upload_button">Upload Challenge</button>
+<footer>
+    <div class="container-fluid padding">
+        <div class="row text-center">
+            <div class="col-md-4">
+                <img src="../images/icons/navbar_logo.png">
+                <hr class="light">
+                <p>flairemail@flair.com</p>
+                <p>772 513 1097</p>
+  
+            </div>
+            <div class="col-md-4">
+                <hr class="light">
+                <h4>Connect</h4>
+                <hr class="light">
+                <p>Instagram</p>
+                <p>Facebook</p>
+  
+            </div>
+            <div class="col-md-4">
+                <hr class="light">
+                <h4><a href="about_us.html">About us</a></h4>
+                <hr class="light">
+                <p>2800 Project</p>
+                <p>Made by Asher, Ben, Francis, Saksham</p>
+  
+            </div>
+        </div>
     </div>
-  </div>
-
-</section>
+  </footer>
+  
+  
 
 
 <script src="../javaScript/videoHandling/videoPlayer.js"></script>

@@ -49,81 +49,117 @@
     <!--
         <script src="../javaScript/firebaseScripts/firebaseAuth.js"></script>
     -->
+  <!------------------------>
+    <!-- Your own CSS files -->
+    <!------------------------>
+    <link rel="stylesheet" href="../css/responses.css">
 
 
 
 
 
-  <style>
-  /* change player background color */
-  #myVideo {
-      background-color: #9ab87a;
-  }
-  </style>
 </head>
 <body>
- <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
-        <div class="container-fluid">
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+    <div class="container-fluid">
 
-            <a href="../index.html" class="navbar-brand"><img src="../images/icons/Untitled-1.svg" width="100" height="80"></a>
-            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav">
-                    <li class="nav-link">
-                        <a class="nav-link" href="uploadChallenge.html">Create Challenge</a>
-                    </li>
-                    <li class="nav-link">
-                        <a class="nav-link" href="categories.html">Categories</a>
-                    </li>
-                    <li class="nav-link">
-                        <a class="nav-link" href="#">Leaderboard</a>
-                    </li>
+        <a href="../index.html" class="navbar-brand"><img src="../images/icons/Untitled-1.svg" width="100" height="40"></a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav">
+                <li class="nav-link">
+                    <a class="nav-link" href="uploadChallenge.html">Create Challenge</a>
+                </li>
+                <li class="nav-link">
+                    <a class="nav-link" href="categories.html">Categories</a>
+                </li>
+                <li class="nav-link">
+                    <a class="nav-link" href="#">Leaderboard</a>
+                </li>
 
 
-                </ul>
-                <ul class="navbar-nav ml-auto">
-                    <a href="account.html" class="nav-item nav-link">My Account</a>
-                </ul>
-
-            </div>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <a href="account.html" class="nav-item nav-link">My Account</a>
+            </ul>
 
         </div>
-    </nav>
 
-
-
-
-
-
-<section class="container">
-  <div class="container py-3 d-flex justify-content-center">
-    <video id="myVideo" playsinline class="video-js vjs-default-skin"></video>
-  </div>
-
-  <div class="container-fluid py-3 ">
-    <form>
-      <div class="d-flex justify-content-center">
-        <label for="inputTitle" class="col-form-label">Video Title:</label>
-      </div>
-      <div class="d-flex justify-content-center">
-          <input type="text" name="title" id="inputTitle">
-      </div>
-      <div class="d-flex justify-content-center">
-        <label for="inputDescription" class="col-form-label">Description:</label>
-      </div>
-      <div class="d-flex justify-content-center">
-      <textarea name="description" id="inputDescription" cols="30" rows="10" class="col-form-label "></textarea>
-      </div>
-    </form>
-
-    <div class="d-flex justify-content-center py-2">
-      <button class="btn btn-primary" id="video_upload_button">Upload</button>
     </div>
-  </div>
+</nav>
 
-</section>
+
+
+<div class="text-center">
+  <h1>
+      Upload your response!
+  </h1>
+</div>
+<div class="container emp-profile">
+    <div class="row">
+      
+        <div class="col-sm-5">
+
+          <div class="container py-3 d-flex justify-content-center">
+            <video id="myVideo" playsinline class="video-js vjs-default-skin"></video>
+          </div>
+        </div>
+        <div class="col-sm-7">
+
+          <div class="d-flex justify-content-center">
+            <label for="inputTitle" class="col-form-label">Video Title:</label>
+          </div>
+          <div class="d-flex justify-content-center">
+              <input type="text" name="title" id="inputTitle">
+          </div>
+          <div class="d-flex justify-content-center">
+            <label for="inputDescription" class="col-form-label">Description:</label>
+          </div>
+          <div class="d-flex justify-content-center">
+          <textarea name="description" id="inputDescription" cols="30" rows="10" class="col-form-label "></textarea>
+          </div>
+          <div class="d-flex justify-content-center py-2">
+            <button class="btn btn-warning" id="video_upload_button">Upload</button>
+          </div>
+        </div>
+    </div>
+    
+</div>
+
+<footer>
+  <div class="container-fluid padding">
+      <div class="row text-center">
+          <div class="col-md-4">
+              <img src="../images/icons/navbar_logo.png">
+              <hr class="light">
+              <p>flairemail@flair.com</p>
+              <p>772 513 1097</p>
+
+          </div>
+          <div class="col-md-4">
+              <hr class="light">
+              <h4>Connect</h4>
+              <hr class="light">
+              <p>Instagram</p>
+              <p>Facebook</p>
+
+          </div>
+          <div class="col-md-4">
+              <hr class="light">
+              <h4><a href="about_us.html">About us</a></h4>
+              <hr class="light">
+              <p>2800 Project</p>
+              <p>Made by Asher, Ben, Francis, Saksham</p>
+
+          </div>
+      </div>
+  </div>
+</footer>
+
+
+
 
 
 

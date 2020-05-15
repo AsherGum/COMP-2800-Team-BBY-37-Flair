@@ -1,0 +1,34 @@
+
+
+
+footer {
+    background-color: #3f3f3f;
+    color: #d5d5d5;
+    padding-top: 2rem;
+}
+
+hr.light {
+    border-top: 1px solid #d5d5d5;
+    width: 75%;
+}
+  /* change player background color */
+  #myVideo {
+    background-color: #9ab87a;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #222222;
+  font-family: 'Baloo Bhaina 2', cursive;
+}
+.emp-profile{
+  padding: 3%;
+  margin-top: 3%;
+  margin-bottom: 3%;
+  border-radius: 0.5rem;
+  background: #fff;
+}
+.text-center{
+    color: #fff;
+    padding-top: 2%;
+}

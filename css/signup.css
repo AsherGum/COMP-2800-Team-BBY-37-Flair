@@ -1,6 +1,8 @@
-body{
-    background:#343638;
-    font-size: small;
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #222222;
+    font-family: 'Baloo Bhaina 2', cursive;
 }
 .emp-profile{
     padding: 3%;
