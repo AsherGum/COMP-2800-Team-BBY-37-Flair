@@ -134,7 +134,7 @@ function videoUpload(videoData, imageURI, userTags) {
 
 
                                         // NEED TO REDIRECT USER TO ANOTHER PAGE
-                                        window.location.href = "../main.html";
+                                        window.location.href = "../html/main.html";
                                     });
                                 });
                             })
