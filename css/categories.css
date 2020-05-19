@@ -24,7 +24,9 @@ hr.dark {
 .nav-link {
     font-size: 1.3em !important;
 }
-
+.padding-top{
+    padding-top: 2rem;
+}
 
 
 footer {
