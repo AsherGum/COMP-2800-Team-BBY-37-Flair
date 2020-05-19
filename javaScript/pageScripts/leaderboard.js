@@ -5,24 +5,42 @@ console.log("Getting Posts");
 var getPosts = database.collection("Challenges");
 
 getPosts.orderBy("upvotes", "desc").limit(10).get().then(function (querySnapshot) {
-    querySnapshot.forEach(function (post) {
-        // Make sure post exists.
-        console.log(post.id, " => ", post.data());
-        if (post) {
-            console.log("post found");
-            // Create the post.
-            createPost(post.data().challenge,
-                        post.data().imageURL,
-                        post.data().videoURL,
-                        post.id, post.data().owner, post.data().upvotes);
-        }
-    })
+  querySnapshot.forEach(function (post) {
+      // Make sure post exists.
+      console.log(post.id, " => ", post.data());
+      if (post) {
+          console.log("post found");
+          // Create the post.
+          createPost(post.data().challenge,
+                      post.data().imageURL,
+                      post.data().videoURL,
+                      post.id, post.data().owner, post.data().upvotes, 0);
+      }
+  })
 });
 
+function getPost(category, div){
+    getPosts.orderBy("upvotes", "desc").limit(10).where("challengeCategory", "==", category).get().then(function (querySnapshot) {
+        querySnapshot.forEach(function (post) {
+            // Make sure post exists.
+            console.log(post.id, " => ", post.data());
+            if (post) {
+                console.log("post found");
+                // Create the post.
+                createPost(post.data().challenge,
+                            post.data().imageURL,
+                            post.data().videoURL,
+                            post.id, post.data().owner, post.data().upvotes, div);
+            }
+        })
+    });
+}
 
-function createPost(title, imageURL, videoURL, id, owner, likesCount) {
 
-    var content = document.getElementsByClassName("content")[0];
+
+function createPost(title, imageURL, videoURL, id, owner, likesCount, cat) {
+
+    var content = document.getElementsByClassName("content")[cat];
     var docUser = database.collection("Users").doc(owner);
     docUser.get().then(function (user) {
   
@@ -55,3 +73,12 @@ function createPost(title, imageURL, videoURL, id, owner, likesCount) {
       
   
   }
+  
+getPost("comedy", 1);
+getPost("physical", 2);
+getPost("games", 3);
+getPost("pets", 4);
+getPost("edu", 5);
+getPost("talent", 6);
+getPost("arts", 7);
+getPost("other", 8);

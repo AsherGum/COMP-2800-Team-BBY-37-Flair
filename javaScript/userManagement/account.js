@@ -1,11 +1,14 @@
 // Gets the user uid of the clicked account page
 var globalUser = window.location.href;
 globalUser = globalUser.substring((globalUser.length - 28),globalUser.length);
-
+let home = true;
+// Body.
+let body = document.getElementsByTagName("body");
+// Main container.
+let content = document.getElementsByClassName("userVideos")[0];
 
 
 // Authentication state observer.
-
 firebase.auth().onAuthStateChanged(function (user) {
 	if (user) {
         if(globalUser.substring((globalUser.length - 12),globalUser.length) == "account.html"){
@@ -51,7 +54,18 @@ firebase.auth().onAuthStateChanged(function (user) {
                 //document.getElementById("followers").innerHTML = doc.data().Followers.length;
                 //document.getElementById("following").innerHTML = doc.data().Following.length;
                 //document.getElementById("challenges").innerHTML = doc.data().Challenges.length;
-
+                let docRef = database.collection("Challenges")
+                docRef.where("owner", "==", globalUser).get().then(function (querySnapshot) {
+                    querySnapshot.forEach(function (post) {
+                        if (post) {
+                            // Create the post.
+                            createPost(post.data().challenge,
+                                        post.data().imageURL,
+                                        post.data().videoURL,
+                                        post.id, post.data().owner, post.data().upvotes);
+                        }
+                    })
+                })
 
 			} else {
 				// doc.data() will be undefined in this case.
@@ -127,4 +141,91 @@ function upImages(){
         document.getElementById("profilePic").src = "../images/TRNhtP0v5pYfNDnBeaY19CfPmwu2.jpg";
         document.getElementById("edit").style.display = "none";
     }
+}
+
+
+$("#home-tab").on('click', function (param) {
+    if(!home){
+        home = true;
+        var child = document.getElementsByClassName("userVideos")[0].lastElementChild;  
+        while (child) { 
+            document.getElementsByClassName("userVideos")[0].removeChild(child); 
+            child = document.getElementsByClassName("userVideos")[0].lastElementChild; 
+        }
+    
+        let docRef = database.collection("Challenges")
+        docRef.where("owner", "==", globalUser).get().then(function (querySnapshot) {
+            querySnapshot.forEach(function (post) {
+                if (post) {
+                    // Create the post.
+                    createPost(post.data().challenge,
+                                post.data().imageURL,
+                                post.data().videoURL,
+                                post.id, post.data().upvotes);
+                }
+            })
+        })
+    }
+})
+
+
+$("#profile-tab").on('click', function (param) {
+    if(home){
+        home = false;
+        var child = document.getElementsByClassName("userVideos")[0].lastElementChild;  
+        while (child) { 
+            document.getElementsByClassName("userVideos")[0].removeChild(child); 
+            child = document.getElementsByClassName("userVideos")[0].lastElementChild; 
+        }
+    }
+
+    database.collectionGroup("Responses").where("user", "==", globalUser).get().then(function (querySnapshot) {
+        querySnapshot.forEach(function (post) {
+            if (post) {
+                console.log("here");
+                // Create the post.
+                createPost(post.data().challenge,
+                            post.data().imageURL,
+                            post.data().videoURL,
+                            post.id, post.data().upvotes);
+            }
+        })
+    })
+})
+
+
+
+//Create a posting with its title, image URL (picture), and unique ID (to keep track of post) as inputs
+function createPost(title, imageURL, videoURL, id, likesCount) {
+
+    // Create the post on the main page.
+    var vidBox = document.createElement("div");
+    vidBox.className = "card";
+
+    // Getting images.
+    var img = document.createElement("img");
+    img.src = imageURL;
+    img.id = id;
+    img.onclick = function() {
+    window.location.href = "../html/viewVideo.html?view:" + id;
+    }
+
+    var info = document.createElement("p");
+    info.innerHTML = title;
+
+    var like = document.createElement('img');
+    like.src = "../images/icons/like.png"
+    like.id = "view";
+
+    var likes = document.createElement("h4");
+    likes.id = "likes";
+    likes.innerHTML = likesCount;
+
+
+    content.appendChild(vidBox);
+    vidBox.appendChild(info);
+    vidBox.appendChild(like);
+    vidBox.appendChild(likes);
+    vidBox.appendChild(img);
+    
 }

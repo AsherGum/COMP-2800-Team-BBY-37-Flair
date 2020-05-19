@@ -35,12 +35,6 @@ docRef.get().then(function(doc) {
         if(postOwner == currentUser.uid){
             document.getElementById("follow").style.display = "none";
         }
-        
-
-        console.log(postOwner);
-        console.log(ownerTag);
-
-
     // Populate the DOM on the main page.
     }).then(function() {
         createPost(dataDoc);
@@ -123,8 +117,6 @@ $("#follow").click(function(){
         }
     })
 });
-
-$("")
 
 
 function upvoteButtonHandler() {

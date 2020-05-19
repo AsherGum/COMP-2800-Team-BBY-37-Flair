@@ -126,3 +126,82 @@ hr.light {
     border-top: 1px solid #d5d5d5;
     width: 75%;
 }
+
+
+
+
+
+.userVideos {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 100%;
+    grid-gap: 24px;
+    margin-bottom: 24px;
+}
+
+
+
+.card{
+    -webkit-mask-image: -webkit-radial-gradient(center, circle cover, white 100%, black 100%);
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.card img{
+    height: 380px;
+}
+
+.card #likes{
+    font-size: small;
+    position: absolute;
+    color: white;
+    top: 55vh;
+    left: 220px;
+}
+
+.card #view{
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 54.3vh;
+    left: 190px;
+}
+
+.card #accountName{
+    font-size: small;
+    position: absolute;
+    color: white;
+    top: 55vh;
+}
+
+.card p {
+    font-size: small;
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    color: white;
+}
+
+@media (min-width: 877px) and (max-width: 1124px) {
+
+
+    .userVideos {
+        grid-template-columns: 256px 256px;
+        grid-gap: 24px;
+    }
+
+    .card{
+        width: 256px;
+    }
+
+}
+
+@media (min-width: 1125px) {
+    .userVideos{
+        display: grid;
+        grid-template-columns: 256px 256px 256px;
+        grid-gap: 24px;
+        justify-content: center;
+    }
+}
+

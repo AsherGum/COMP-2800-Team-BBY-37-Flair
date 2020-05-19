@@ -25,6 +25,10 @@ docRef.get().then(function(doc) {
     let newViewCount = doc.data().views;
     newViewCount++;
     let userData;
+    //Goes to post owners profile page
+    document.getElementById('owner').addEventListener('click', function(){
+        window.location.href = "../html/account.html?view:" + doc.data().user;
+    })
 
     //update the view challenge attempts link
     console.log("infunction");
@@ -36,6 +40,9 @@ docRef.get().then(function(doc) {
         userData = user.data();
         console.log(postOwner);
         console.log(ownerTag);
+
+
+
 
     // populate the dom with the elements on the main page.
     

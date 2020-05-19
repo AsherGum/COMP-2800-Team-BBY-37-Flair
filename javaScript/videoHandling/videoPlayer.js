@@ -60,8 +60,8 @@ player.on('finishRecord', function() {
 //Currently just takes the image at 0s of the video
 function createImage() {
     const canvas = document.createElement('canvas');
-    canvas.width = 320;
-    canvas.height = 240;
+    canvas.width = 256;
+    canvas.height = 380;
     const ctx = canvas.getContext('2d');
     const video = document.getElementById("myVideo_html5_api");
 
