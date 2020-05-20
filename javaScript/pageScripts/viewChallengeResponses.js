@@ -58,6 +58,7 @@ function createVideoCard(imageURL, videoURL, doc, query, title) {
         //Card Div Element attached to parent element
         const cardElement = document.createElement("div");
         cardElement.classList.add("card");
+        cardElement.classList.add("category-card");
         parentElement.appendChild(cardElement);
 
         //Image attached to card

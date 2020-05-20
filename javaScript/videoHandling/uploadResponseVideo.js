@@ -155,7 +155,7 @@ function videoUpload(videoData, imageURI, challengeDocID) {
                                                     attempts: challengeAttempts
                                                 })
                                                 .then(function() {
-                                                     window.location.href = "../html/main.html";
+                                                     window.location.href = "./viewVideoResponse.html?view:" + docRefID;
                                                 })
                                             })
 
@@ -196,7 +196,8 @@ document.getElementById('inputDescription').addEventListener('focusout', functio
  * Button handling for just the challenge video response upload page
  */
 document.getElementById('video_upload_button').addEventListener('click', function() {
-    /*parseSearchURL called from general.js
+    /*
+    parseSearchURL called from general.js
     input URL should be similar to: 
     /html/uploadChallenge.html?challenge:docID
     */
@@ -232,4 +233,24 @@ document.getElementById("reset_button").addEventListener('click', function() {
     }
 })
 
+/**
+ * Called on page load to populate challenge
+ * title as well as update the href on the back to challenge button
+ */
+function getChallengeInfo() {
+    const challengeDocIDArray = parseSearchURL();
+    const challengeDocIDString = challengeDocIDArray[0];
 
+    database.collection("Challenges").doc(challengeDocIDString).get()
+    .then(doc => {
+        const backButton = document.getElementById("back-challenge");
+        const title = document.getElementById("challenge-title");
+
+        backButton.href = "./viewVideo.html?view:" + challengeDocIDString;
+        title.innerHTML = doc.data().challenge;
+    })
+}
+
+window.onload = function() {
+    getChallengeInfo();
+}
