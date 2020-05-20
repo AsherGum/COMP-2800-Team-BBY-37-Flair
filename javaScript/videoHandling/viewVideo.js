@@ -71,6 +71,7 @@ function getVideoData(doc){
     document.getElementById('attempts').innerHTML = doc.data().attempts;
     document.getElementById('owner').innerHTML = '@' + ownerTag;
     document.getElementById('description').innerHTML = doc.data().description;
+    document.getElementById('category').innerHTML = convertCategoryValue(doc.data().challengeCategory);
 
     let tagsArray = doc.data().tags;
     let tagsContainer = document.getElementById("tag_container");

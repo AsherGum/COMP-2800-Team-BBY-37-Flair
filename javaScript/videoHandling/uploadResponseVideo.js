@@ -1,9 +1,6 @@
 
 
 
-
-
-
 /**
  * Upload Functionality for uploading a
  * RESPONSE VIDEO TO A CHALLENGE
@@ -195,6 +192,7 @@ document.getElementById('video_upload_button').addEventListener('click', functio
 
     let confirmation = window.confirm("Are you sure you want to upload your video?");
     if (confirmation) {
+        attemptedUpload = true;
         videoUpload(data, imageURI, challengeDocIDString);
     } else {
         return;
