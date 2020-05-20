@@ -1,13 +1,9 @@
 
 const responseIDArray = parseSearchURL();
 const responseID = responseIDArray[0];
-console.log(responseID);
 
 const parentID = parseURLParentID(2);
 const title = parseURLParentID(3);
-
-console.log(title);
-
 
 //Updates the links on the buttons
 document.getElementById("submit_link").href = "./uploadResponse.html?challenge:" + parentID;
@@ -15,8 +11,12 @@ document.getElementById("view_attempts").href = "./viewChallengeResponses.html?c
 
 document.getElementById("challenge_title").innerHTML = title;
 
-var postOwner;
-var ownerTag;
+let postOwner;
+let ownerTag;
+
+//Turn on the loading circle on page load
+loading("loading_insertion", true);
+
 
 var docRef = database.collection("userVideos").doc(responseID);
 // Get the document.
@@ -31,21 +31,13 @@ docRef.get().then(function(doc) {
     })
 
     //update the view challenge attempts link
-    console.log("infunction");
-
     let docUser = database.collection("Users").doc(dataDoc.data().user);
     docUser.get().then(function (user) {
         ownerTag = user.data().UserName;
         postOwner = doc.data().owner;
         userData = user.data();
-        console.log(postOwner);
-        console.log(ownerTag);
-
-
-
 
     // populate the dom with the elements on the main page.
-    
     }).then(function() {
         getVideoData(dataDoc);
 
@@ -61,7 +53,10 @@ docRef.get().then(function(doc) {
         database.collection("userVideos").doc(responseID).update({
             views: newViewCount
         })
-
+        .then(function() {
+            //Turn off the loading circle
+            loading("loading_insertion", false);
+        })
 
         .catch(error => {
             console.log(error);
@@ -129,6 +124,19 @@ function parseURLParentID(number) {
     return searchQueries;
 }
 
+/**
+ * Called when the upvote button is pushed.
+ * Checks if the user has liked the video before.
+ * This is tracked in the users data, in a likedVideos array.
+ * 
+ * If the video docID is inside the array, then the user has liked
+ * the video, and they are "unliking" the video. Decrement 
+ * upvote field in video data and remove video docID from the likedVideos array.
+ * 
+ * If the video docID is not inside the array, then the user
+ * has not liked the video, and they are 'liking" the video. Increment
+ * upvote field in video data and add video docID to the likedVideos array.
+ */
 function upvoteButtonHandler() {
     //Needs to check if user has liked video before
     // Get the users data.

@@ -1,4 +1,6 @@
 
+//Inserts the loading circle immediately pageload
+ loading("card_insertion", true);
 
 
 /**
@@ -39,6 +41,8 @@ function searchChallenges(query, title) {
             noVideosFound();
         }
         
+        //Turns off loading circle
+        loading("card_insertion", false);
         
     })
 }
@@ -75,12 +79,14 @@ function createVideoCard(imageURL, videoURL, doc, query, title) {
         //Card Title h4 attached to cardBody
         const cardTitle = document.createElement("h4");
         cardTitle.classList.add("card-title");
+        cardTitle.classList.add("overflow-auto");
         cardTitle.innerHTML = doc.data().title;
         cardBody.appendChild(cardTitle);
 
         //Card Description p attached to cardBody
         const description = document.createElement("p");
         description.classList.add("card-text");
+        description.classList.add("overflow-auto");
         description.innerHTML = doc.data().description;
         cardBody.appendChild(description);
 
@@ -132,6 +138,7 @@ function pageLoad() {
     if (queryString != undefined) {
         searchChallenges(queryString, titleString);
     }
+    
 }
 
 pageLoad();

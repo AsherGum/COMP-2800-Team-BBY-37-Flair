@@ -8,6 +8,9 @@ let body = document.getElementsByTagName("body");
 let content = document.getElementsByClassName("userVideos")[0];
 
 
+//Loading circle is turned on
+loading("loading_insertion", true);
+
 // Authentication state observer.
 firebase.auth().onAuthStateChanged(function (user) {
 	if (user) {
@@ -54,6 +57,9 @@ firebase.auth().onAuthStateChanged(function (user) {
                 //document.getElementById("followers").innerHTML = doc.data().Followers.length;
                 //document.getElementById("following").innerHTML = doc.data().Following.length;
                 //document.getElementById("challenges").innerHTML = doc.data().Challenges.length;
+
+                //Loading circle is turned on
+                loading("loading_insertion", false);
                 let docRef = database.collection("Challenges")
                 docRef.where("owner", "==", globalUser).get().then(function (querySnapshot) {
                     querySnapshot.forEach(function (post) {
@@ -146,6 +152,8 @@ function upImages(){
 
 $("#home-tab").on('click', function (param) {
     if(!home){
+        //Loading circle is turned on
+        loading("home-tab", true);
         home = true;
         var child = document.getElementsByClassName("userVideos")[0].lastElementChild;  
         while (child) { 
@@ -164,6 +172,8 @@ $("#home-tab").on('click', function (param) {
                                 post.id, post.data().upvotes);
                 }
             })
+            //Turn off loading circle
+            loading("home-tab", false);
         })
     }
 })
@@ -171,6 +181,9 @@ $("#home-tab").on('click', function (param) {
 
 $("#profile-tab").on('click', function (param) {
     if(home){
+        //turn on loading circle
+        loading("profile-tab", true);
+
         home = false;
         var child = document.getElementsByClassName("userVideos")[0].lastElementChild;  
         while (child) { 
@@ -190,6 +203,8 @@ $("#profile-tab").on('click', function (param) {
                             post.id, post.data().upvotes);
             }
         })
+        //turn on loading circle
+        loading("profile-tab", false);
     })
 })
 
