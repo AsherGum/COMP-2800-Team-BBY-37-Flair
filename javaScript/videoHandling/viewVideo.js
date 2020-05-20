@@ -37,7 +37,7 @@ docRef.get().then(function(doc) {
         }
     // Populate the DOM on the main page.
     }).then(function() {
-        createPost(dataDoc);
+        getVideoData(dataDoc);
 
         //Check if user has liked the video or not, then
         //toggle the button if true 
@@ -57,7 +57,11 @@ docRef.get().then(function(doc) {
     });
 });
 
-function createPost(doc){
+/**
+ * Fills all the DOM elements on the page with the information about the challenge video.
+ * @param {user database information (obj)} doc 
+ */
+function getVideoData(doc){
     // Set page title to post title.
     document.title = doc.data().challenge;
     document.getElementById('title').innerHTML = doc.data().challenge;
@@ -118,7 +122,14 @@ $("#follow").click(function(){
     })
 });
 
-
+/**
+ * Called when the upvote button is clicked.
+ * Checks if user has liked a post before by checking if the video
+ * doc ID is in their 'likedVideos' array in the database.
+ * 
+ * If it exists, unlike the post and remove the video id from the array
+ * If it doesn't exist, add it to the array and 'like' the post
+ */
 function upvoteButtonHandler() {
     //Needs to check if user has liked video before
     // Get the users data.

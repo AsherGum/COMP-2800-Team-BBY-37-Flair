@@ -22,9 +22,7 @@ function videoUpload(videoData, imageURI, challengeDocID) {
     const image = imageURI;
     let docRefID;
     let userInfo;
-    let userEmail;
-    let userVideoURL;
-    let userImageURL;
+    
 
     //check for user state
     firebase.auth().onAuthStateChanged(function (user) {
@@ -37,7 +35,7 @@ function videoUpload(videoData, imageURI, challengeDocID) {
             //Will need to add some sort of data checking here
             const userVideo = videoData;
             userInfo = user.uid;
-            userEmail = user.email;
+            
 
             if (userTitle.length === 0 || 
                 userDescription.length === 0)  {
@@ -71,6 +69,7 @@ function videoUpload(videoData, imageURI, challengeDocID) {
                 let storageRef = firebase.storage().ref();
                 let uploadTask = storageRef.child('userVideos/' + docRefID + "/challengeVideo").put(userVideo);
 
+                //Source: https://firebase.google.com/docs/storage/web/upload-files
                 // Register three observers:
                 // 1. 'state_changed' observer, called any time the state changes.
                 // 2. Error observer, called on failure.
@@ -93,7 +92,6 @@ function videoUpload(videoData, imageURI, challengeDocID) {
                     // Handle successful uploads on complete.
                     uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
                         console.log('File available at', downloadURL);
-                        userVideoURL = downloadURL;
 
                         // Add image URL location.
                         database.collection("userVideos").doc(docRef.id).update({
@@ -128,7 +126,6 @@ function videoUpload(videoData, imageURI, challengeDocID) {
                                 // Handle successful uploads on complete.
                                 uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
                                     console.log('File available at', downloadURL);
-                                    userImageURL = downloadURL;
 
                                     // Add image URL location.
                                     database.collection("userVideos").doc(docRefID).update({
@@ -137,7 +134,7 @@ function videoUpload(videoData, imageURI, challengeDocID) {
                                         //Add this challenge video reference to the
                                         //challenge video collection document
                                     }).then(function () {
-                                        database.collection('Challenges').doc(challengeDocID).collection('Responses').add({
+                                        database.collection('Challenges').doc(challengeDocID).collection('Responses').doc(userInfo).set({
                                             userVideo: docRefID,
                                             user: userInfo,
                                             userEmail: userEmail,
