@@ -27,7 +27,7 @@ firebase.auth().onAuthStateChanged(function (user) {
       // User is signed out.
       console.log("user is logged out");
       // Go to login page
-      window.location.href = "./html/login.html";
+      window.location.href = "../html/login.html";
     }
 
     var getPosts = database.collection("Challenges");
@@ -58,7 +58,7 @@ firebase.auth().onAuthStateChanged(function (user) {
 // Opens the page that was clicked. carries user ID
 function openAccountPage(id) {
     localStorage.setItem("globalUser", id);
-    window.location.href = "./html/account.html";
+    window.location.href = "../html/account.html";
 }
 
 
@@ -83,7 +83,7 @@ function createPost(title, imageURL, videoURL, id, owner, likesCount) {
     img.src = imageURL;
     img.id = id;
     img.onclick = function() {
-      window.location.href = "./html/viewVideo.html?view:" + id;
+      window.location.href = "../html/viewVideo.html?view:" + id;
     }
  
     var info = document.createElement("p");
@@ -94,7 +94,7 @@ function createPost(title, imageURL, videoURL, id, owner, likesCount) {
     accountName.innerHTML = '@' + user.data().UserName;
 
     var like = document.createElement('img');
-    like.src = "./images/icons/like.png"
+    like.src = "../images/icons/like.png"
     like.id = "view";
 
     var likes = document.createElement("h4");

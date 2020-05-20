@@ -149,7 +149,7 @@ function videoUpload(videoData, imageURI, challengeDocID) {
                                             console.log("wrote to challenge document succesfully");
 
                                             // NEED TO REDIRECT USER TO ANOTHER PAGE
-                                            window.location.href = "../index.html";
+                                            window.location.href = "../html/main.html";
                                         })
                                     });
                                 });
