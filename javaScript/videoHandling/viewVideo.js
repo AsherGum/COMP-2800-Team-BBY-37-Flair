@@ -10,6 +10,8 @@ document.getElementById("submit_link").href = "./uploadResponse.html?challenge:"
 var postOwner;
 var ownerTag;
 
+loading("loading_insertion", true);
+
 var docRef = database.collection("Challenges").doc(docID);
 // Get the document.
 docRef.get().then(function(doc) {
@@ -17,9 +19,8 @@ docRef.get().then(function(doc) {
     const dataDoc = doc;
     let newViewCount = doc.data().views;
     newViewCount++;
-    console.log(newViewCount);
+   
 
-    
 
     //update the view challenge attempts link
     document.getElementById("view_attempts").href = "./viewChallengeResponses.html?challenge:" + docID + "?" + doc.data().challenge;
@@ -51,6 +52,9 @@ docRef.get().then(function(doc) {
         database.collection("Challenges").doc(docID).update({
             views: newViewCount
         })
+        .then(function() {
+            loading("loading_insertion", false);
+        })
         .catch(error => {
             console.log(error);
         })
@@ -71,6 +75,7 @@ function getVideoData(doc){
     document.getElementById('attempts').innerHTML = doc.data().attempts;
     document.getElementById('owner').innerHTML = '@' + ownerTag;
     document.getElementById('description').innerHTML = doc.data().description;
+    document.getElementById('category').innerHTML = convertCategoryValue(doc.data().challengeCategory);
 
     let tagsArray = doc.data().tags;
     let tagsContainer = document.getElementById("tag_container");

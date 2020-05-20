@@ -28,8 +28,6 @@
   <script src="../javaScript/videoAdapter/adapter.js"></script>
 
   <script src="../javaScript/videoAdapter/videojs.record.js"></script>
-
-  <script src="../javaScript/videoAdapter/videojs.record.js"></script>
   <script src="../javaScript/videoAdapter/browser-workarounds.js"></script>
 
   <!-- Firebase Scripts -->
@@ -99,11 +97,16 @@
     <h1>
       Upload your response!
     </h1>
+    <h4>
+      Original Challenge: <span id="challenge-title"></span>
+
+    </h4>
   </div>
   <div class="container emp-profile">
     <div class="row">
 
       <div class="col-sm-5">
+        <a href="" id="back-challenge"><button class="btn btn-warning">Back to Challenge Page</button></a> 
         <p class="text-center">Record yourself attempting the challenge using the webcam recorder below!</p>
 
         <div class="container py-3 d-flex justify-content-center">
@@ -113,7 +116,7 @@
       <div class="col-sm-7">
 
         <div class="d-flex justify-content-center">
-          <label for="inputTitle" class="col-form-label">Video Title:</label>
+          <label for="inputTitle" class="col-form-label">Your Video Title:</label>
         </div>
         <div class="d-flex justify-content-center">
           <input type="text" name="title" id="inputTitle">

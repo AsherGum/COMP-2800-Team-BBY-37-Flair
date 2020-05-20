@@ -17,6 +17,7 @@
     <!-- Your own CSS files -->
     <!------------------------>
     <link rel="stylesheet" href="../css/general.css">
+    <link rel="stylesheet" href="../css/loading_circle.css">
     <link rel="stylesheet" href="../css/viewVideo.css">
 </head>
 
@@ -60,9 +61,10 @@
 
       <div class="container emp-profile">
         <div class="my-1">
-          <h1 id="title" class="display-3"></h1>
-          <h3>Category:</h3>
-      </div>
+          <h1 id="title"></h1>
+          <h3>Category: <span id="category"></span></h3>
+          <div id="loading_insertion"></div>
+        </div>
 
       <div class="container-fluid padding">
           <div class="row padding">
@@ -109,7 +111,7 @@
                   <ul id="tag_container"></ul>
                   <div>
                       <hr class="dark">
-                      <h2>Description</h2>
+                      <h4>Description</h4>
                       <p id="description"></p>
                   </div>
                   <div class="container">
@@ -191,6 +193,7 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
     </script>
     <!-- Page Scripts -->
+    <script src="../javaScript/general/general.js"></script>
     <script src="../javaScript/videoHandling/viewVideo.js"></script>
     
     <!-- Twitter for Websites given javascript from

@@ -30,6 +30,9 @@ firebase.auth().onAuthStateChanged(function (user) {
       window.location.href = "../html/login.html";
     }
 
+    //Loading circle on
+    loading("content", true);
+
     var getPosts = database.collection("Challenges");
     // Gets the book postings. Query where() function.
     getPosts.get().then(function (querySnapshot) {
@@ -43,6 +46,7 @@ firebase.auth().onAuthStateChanged(function (user) {
                             post.id, post.data().owner, post.data().upvotes);
             }
         })
+        loading("content", false);
     });
 
 

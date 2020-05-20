@@ -32,6 +32,8 @@ function searchChallenges(queries) {
             noVideosFound();
         }
         
+        //Loading circle is turned off
+        loading("card_insertion", false);
         
     })
 }
@@ -68,12 +70,14 @@ function createVideoCard(challengeTitle, challengeDescription,
         //Card Title h4 attached to cardBody
         const cardTitle = document.createElement("h4");
         cardTitle.classList.add("card-title");
+        cardTitle.classList.add("overflow-auto");
         cardTitle.innerHTML = challengeTitle;
         cardBody.appendChild(cardTitle);
 
         //Card Description p attached to cardBody
         const description = document.createElement("p");
         description.classList.add("card-text");
+        description.classList.add("overflow-auto");
         description.innerHTML = challengeDescription;
         cardBody.appendChild(description);
 
@@ -112,6 +116,9 @@ function noVideosFound() {
  * the search
  */
 function pageLoad() {
+    //Loading circle is turned on
+    loading("card_insertion", true);
+
     //parseSearchURL called from general.js
     const queries = parseSearchURL();
     const queryString = queries[0]

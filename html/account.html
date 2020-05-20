@@ -31,6 +31,7 @@
     <!------------------------>
     <!-- Your own CSS files -->
     <!------------------------>
+    <link rel="stylesheet" href="../css/loading_circle.css">
     <link href="../css/account.css" rel="stylesheet">
 
 </head>
@@ -72,6 +73,7 @@
         <form method="post">
             <div class="row">
                 <div class="col-md-4">
+                    <div id="loading_insertion"></div>
                     <div class="profile-img">
                         <img id="profilePic" src="https://via.placeholder.com/500x500" alt=""/>
                         <div id="edit" class="file btn btn-lg btn-primary">
@@ -82,8 +84,8 @@
                 </div>
                 <div class="col-md-6">
                     <div class="profile-head">
-                                <h5 id="username"></h5>
-                                <p class="proile-rating">BIO: <span id="userBio"></span></p>
+                        <h5 id="username"></h5>
+                        <p class="proile-rating">BIO: <span id="userBio"></span></p>
 
                     </div>
                 </div>
@@ -178,7 +180,7 @@
 
 
 
-
+    <script src="../javaScript/general/general.js"></script>
     <script src="../javaScript/userManagement/account.js"></script>
 </body>
 </html>

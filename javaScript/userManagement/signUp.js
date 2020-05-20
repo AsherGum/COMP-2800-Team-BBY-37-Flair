@@ -2,18 +2,16 @@
 $("#submit").closest('form').on('submit', function (event) {
 	event.preventDefault();
 	// Loading in email, password, first and last name, and university of user.
-	var userEmail = document.getElementById("email").value;
-	var userPassword = document.getElementById("password").value;
-	var userFirstName = document.getElementById("firstname").value;
-	var userLastName = document.getElementById("lastname").value;
-	var userName = document.getElementById("username").value;
+	let userEmail = document.getElementById("email").value;
+	let userPassword = document.getElementById("password").value;
+	let userName = document.getElementById("username").value;
 
 	// Create user.
 	firebase.auth().createUserWithEmailAndPassword(userEmail, userPassword).then(function(result) {
-		// result.user.tenantId should be ‘TENANT_PROJECT_ID’.
+		
 	  }).catch(function(error) {
 		// Handle error.
-		alert(error);
+		console.log(error);
 	  });
 
 	//Authentication state observer.
@@ -23,8 +21,8 @@ $("#submit").closest('form').on('submit', function (event) {
 			// Add user Profile to database.
 			database.collection("Users").doc(user.uid).set({
 				Email: user.email,
-				FirstName: userFirstName,
-				LastName: userLastName,
+				FirstName: "",
+				LastName: "",
 				PhoneNumber: "",
 				UserName: userName,
 				profilePicture: "",
@@ -42,7 +40,7 @@ $("#submit").closest('form').on('submit', function (event) {
 				// Email sent.
 
 				//Upload user data to database.
-				var docRef = database.collection("Users").doc(user.uid);
+				let docRef = database.collection("Users").doc(user.uid);
 				docRef.get().then(function (doc) {
 					// Makes sure document exists.
 					if (doc.exists) {
@@ -72,3 +70,19 @@ $("#submit").closest('form').on('submit', function (event) {
 
 	});
 });
+
+
+//event listener for username input to check if it's empty
+document.getElementById('username').addEventListener('focusout', function() {
+    checkEmptyInput("username");
+})
+
+//event listener for email input to check if it's empty
+document.getElementById('email').addEventListener('focusout', function() {
+    checkEmptyInput("email");
+})
+
+//event listener for password input to check if it's empty
+document.getElementById('password').addEventListener('focusout', function() {
+    checkEmptyInput("password");
+})

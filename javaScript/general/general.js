@@ -93,6 +93,40 @@ function clearInputField(elementId) {
 
 
 
+/**
+ * Using the loading circle code from:
+ * https://loading.io/css/
+ * 
+ * Creates a loading circle inside the DOM element container 
+ * specified. Can turn on the loading circle (isLoading is true) or
+ * turn off the loading circle when loading is complete (isLoading is false)
+ * 
+ * @param {DOM element ID} container 
+ * @param {boolean} isLoading 
+ */
+function loading(container, isLoading) {
+    console.log(container);
+    const loadingContainer = document.getElementById(container);
+    const loadingCircle = document.createElement('div');
+    loadingCircle.classList.add("loading-circle");
+    loadingCircle.classList.add("container");
+    loadingCircle.innerHTML = `
+    <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    `;
 
+    //Loading is true, create the loading circle, append to container
+    if (isLoading) {
+        loadingContainer.appendChild(loadingCircle);
+    
+    //Loading is false, hide the loading circle
+    } else {
+        //Using querySelectorAll in case there are somehow many
+        //loading circle elements on the DOM
+        const circles = document.querySelectorAll(".loading-circle");
+        circles.forEach(circle => {
+            circle.style.display = "none";
+        })
 
+    }
+}
 
