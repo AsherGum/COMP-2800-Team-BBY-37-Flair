@@ -20,7 +20,13 @@
     <link rel="stylesheet" href="../css/viewVideo.css">
 </head>
 
-    <!-- Styling -->
+<body>
+    <!-- Facebook Javascript SDK scripts -->
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v7.0"></script>
+
+
+    <!-- Nav Bar -->
   <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
         <div class="container-fluid">
 
@@ -50,6 +56,8 @@
 
         </div>
     </nav>
+
+
       <div class="container emp-profile">
         <div class="my-1">
           <h1 id="title" class="display-3"></h1>
@@ -74,7 +82,18 @@
                         <p>Views:</p><p id="views"></p><br/>
                         <p>Likes:</p><p id="likes"></p>
                         <button class="btn" type="button" id="thumbsUp"></button><br/>
+
+                        <div>
+                            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="Check out this cool video on Flair!"  data-show-count="false" link rel="canonical"
+                        href="/web/tweet-button">Tweet</a>
+                        </div>
+
+
+                        <div class="fb-share-button" data-href="https://mipee-e5ade.web.app" data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmipee-e5ade.web.app%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+                        
+
                         <p>Number of Attempts:</a><p id="attempts"></p>
+                        
                     </div>
                 </div>
                 <div class="container my-5">
@@ -148,12 +167,11 @@
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-database.js"></script>
     <script src="../javaScript/firebaseScripts/firebaseConfig.js"></script>
 
-        <!-- Import JQuery -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- Import JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
 
-</head>
-<body>
+
 
 
 
@@ -161,7 +179,7 @@
 
 
     <!----------------------------------------------->
-    <!-- JS: Boostrap, Firebase, API related    -->
+    <!-- JS: Bootstrap, Firebase, API related    -->
     <!----------------------------------------------->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
@@ -174,6 +192,30 @@
     </script>
     <!-- Page Scripts -->
     <script src="../javaScript/videoHandling/viewVideo.js"></script>
+    
+    <!-- Twitter for Websites given javascript from
+    https://developer.twitter.com/en/docs/twitter-for-websites/javascript-api/guides/set-up-twitter-for-websites
+    
+    -->
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <script>window.twttr = (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0],
+          t = window.twttr || {};
+        if (d.getElementById(id)) return t;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://platform.twitter.com/widgets.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      
+        t._e = [];
+        t.ready = function(f) {
+          t._e.push(f);
+        };
+      
+        return t;
+      }(document, "script", "twitter-wjs"));</script>
+
+    
 
 </body>
 </html>
