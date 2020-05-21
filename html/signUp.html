@@ -25,13 +25,28 @@
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-firestore.js"></script>
 
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-storage.js"></script>
+    <script>
+    function disableSubmit() {
+        document.getElementById("submit").disabled = true;
+    }
 
+    function activateButton(element) {
+
+        if(element.checked) {
+        document.getElementById("submit").disabled = false;
+        }
+        else  {
+        document.getElementById("submit").disabled = true;
+        }
+
+    }
+    </script>
     <!------------------------>
     <!-- Your own CSS files -->
     <!------------------------>
     <link href="../css/signup.css" rel="stylesheet">
 </head>
-<body>
+<body onload="disableSubmit()">
 
 
     <!----------------------->
@@ -49,16 +64,16 @@
 
     </div>
 
-    
+
         <div class="form">
             <h1 class="title">Sign Up for Free</h1>
               <div id="signup">
-                
+
 
                 <form action="/" method="post">
 
                     <div class="container padding-bottom">
-                        
+
                             <div class="col-10 col-md-8 col-lg-6 ">
                                 <!-- Form -->
                                 <form class="form-example" action="" method="post">
@@ -76,20 +91,22 @@
                                         <label for="password">Password:</label>
                                         <input type="password" class="form-control password" id="password" placeholder="Password...">
                                     </div>
+                                    <input type="checkbox" name="terms" id="terms" onchange="activateButton(this)">  I Agree to the <a href=#>Terms & Coditions</a>
+                                    <br><br>
                                     <button type="submit" class="login-form-btn" id="submit">Sign up</button>
-                                    
-                                    
+
+
                                     <!-- End input fields -->
                                  </form>
                                 <!-- Form end -->
                                 <br>
                                 <p>Already have an account? <a style="text-decoration: none;" href="./login.html">Click here</a></p>
-                                
+
                             </div>
                         </div>
                     </div>
 
-        
+
     </div>
     <div class="footer-bottom-wrapper">
 </div>
