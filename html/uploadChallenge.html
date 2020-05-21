@@ -1,24 +1,22 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
 
     <title>Flair Create Challenge</title>
     <link rel="shortcut icon" href="../images/icons/favicon.png" />
 
-    <!-- Charset -->
-    <meta charset="utf-8">
-
-    <!-- Viewport -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
     <!-- Control of cache errors -->
+    
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
 
     <!-- Control of expiry date -->
     <meta http-equiv="Expires" content="0">
+
 
     <link href="../javaScript/videoAdapter/video-js.min.css" rel="stylesheet">
     <link href="../javaScript/videoAdapter/videojs.record.css" rel="stylesheet">
@@ -48,10 +46,6 @@
 
 
 
-    <!--
-        <script src="../javaScript/firebaseScripts/firebaseAuth.js"></script>
-    -->
-
     <!------------------------>
     <!-- Your own CSS files -->
     <!------------------------>
@@ -65,56 +59,59 @@
 
 <body>
 
-   <!--Navbar -->
-   <nav class="mb-1 navbar navbar-expand-lg navbar-dark sticky-top">
-    <a class="navbar-brand" href="main.html"><img src="../images/icons/Untitled-1.svg" width="80" height="45"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="uploadChallenge.html">Create Challenge</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="categories.html">Categories</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="leaderboard.html">Leaderboard</a>
-            </li>
-
-        </ul>
-        <ul class="navbar-nav ml-auto nav-flex-icons">
-            <li class="nav-item">
-                <a class="nav-link waves-effect waves-light">
-                    <i class="fab fa-twitter"></i>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link waves-effect waves-light">
-                    <i class="fab fa-google-plus-g"></i>
-                </a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-user">Profile</i>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right dropdown-default"
-                    aria-labelledby="navbarDropdownMenuLink-333">
-                    <a class="dropdown-item" href="account.html">My Profile</a>
-                    
-                        
-                    <form method="post"><button class="dropdown-item" type="submit" id="sign-out">Logout</button></form>
-                      
-
-                </div>
-            </li>
-        </ul>
-    </div>
-</nav>
-<!--/.Navbar -->
+    <!--Navbar -->
+    <header>
+        <!--Navbar -->
+        <nav class="mb-1 navbar navbar-expand-lg navbar-dark sticky-top">
+         <a class="navbar-brand" href="main.html"><img src="../images/icons/Untitled-1.svg" width="80" height="45"></a>
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+             <span class="navbar-toggler-icon"></span>
+         </button>
+         <div class="collapse navbar-collapse" id="navbarCollapse">
+             <ul class="navbar-nav mr-auto">
+                 <li class="nav-item">
+                     <a class="nav-link" href="uploadChallenge.html">Create Challenge</a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="categories.html">Categories</a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="leaderboard.html">Leaderboard</a>
+                 </li>
+ 
+             </ul>
+             <ul class="navbar-nav ml-auto nav-flex-icons">
+                 <li class="nav-item">
+                     <a class="nav-link waves-effect waves-light">
+                         <i class="fab fa-twitter"></i>
+                     </a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link waves-effect waves-light">
+                         <i class="fab fa-google-plus-g"></i>
+                     </a>
+                 </li>
+                 <li class="nav-item dropdown">
+                     <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+                         aria-haspopup="true" aria-expanded="false">
+                         <i class="fas fa-user">Profile</i>
+                     </a>
+                     <div class="dropdown-menu dropdown-menu-right dropdown-default"
+                         aria-labelledby="navbarDropdownMenuLink-333">
+                         <a class="dropdown-item" href="account.html">My Profile</a>
+                         
+                             
+                         <form method="post"><button class="dropdown-item" type="submit" id="sign-out">Logout</button></form>
+                           
+ 
+                     </div>
+                 </li>
+             </ul>
+         </div>
+     </nav>
+     </header>
+    <!--/.Navbar -->
 
     <div class="head text-center">
         <h1>
@@ -142,7 +139,7 @@
                     <div class="d-flex justify-content-center">
                         <p class="text-muted"><span id="title-count"></span>/150</p>
                     </div>
-                    
+
 
                     <div class="d-flex justify-content-center">
                         <label for="general_category_input" class="col-form-label">Which Category matches your
@@ -214,40 +211,57 @@
     </div>
 
     </section>
-<!--------  Footer       ------>
-<br class="padding-top">
-<footer id="colophon" class="site-footer" role="contentinfo">
-  <div class="social-wrapper">
-    <ul>
-      <li>
-        <a href="#" target="_blank">
-          <img src="http://www.iconarchive.com/download/i81499/lunartemplates/modern-social-media-circles/Instagram.ico" alt="Instagram Logo" class="instagram-icon"></a>
-      </li>
-      <li>
-        <a href="index.html" target="_blank">
-          <img src="http://www.iconarchive.com/download/i81494/lunartemplates/modern-social-media-circles/Facebook.ico" alt="Facebook Logo" class="facebook-icon"></a>
-      </li>
-      <li>
-        <a href="#" target="_blank">
-          <img src="../images/icons/favicon.png" alt="flair Logo" class="flair-icon"></a>
-      </li>
-      <li>
-        <a href="#" target="_blank">
-          <img src="http://www.iconarchive.com/download/i81513/lunartemplates/modern-social-media-circles/Youtube.ico" alt="Youtube Logo" class="youtube-icon"></a>
-      </li>
-      <li>
-        <a href="#" target="_blank">
-          <img src="http://www.iconarchive.com/download/i81510/lunartemplates/modern-social-media-circles/Twitter.ico" alt="Foursquare Logo" class="foursquare-icon"></a>
-      </li>
-    </ul>
-  </div>
+    <!--------  Footer       ------>
+    <br class="padding-top">
+    <footer id="colophon" class="site-footer" role="contentinfo">
+        <div class="social-wrapper">
+            <ul>
+                <li>
+                    <a href="#" target="_blank">
+                        <img src="http://www.iconarchive.com/download/i81499/lunartemplates/modern-social-media-circles/Instagram.ico"
+                            alt="Instagram Logo" class="instagram-icon"></a>
+                </li>
+                <li>
+                    <a href="index.html" target="_blank">
+                        <img src="http://www.iconarchive.com/download/i81494/lunartemplates/modern-social-media-circles/Facebook.ico"
+                            alt="Facebook Logo" class="facebook-icon"></a>
+                </li>
+                <li>
+                    <a href="#" target="_blank">
+                        <img src="../images/icons/favicon.png" alt="flair Logo" class="flair-icon"></a>
+                </li>
+                <li>
+                    <a href="#" target="_blank">
+                        <img src="http://www.iconarchive.com/download/i81513/lunartemplates/modern-social-media-circles/Youtube.ico"
+                            alt="Youtube Logo" class="youtube-icon"></a>
+                </li>
+                <li>
+                    <a href="#" target="_blank">
+                        <img src="http://www.iconarchive.com/download/i81510/lunartemplates/modern-social-media-circles/Twitter.ico"
+                            alt="Foursquare Logo" class="foursquare-icon"></a>
+                </li>
+            </ul>
+        </div>
 
-  <nav class="footer-nav" role="navigation">
-    <p>Copyright &copy; 2020-
-      <?php echo date("Y"); ?> Flair GROUP 37- All rights reserved.</p>
-      <a href="about_us.html" target="_blank"><h5>ABOUT US</h5></a>
-    </nav>
-</footer>
+        <nav class="footer-nav" role="navigation">
+            <p>Copyright &copy; 2020-
+                <?php echo date("Y"); ?> Flair GROUP 37- All rights reserved.</p>
+            <a href="about_us.html" target="_blank">
+                <h5>ABOUT US</h5>
+            </a>
+        </nav>
+    </footer>
+
+    <!-- Bootstrap functionality scripts -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
 
     <script src="../javaScript/videoHandling/videoPlayer.js"></script>
     <script src="../javaScript/general/general.js"></script>

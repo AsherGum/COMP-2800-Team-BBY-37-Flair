@@ -42,7 +42,8 @@ function videoUpload(videoData, imageURI, challengeDocID) {
             if (userTitle.length === 0 || 
                 userTitle.length > maxTitleLength ||
                 userDescription.length > maxDescLength ||
-                userDescription.length === 0)  {
+                userDescription.length === 0 ||
+                videoData == undefined)  {
                     //need more elegance than alert in the future
                     alert("Please complete Title, and Description");
                     return;

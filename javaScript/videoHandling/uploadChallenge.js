@@ -30,7 +30,8 @@ function videoUpload(videoData, imageURI, userTags) {
         userTitle.length > maxTitleLength ||
         userDescription.length === 0 || 
         userDescription.length > maxDescLength ||
-        userCategory == undefined)  {
+        userCategory == undefined ||
+        videoData == undefined)  {
             //need more elegance than alert in the future
             alert("Please complete Title, Category, and Description");
             return;
