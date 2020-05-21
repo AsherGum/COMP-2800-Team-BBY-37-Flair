@@ -2,15 +2,21 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
 
+    <meta charset="UTF-8">
     <title>Flair Create Challenge</title>
     <link rel="shortcut icon" href="../images/icons/favicon.png" />
 
+    <!----------------------------------------------->
+    <!--  Meta tag for rendering on mobile devices -->
+    <!----------------------------------------------->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
+    <!----------------------------------------------->
+    <!-- CSS: Bootstrap, Firebase, other API -->
+    <!----------------------------------------------->
     <!-- Control of cache errors -->
-    
+
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
 
@@ -21,13 +27,10 @@
     <link href="../javaScript/videoAdapter/video-js.min.css" rel="stylesheet">
     <link href="../javaScript/videoAdapter/videojs.record.css" rel="stylesheet">
     <link href="../javaScript/videoAdapter/examples.css" rel="stylesheet">
-
     <script src="../javaScript/videoAdapter/video.js"></script>
     <script src="../javaScript/videoAdapter/RecordRTC.js"></script>
     <script src="../javaScript/videoAdapter/adapter.js"></script>
-
     <script src="../javaScript/videoAdapter/videojs.record.js"></script>
-
     <script src="../javaScript/videoAdapter/videojs.record.js"></script>
     <script src="../javaScript/videoAdapter/browser-workarounds.js"></script>
 
@@ -35,73 +38,70 @@
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-firestore.js"></script>
-
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-storage.js"></script>
-
     <script src="../javaScript/firebaseScripts/firebaseConfig.js"></script>
 
     <!-- BOOTSTRAP-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-
-
     <!------------------------>
     <!-- Your own CSS files -->
     <!------------------------>
     <link rel="stylesheet" href="../css/responses.css">
 
-
-
-
-
 </head>
 
 <body>
-
-    <!--Navbar -->
+    <!----------------------->
+    <!--  HTML Section -->
+    <!----------------------->
     <header>
         <!--Navbar -->
+        <!--This navbar block of code was adapted from code found here
+    source: https://mdbootstrap.com/docs/jquery/navigation/navbar/ -->
+        <!--Uses Bootstrap classes to create and organize Navbar and dropdown-->
         <nav class="mb-1 navbar navbar-expand-lg navbar-dark sticky-top">
-         <a class="navbar-brand" href="main.html"><img src="../images/icons/Untitled-1.svg" width="80" height="45"></a>
-         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-             <span class="navbar-toggler-icon"></span>
-         </button>
-         <div class="collapse navbar-collapse" id="navbarCollapse">
-             <ul class="navbar-nav mr-auto">
-                 <li class="nav-item">
-                     <a class="nav-link" href="uploadChallenge.html">Create Challenge</a>
-                 </li>
-                 <li class="nav-item">
-                     <a class="nav-link" href="categories.html">Categories</a>
-                 </li>
-                 <li class="nav-item">
-                     <a class="nav-link" href="leaderboard.html">Leaderboard</a>
-                 </li>
- 
-             </ul>
-             <ul class="navbar-nav ml-auto nav-flex-icons">
+            <a class="navbar-brand" href="main.html"><img src="../images/icons/Untitled-1.svg" width="80"
+                    height="45"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="uploadChallenge.html">Create Challenge</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="categories.html">Categories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="leaderboard.html">Leaderboard</a>
+                    </li>
 
-                 <li class="nav-item dropdown">
-                     <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
-                         aria-haspopup="true" aria-expanded="false">
-                         <i class="fas fa-user">Profile</i>
-                     </a>
-                     <div class="dropdown-menu dropdown-menu-right dropdown-default"
-                         aria-labelledby="navbarDropdownMenuLink-333">
-                         <a class="dropdown-item" href="account.html">My Profile</a>
-                         
-                             
-                         <form method="post"><button class="dropdown-item" type="submit" id="sign-out">Logout</button></form>
-                           
- 
-                     </div>
-                 </li>
-             </ul>
-         </div>
-     </nav>
-     </header>
+                </ul>
+                <ul class="navbar-nav ml-auto nav-flex-icons">
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-user">Profile</i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-default"
+                            aria-labelledby="navbarDropdownMenuLink-333">
+                            <a class="dropdown-item" href="account.html">My Profile</a>
+
+
+                            <form method="post"><button class="dropdown-item" type="submit"
+                                    id="sign-out">Logout</button></form>
+
+
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
     <!--/.Navbar -->
 
     <div class="head text-center">
@@ -109,7 +109,7 @@
             Create a new challenge!
         </h1>
     </div>
-
+    <!-- Video record -->
     <div class="container">
         <div class="row">
             <div class="col-sm-5">
@@ -137,7 +137,7 @@
                             challenge?</label>
                     </div>
 
-                    <!-- These will need to be finalized later-->
+                    <!-- Categories-->
                     <div class="d-flex justify-content-center">
                         <select name="general_category" id="inputCategory">
 
@@ -194,15 +194,12 @@
             </div>
         </div>
     </div>
-
-
-
-
-
     </div>
-
     </section>
+
     <!--------  Footer       ------>
+    <!--This footer block of code was adapted from code found here
+    source: https://freefrontend.com/css-headers-footers/-->
     <br class="padding-top">
     <footer id="colophon" class="site-footer" role="contentinfo">
         <div class="social-wrapper">
@@ -235,15 +232,16 @@
         </div>
 
         <nav class="footer-nav" role="navigation">
-            <p>Copyright &copy; 2020-
-                <?php echo date("Y"); ?> Flair GROUP 37- All rights reserved.</p>
+            <p>Copyright &copy; 2020 Flair Team 37- All rights reserved.</p>
             <a href="about_us.html" target="_blank">
                 <h5>ABOUT US</h5>
             </a>
         </nav>
     </footer>
-
-    <!-- Bootstrap functionality scripts -->
+    <!--/.Footer -->
+    <!----------------------------------------------->
+    <!-- JS: Boostrap, Firebase, API related    -->
+    <!----------------------------------------------->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
     </script>

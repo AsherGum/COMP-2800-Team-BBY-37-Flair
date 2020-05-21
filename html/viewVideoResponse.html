@@ -3,9 +3,13 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Video</title>
     <link rel="shortcut icon" href="../images/icons/favicon.png" />
+
+    <!----------------------------------------------->
+    <!--  Meta tag for rendering on mobile devices -->
+    <!----------------------------------------------->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!----------------------------------------------->
     <!-- CSS: Bootstrap, Firebase, other API -->
@@ -23,6 +27,9 @@
 </head>
 
 <body>
+    <!----------------------->
+    <!--  HTML Section -->
+    <!----------------------->
     <!-- Facebook share button code from
     https://developers.facebook.com/docs/plugins/share-button/
     -->
@@ -31,7 +38,10 @@
         src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v7.0&appId=1313183148875756&autoLogAppEvents=1">
     </script>
 
-    <!--------  Nav-Bar       ------>
+    <!--Navbar -->
+    <!--This navbar block of code was adapted from code found here
+    source: https://mdbootstrap.com/docs/jquery/navigation/navbar/ -->
+    <!--Uses Bootstrap classes to create and organize Navbar and dropdown-->
 
     <nav class="mb-1 navbar navbar-expand-lg navbar-dark sticky-top">
         <a class="navbar-brand" href="main.html"><img src="../images/icons/Untitled-1.svg" width="80" height="45"></a>
@@ -64,7 +74,8 @@
                         <a class="dropdown-item" href="account.html">My Profile</a>
 
 
-                        <form method="post"><button class="dropdown-item" type="submit" id="sign-out">Logout</button></form>
+                        <form method="post"><button class="dropdown-item" type="submit" id="sign-out">Logout</button>
+                        </form>
 
 
                     </div>
@@ -73,6 +84,9 @@
         </div>
     </nav>
     <!--/.Navbar -->
+
+    <!--View Video Responses-->
+    <!--Uses Bootstrap Classes to organize and seperate section-->
     <div class="container">
         <div class="my-1">
             <h1 id="title" class="display-3"></h1>
@@ -93,10 +107,11 @@
                     <div class="col-md-4">
                         <div class="profile-work">
                             <p>Video by: <span id="owner"></span></p>
-                            <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Follow" id='follow' /><br>
+                            <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Follow"
+                                id='follow' /><br>
 
                             <p>Views: <span id="views"></span></p>
-                            <br/>
+                            <br />
                             <p>Likes: <span id="likes"></span></p>
                             <button class="btn my-2" type="button" id="thumbsUp"></button> <br />
                             <div class="d-flex align-items-end mb-2">
@@ -105,13 +120,11 @@
                                     rel="canonical" href="/web/tweet-button">Tweet</a>
 
                                 <div class="fb-share-button mx-2" data-href="" data-layout="button" data-size="small"><a
-                                    target="_blank"
-                                    href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse"
-                                    class="fb-xfbml-parse-ignore">Share</a></div>
+                                        target="_blank"
+                                        href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse"
+                                        class="fb-xfbml-parse-ignore">Share</a></div>
                             </div>
 
-
-                            
 
                         </div>
                     </div>
@@ -147,6 +160,8 @@
 
     </div>
     <!--------  Footer       ------>
+    <!--This footer block of code was adapted from code found here
+    source: https://freefrontend.com/css-headers-footers/-->
     <br class="padding-top">
     <footer id="colophon" class="site-footer" role="contentinfo">
         <div class="social-wrapper">
@@ -187,6 +202,9 @@
         </nav>
     </footer>
 
+    <!----------------------------------------------->
+    <!-- JS: Boostrap, Firebase, API related    -->
+    <!----------------------------------------------->
 
     <!-- Firebase Scripts -->
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
@@ -199,17 +217,6 @@
     <!-- Import JQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
-
-
-
-
-
-
-
-
-    <!----------------------------------------------->
-    <!-- JS: Boostrap, Firebase, API related    -->
-    <!----------------------------------------------->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
     </script>
@@ -220,34 +227,38 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
     </script>
 
-<!-- Twitter for Websites given javascript from
+    <!-- Twitter for Websites given javascript from
     https://developer.twitter.com/en/docs/twitter-for-websites/javascript-api/guides/set-up-twitter-for-websites
 
     -->
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-    <script>window.twttr = (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0],
-          t = window.twttr || {};
-        if (d.getElementById(id)) return t;
-        js = d.createElement(s);
-        js.id = id;
-        js.src = "https://platform.twitter.com/widgets.js";
-        fjs.parentNode.insertBefore(js, fjs);
+    <script>
+        window.twttr = (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0],
+                t = window.twttr || {};
+            if (d.getElementById(id)) return t;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js, fjs);
 
-        t._e = [];
-        t.ready = function(f) {
-          t._e.push(f);
-        };
+            t._e = [];
+            t.ready = function (f) {
+                t._e.push(f);
+            };
 
-        return t;
-      }(document, "script", "twitter-wjs"));</script>
+            return t;
+        }(document, "script", "twitter-wjs"));
+    </script>
 
-    <!-- Page Scripts -->
+    <!--------------------------------------------------------------------->
+    <!-- JS files: Your own JavaScript functions included here    -->
+    <!--------------------------------------------------------------------->
     <script src="../javaScript//general/general.js"></script>
     <script src="../javaScript/videoHandling/viewVideoResponse.js"></script>
     <script src="../javaScript/userManagement/signout.js"></script>
 
-    
+
 
 </body>
 

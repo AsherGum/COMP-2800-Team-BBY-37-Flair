@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
 
+<head>
+    <!--This page uses the boilerplate code from COMP1800-->
     <meta charset="utf-8">
-    <title>Sign Up</title>
-        <link rel="shortcut icon" href="../images/icons/favicon.png" />
+    <link rel="shortcut icon" href="../images/icons/favicon.png" />
     <meta name="comp1800 boilerplate code" content="my bcit project">
     <meta name="author" content="BCIT">
 
@@ -16,36 +16,39 @@
     <!----------------------------------------------->
     <!-- CSS: Bootstrap, Firebase, other API -->
     <!----------------------------------------------->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
 
     <!-- Firebase Scripts -->
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-firestore.js"></script>
-
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-storage.js"></script>
+
+    <!-- The terms and Condition function-->
     <script>
-    function disableSubmit() {
-        document.getElementById("submit").disabled = true;
-    }
-
-    function activateButton(element) {
-
-        if(element.checked) {
-        document.getElementById("submit").disabled = false;
-        }
-        else  {
-        document.getElementById("submit").disabled = true;
+        function disableSubmit() {
+            document.getElementById("submit").disabled = true;
         }
 
-    }
+        function activateButton(element) {
+
+            if (element.checked) {
+                document.getElementById("submit").disabled = false;
+            } else {
+                document.getElementById("submit").disabled = true;
+            }
+
+        }
     </script>
+
     <!------------------------>
     <!-- Your own CSS files -->
     <!------------------------>
     <link href="../css/signup.css" rel="stylesheet">
 </head>
+
 <body onload="disableSubmit()">
 
 
@@ -65,65 +68,78 @@
     </div>
 
 
-        <div class="form">
-            <h1 class="title">Sign Up for Free</h1>
-              <div id="signup">
+    <div class="form">
+        <h1 class="title">Sign Up for Free</h1>
+        <div id="signup">
 
 
-                <form action="/" method="post">
+            <form action="/" method="post">
 
-                    <div class="container padding-bottom">
+                <div class="container padding-bottom">
 
-                            <div class="col-10 col-md-8 col-lg-6 ">
-                                <!-- Form -->
-                                <form class="form-example" action="" method="post">
+                    <div class="col-10 col-md-8 col-lg-6 ">
+                        <!-- Form -->
+                        <!-- Uses bootstrap for the sign up form for setting up account with fields -->
+                        <form class="form-example" action="" method="post">
 
-                                    <!-- Input fields -->
-                                    <div class="form-group">
-                                        <label for="firstName">Username:</label>
-                                        <input type="text" class="form-control username" id="username" placeholder="Username...">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="firstName">Email:</label>
-                                        <input type="text" class="form-control email" id="email" placeholder="Email...">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="password">Password:</label>
-                                        <input type="password" class="form-control password" id="password" placeholder="Password...">
-                                    </div>
-                                    <input type="checkbox" name="terms" id="terms" onchange="activateButton(this)">  I Agree to the <a href=#>Terms & Coditions</a>
-                                    <br><br>
-                                    <button type="submit" class="login-form-btn" id="submit">Sign up</button>
-
-
-                                    <!-- End input fields -->
-                                 </form>
-                                <!-- Form end -->
-                                <br>
-                                <p>Already have an account? <a style="text-decoration: none;" href="./login.html">Click here</a></p>
-
+                            <!-- Input fields -->
+                            <div class="form-group">
+                                <label for="firstName">Username:</label>
+                                <input type="text" class="form-control username" id="username"
+                                    placeholder="Username...">
                             </div>
-                        </div>
+                            <div class="form-group">
+                                <label for="firstName">Email:</label>
+                                <input type="text" class="form-control email" id="email" placeholder="Email...">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password:</label>
+                                <input type="password" class="form-control password" id="password"
+                                    placeholder="Password...">
+                            </div>
+                            <input type="checkbox" name="terms" id="terms" onchange="activateButton(this)"> I Agree to
+                            the <a href=#>Terms & Coditions</a>
+                            <br><br>
+                            <button type="submit" class="login-form-btn" id="submit">Sign up</button>
+
+
+                            <!-- End input fields -->
+                        </form>
+                        <!-- Form end -->
+                        <br>
+                        <p>Already have an account? <a style="text-decoration: none;" href="./login.html">Click here</a>
+                        </p>
+
                     </div>
+                </div>
+        </div>
 
 
     </div>
     <div class="footer-bottom-wrapper">
-</div>
+    </div>
 
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related    -->
     <!----------------------------------------------->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
 
-
-
+    <!--------------------------------------------------------------------->
+    <!-- JS files: Your own JavaScript functions included here    -->
+    <!--------------------------------------------------------------------->
 
     <script src="../javaScript/firebaseScripts/firebaseConfig.js"></script>
     <script src="../javaScript/general/general.js"></script>
     <script src="../javaScript/userManagement/signUp.js"></script>
 
 </body>
+
 </html>
