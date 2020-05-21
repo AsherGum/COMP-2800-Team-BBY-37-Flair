@@ -105,7 +105,6 @@ function clearInputField(elementId) {
  * @param {boolean} isLoading 
  */
 function loading(container, isLoading) {
-    console.log(container);
     const loadingContainer = document.getElementById(container);
     const loadingCircle = document.createElement('div');
     loadingCircle.classList.add("loading-circle");
@@ -128,5 +127,20 @@ function loading(container, isLoading) {
         })
 
     }
+}
+
+/**
+ * Gets the length of a given element (a text form or input field)
+ * and writes it into the inner html of an output element 
+ * 
+ * @param {string} inputField 
+ *                  the desired text field to grab the string length from
+ * @param {string} outputElement 
+ *                  the desired element to write the length to
+ */
+function getInputLength(inputField, outputElement) {
+    const input = document.getElementById(inputField);
+    inputLength = input.value.length;
+    document.getElementById(outputElement).innerHTML = inputLength;
 }
 

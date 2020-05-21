@@ -22,6 +22,9 @@ function videoUpload(videoData, imageURI, challengeDocID) {
     let challengeAttempts;
     let userEmail;
 
+    const maxTitleLength = 150;
+    const maxDescLength = 300;
+
     //check for user state
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
@@ -37,6 +40,8 @@ function videoUpload(videoData, imageURI, challengeDocID) {
             
 
             if (userTitle.length === 0 || 
+                userTitle.length > maxTitleLength ||
+                userDescription.length > maxDescLength ||
                 userDescription.length === 0)  {
                     //need more elegance than alert in the future
                     alert("Please complete Title, and Description");
@@ -183,13 +188,22 @@ function videoUpload(videoData, imageURI, challengeDocID) {
 //event listener for title input to check if it's empty
 document.getElementById('inputTitle').addEventListener('focusout', function() {
     checkEmptyInput("inputTitle");
-})
+});
+
+//event listener for title input to check the length
+document.getElementById('inputTitle').addEventListener('keyup', function() {
+    getInputLength("inputTitle", "title-count");
+});
 
 //event listener for description input to check if it's empty
 document.getElementById('inputDescription').addEventListener('focusout', function() {
     checkEmptyInput("inputDescription");
-})
+});
 
+//event listener for description input to check the length
+document.getElementById('inputDescription').addEventListener('keyup', function() {
+    getInputLength("inputDescription", "desc-count");
+});
 
 
 /**
