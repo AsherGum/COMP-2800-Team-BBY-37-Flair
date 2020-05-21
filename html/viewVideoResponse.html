@@ -103,27 +103,26 @@
                     </div>
                     <div class="col-md-4">
                         <div class="profile-work">
-                            <p>Video by:</p>
-                            <p id='owner'></p>
-                            <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Follow"
-                                id='follow' /><br>
+                            <p>Video by: <span id="owner"></span></p>
+                            <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Follow" id='follow' /><br>
 
-                            <p>Views:</p>
-                            <p id="views"></p><br />
-                            <p>Likes:</p>
-                            <p id="likes"></p>
-                            <button class="btn" type="button" id="thumbsUp"></button> <br />
-                            <div>
+                            <p>Views: <span id="views"></span></p>
+                            <br/>
+                            <p>Likes: <span id="likes"></span></p>
+                            <button class="btn my-2" type="button" id="thumbsUp"></button> <br />
+                            <div class="d-flex align-items-end mb-2">
                                 <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button"
                                     data-text="Check out this cool video on Flair!" data-show-count="false" link
                                     rel="canonical" href="/web/tweet-button">Tweet</a>
-                            </div>
 
-
-                            <div class="fb-share-button" data-href="" data-layout="button" data-size="small"><a
+                                <div class="fb-share-button mx-2" data-href="" data-layout="button" data-size="small"><a
                                     target="_blank"
                                     href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse"
                                     class="fb-xfbml-parse-ignore">Share</a></div>
+                            </div>
+
+
+                            
 
                         </div>
                     </div>
@@ -234,6 +233,28 @@
     <!-- Page Scripts -->
     <script src="../javaScript//general/general.js"></script>
     <script src="../javaScript/videoHandling/viewVideoResponse.js"></script>
+
+    <!-- Twitter for Websites given javascript from
+    https://developer.twitter.com/en/docs/twitter-for-websites/javascript-api/guides/set-up-twitter-for-websites
+
+    -->
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <script>window.twttr = (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0],
+          t = window.twttr || {};
+        if (d.getElementById(id)) return t;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://platform.twitter.com/widgets.js";
+        fjs.parentNode.insertBefore(js, fjs);
+
+        t._e = [];
+        t.ready = function(f) {
+          t._e.push(f);
+        };
+
+        return t;
+      }(document, "script", "twitter-wjs"));</script>
 
 </body>
 
