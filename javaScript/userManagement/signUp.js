@@ -1,4 +1,23 @@
-//Sign up button clicked.
+/**
+ * Signs the user up when they click the submit button.
+ * Creates a document of the user in the firebase Users collection
+ * and populates the fields with what the user provided.
+ * 
+ * Also creates empty fields that can be filled in
+ * by the user at a later time.
+ * 
+ * Code used: 
+ * 
+ * Firebase documentation example on how to
+ * send email verification.
+ * @author Firebase Documentation
+ * @see https://firebase.google.com/docs/auth/web/manage-users?authuser=0#send_a_user_a_verification_email
+ * 
+ * Firebase documentation example on how to
+ * create a document with data
+ * @author Firebase Documentation
+ * @see https://firebase.google.com/docs/firestore/manage-data/add-data?authuser=0#set_a_document
+ */
 $("#submit").closest('form').on('submit', function (event) {
 	event.preventDefault();
 	// Loading in email, password, first and last name, and university of user.
@@ -7,12 +26,12 @@ $("#submit").closest('form').on('submit', function (event) {
 	let userName = document.getElementById("username").value;
 
 	// Create user.
-	firebase.auth().createUserWithEmailAndPassword(userEmail, userPassword).then(function(result) {
-		
-	  }).catch(function(error) {
+	firebase.auth().createUserWithEmailAndPassword(userEmail, userPassword).then(function (result) {
+
+	}).catch(function (error) {
 		// Handle error.
 		console.log(error);
-	  });
+	});
 
 	//Authentication state observer.
 	firebase.auth().onAuthStateChanged(function (user) {
@@ -27,16 +46,16 @@ $("#submit").closest('form').on('submit', function (event) {
 				UserName: userName,
 				profilePicture: "",
 				likedVideos: [],
-				Followers:[],
-				Following:[],
-				Challenges:[],
+				Followers: [],
+				Following: [],
+				Challenges: [],
 				isVerified: false
 
 			});
 			console.log("user is logged in");
 
 			//Send email verification to user's email.
-			user.sendEmailVerification().then(function() {
+			user.sendEmailVerification().then(function () {
 				// Email sent.
 
 				//Upload user data to database.
@@ -57,7 +76,7 @@ $("#submit").closest('form').on('submit', function (event) {
 				}).catch(function (error) {
 					console.log("Error getting document:", error);
 				});
-			  }).catch(function(error) {
+			}).catch(function (error) {
 				// An error happened.
 			});
 
@@ -73,16 +92,16 @@ $("#submit").closest('form').on('submit', function (event) {
 
 
 //event listener for username input to check if it's empty
-document.getElementById('username').addEventListener('focusout', function() {
-    checkEmptyInput("username");
+document.getElementById('username').addEventListener('focusout', function () {
+	checkEmptyInput("username");
 })
 
 //event listener for email input to check if it's empty
-document.getElementById('email').addEventListener('focusout', function() {
-    checkEmptyInput("email");
+document.getElementById('email').addEventListener('focusout', function () {
+	checkEmptyInput("email");
 })
 
 //event listener for password input to check if it's empty
-document.getElementById('password').addEventListener('focusout', function() {
-    checkEmptyInput("password");
+document.getElementById('password').addEventListener('focusout', function () {
+	checkEmptyInput("password");
 })
