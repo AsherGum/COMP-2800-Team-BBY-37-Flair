@@ -44,11 +44,11 @@ firebase.auth().onAuthStateChanged(function (user) {
         }
 
         /* unfinished Followed users functionality
-        var ref = firebase.database().ref('/Users/' + user.uid + '/following');
+        let ref = firebase.database().ref('/Users/' + user.uid + '/following');
         ref.once(globalUser).then(function(snap) {
-            var array = snap.val();
-            for (var i in array) {
-                var value = array[i]
+            let array = snap.val();
+            for (let i in array) {
+                let value = array[i]
                 console.log(value);
                 if (value == globalUser) {
                     console.log("found user");
@@ -61,7 +61,7 @@ firebase.auth().onAuthStateChanged(function (user) {
         }*/
 
         // Get User information.
-        var docRef = database.collection("Users").doc(globalUser);
+        let docRef = database.collection("Users").doc(globalUser);
         docRef.get().then(function (doc) {
             // Makes sure document exists.
             if (doc.exists) {
@@ -85,12 +85,12 @@ firebase.auth().onAuthStateChanged(function (user) {
                 loading("loading_insertion", false);
                 let docRef = database.collection("Challenges")
                 docRef.where("owner", "==", globalUser).get().then(function (querySnapshot) {
-                    querySnapshot.forEach(function (post) {
-                        if (post) {
+                    querySnapshot.forEach(function (challenge) {
+                        if (challenge) {
                             // Create the video onto the page.
-                            getUploadedVideos(post.data().challenge,
-                                post.data().imageURL,
-                                post.id, post.data().upvotes, "challenge");
+                            getUploadedVideos(challenge.data().challenge,
+                            challenge.data().imageURL,
+                            challenge.id, challenge.data().upvotes, "challenge");
                         }
                     })
                 })
@@ -149,8 +149,8 @@ $("#follow").click(function () {
             }
             //reload page data
             function load_js() {
-                var head = document.getElementsByTagName('head')[0];
-                var script = document.createElement('script');
+                let head = document.getElementsByTagName('head')[0];
+                let script = document.createElement('script');
                 script.src = '../javascript/userManagement/account.js';
                 head.appendChild(script);
             }
@@ -159,10 +159,14 @@ $("#follow").click(function () {
     })
 });
 
-//For about us Images
+/**
+ * A hard coded check to see if the user has been
+ * redirected to this page from our "aboutus" page.
+ * Hard coded global users document ids are the 
+ * 4 original flair team members. Displays the appropriate
+ * profile picture of that team member.
+ */
 function upImages() {
-
-
     if (globalUser === "3WFqhgsdkcezIYV9KtIaE4vhWwm2") {
         document.getElementById("profilePic").src = "../images/3WFqhgsdkcezIYV9KtIaE4vhWwm2.jpg";
         document.getElementById("edit").style.display = "none";
@@ -181,13 +185,29 @@ function upImages() {
     }
 }
 
-
-$("#home-tab").on('click', function (param) {
+/**
+ * Click handler for the Uploaded Challenges tab to show
+ * what challenges the user has uploaded. Considered the "home-tab" because
+ * it's the default tab that will be shown on page load.
+ * 
+ * On click, the database will be queried for challenges that match the 
+ * user id. These videos will then be displayed in the container.
+ * 
+ * 
+ * Nav tabs HTML element ID structure from Bootstrap
+ * @author Bootstrap
+ * @see https://getbootstrap.com/docs/4.3/components/navs/
+ * 
+ * Firebase documentation on how to query database:
+ * @author Firebase documentation
+ * @see https://firebase.google.com/docs/firestore/query-data/queries?authuser=0
+ */
+$("#home-tab").on('click', function () {
     if (!home) {
         //Loading circle is turned on
         loading("home-tab", true);
         home = true;
-        var child = document.getElementsByClassName("userVideos")[0].lastElementChild;
+        let child = document.getElementsByClassName("userVideos")[0].lastElementChild;
         while (child) {
             document.getElementsByClassName("userVideos")[0].removeChild(child);
             child = document.getElementsByClassName("userVideos")[0].lastElementChild;
@@ -209,14 +229,29 @@ $("#home-tab").on('click', function (param) {
     }
 })
 
-
+/**
+ * Click handler for the Uploaded Responses tab to show
+ * what challenge response videos the user has uploaded. Considered the
+ * "profile-tab" as that's the default bootstrap code..
+ * 
+ * On click, the database will be queried for challenges that match the 
+ * user id. These videos will then be displayed in the container.
+ * 
+ * Nav tabs HTML element ID structure from Bootstrap
+ * @author Bootstrap
+ * @see https://getbootstrap.com/docs/4.3/components/navs/
+ * 
+ * Firebase documentation on how to query database:
+ * @author Firebase documentation
+ * @see https://firebase.google.com/docs/firestore/query-data/queries?authuser=0
+ */
 $("#profile-tab").on('click', function (param) {
     if (home) {
         //turn on loading circle
         loading("profile-tab", true);
 
         home = false;
-        var child = document.getElementsByClassName("userVideos")[0].lastElementChild;
+        let child = document.getElementsByClassName("userVideos")[0].lastElementChild;
         while (child) {
             document.getElementsByClassName("userVideos")[0].removeChild(child);
             child = document.getElementsByClassName("userVideos")[0].lastElementChild;
@@ -226,7 +261,6 @@ $("#profile-tab").on('click', function (param) {
     database.collectionGroup("Responses").where("user", "==", globalUser).get().then(function (querySnapshot) {
         querySnapshot.forEach(function (post) {
             if (post) {
-                console.log("here");
                 const userVideoID = post.data().userVideo;
                 const imageURL = post.data().imageURL;
                 const videoURL = post.data().videoURL
@@ -239,12 +273,6 @@ $("#profile-tab").on('click', function (param) {
                         getUploadedVideos(title, imageURL, userVideoID, upvotes, challengeOrResponse);
 
                     })
-
-                // Create the post.
-                /* createPost(post.data().challenge,
-                            post.data().imageURL,
-                            post.data().videoURL,
-                            post.id, post.data().upvotes); */
             }
         })
         //turn on loading circle
@@ -268,13 +296,12 @@ $("#profile-tab").on('click', function (param) {
  * @param {string} challengeOrResponse
  */
 function getUploadedVideos(title, imageURL, id, likesCount, challengeOrResponse) {
-
     // Create the post on the main page.
-    var vidBox = document.createElement("div");
+    let vidBox = document.createElement("div");
     vidBox.className = "card";
 
     // Getting images.
-    var img = document.createElement("img");
+    let img = document.createElement("img");
     img.src = imageURL;
     img.id = id;
     img.onclick = function () {
@@ -286,17 +313,16 @@ function getUploadedVideos(title, imageURL, id, likesCount, challengeOrResponse)
         }
     }
 
-    var info = document.createElement("p");
+    let info = document.createElement("p");
     info.innerHTML = title;
 
-    var like = document.createElement('img');
+    let like = document.createElement('img');
     like.src = "../images/icons/like.png"
     like.id = "view";
 
-    var likes = document.createElement("h4");
+    let likes = document.createElement("h4");
     likes.id = "likes";
     likes.innerHTML = likesCount;
-
 
     content.appendChild(vidBox);
     vidBox.appendChild(info);
