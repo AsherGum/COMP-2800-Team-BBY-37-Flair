@@ -1,4 +1,14 @@
-// Authentication state observer.
+/**
+ * Checks if user is logged in and checks if there
+ * is redirect information in the URL. 
+ * 
+ * Code used: 
+ * 
+ * Firebase documentation example on how to
+ * check user authentication state:
+ * @author Firebase Documentation
+ * @see https://firebase.google.com/docs/auth/web/manage-users?authuser=0
+ */
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
       // User is signed in.
@@ -16,7 +26,17 @@ firebase.auth().onAuthStateChanged(function(user) {
 });
 
 
-//Login button clicked.
+/**
+ * Logs the user in when they click the submit button after filling in their
+ * information.
+ * 
+ * Code used: 
+ * 
+ * Firebase documentation example on how to
+ * sign in with email and password.
+ * @author Firebase Documentation
+ * @see https://firebase.google.com/docs/auth/web/firebaseui?authuser=0#email_address_and_password
+ */
 $("#submit").closest('form').on('submit', function(event) {
     event.preventDefault();
 
