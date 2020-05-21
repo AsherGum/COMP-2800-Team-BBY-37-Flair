@@ -1,7 +1,7 @@
 
+//Variables used to parse the Website URL
 const responseIDArray = parseSearchURL();
 const responseID = responseIDArray[0];
-
 const parentID = parseURLParentID(2);
 const title = parseURLParentID(3);
 
@@ -17,7 +17,15 @@ let ownerTag;
 //Turn on the loading circle on page load
 loading("loading_insertion", true);
 
-
+/**
+ * Loads Challenge response videos from the database by finding the document
+ * with response id that is taken from parsing the URL.
+ * 
+ * Uses code from:
+ * Firebase documentation on how to read info from database:
+ * @author Firebase documentation
+ * @see https://firebase.google.com/docs/database/web/read-and-write?authuser=0
+ */
 var docRef = database.collection("userVideos").doc(responseID);
 // Get the document.
 docRef.get().then(function(doc) {
@@ -66,6 +74,12 @@ docRef.get().then(function(doc) {
     
 });
 
+
+/**
+ * Called when inputting video information into html elements.
+ * 
+ * @param {FirebaseObject} doc 
+ */
 function getVideoData(doc){
     // Set page title to post title.
     document.title = doc.data().challenge;
