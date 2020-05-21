@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>My BCIT Project</title>
+    <title>About us</title>
     <link rel="shortcut icon" href="../images/icons/favicon.png" />
     <meta name="comp1800 boilerplate code" content="my bcit project">
     <meta name="author" content="BCIT">
@@ -19,7 +19,16 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+    <!-- Firebase Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-database.js"></script>
+    <script src="../javaScript/firebaseScripts/firebaseConfig.js"></script>
 
+    <!-- Import JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <!------------------------>
     <!-- Your own CSS files -->
     <!------------------------>
@@ -32,49 +41,71 @@
     <!--  HTML Section -->
     <!----------------------->
 
-    <!--------  Nav-Bar       ------>
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
-        <div class="container-fluid">
+    <!--Navbar -->
+    <nav class="mb-1 navbar navbar-expand-lg navbar-dark sticky-top">
+        <a class="navbar-brand" href="main.html"><img src="../images/icons/Untitled-1.svg" width="80" height="45"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="uploadChallenge.html">Create Challenge</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="categories.html">Categories</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="leaderboard.html">Leaderboard</a>
+                </li>
 
-            <a href="../html/main.html" class="navbar-brand"><img src="../images/icons/Untitled-1.svg" width="100"
-                    height="80"></a>
-            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav">
-                    <li class="nav-link">
-                        <a class="nav-link" href="uploadChallenge.html">Create Challenge</a>
-                    </li>
-                    <li class="nav-link">
-                        <a class="nav-link" href="categories.html">Categories</a>
-                    </li>
-                    <li class="nav-link">
-                        <a class="nav-link" href="leaderboard.html">Leaderboard</a>
-                    </li>
+            </ul>
+            <ul class="navbar-nav ml-auto nav-flex-icons">
+                <li class="nav-item">
+                    <a class="nav-link waves-effect waves-light">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link waves-effect waves-light">
+                        <i class="fab fa-google-plus-g"></i>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user">Profile</i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-default"
+                        aria-labelledby="navbarDropdownMenuLink-333">
+                        <a class="dropdown-item" href="account.html">My Profile</a>
 
 
-                </ul>
-                <ul class="navbar-nav ml-auto">
-                    <a href="account.html" class="nav-item nav-link">My Account</a>
-                </ul>
+                        <button class="dropdown-item" type="submit" id="submit">
+                            <form method="post">Logout</form>
+                        </button>
 
-            </div>
 
+                    </div>
+                </li>
+            </ul>
         </div>
     </nav>
+    <!--/.Navbar -->
     <!---Something About Flair-->
-    <div class="container-fluid padding">
-        <div class="row padding">
-            <div class="col-lg-6">
-                <h2 class="display-1">Flair</h2>
-                <h2>A dynamic and exciting way to show off your flairs.</h2>
+
+    <div class="container">
+        <div class="row">
+
+            <h2 class="display-1"></h2>
+            <h3 class="text-center padding-top spacing">Flair is a way for people to show off their talents.
                 <br>
-                <hr>
-                <h3>Flair is a way for people to show off their talents. It's a space for people to connect and share
-                    their creativity and passions. We're a team of students from the British Columbia Institute of
-                    Technology and we believe that everyone has a talent to show. </h3>
-            </div>
+                It's a space for
+                people to connect and share
+                their creativity and passions. We're a team of students from the British Columbia Institute of
+                Technology and we believe that everyone has a talent to show. </h3>
+
 
         </div>
         <div id="amirHidden" style="display:none">
@@ -88,8 +119,8 @@
     <div class="container-fluid padding">
         <br>
         <div class="row text-center">
-            <div class="col-12">
-                <h1 class="display-3">Meet the Team</h1>
+            <div class="container-orange col-12">
+                <h1 class="meet">Meet the Team</h1>
             </div>
             <hr>
         </div>
@@ -103,7 +134,7 @@
                     <div class="card-body">
                         <h4 class="card-title">Asher</h4>
                         <p class="card-text">
-                            Few sentences about team member
+                            I like to eat watermelon and fried chicken. But I listen to dubstep.
                         </p>
                         <a href="../html/account.html?view:TRNhtP0v5pYfNDnBeaY19CfPmwu2" class="btn btn-warning">View
                             Profile</a>
@@ -117,7 +148,8 @@
                     <div class="card-body">
                         <h4 class="card-title">Ben</h4>
                         <p class="card-text">
-                            A student at BCIT in the CST program. Enjoys learning new things in the world of technology and travelling. 
+                            A student at BCIT in the CST program. Enjoys learning new things in the world of technology
+                            and travelling.
                         </p>
                         <a href="../html/account.html?view:3WFqhgsdkcezIYV9KtIaE4vhWwm2" class="btn btn-warning">View
                             Profile</a>
@@ -143,7 +175,7 @@
                     <div class="card-body">
                         <h4 class="card-title">Saksham</h4>
                         <p class="card-text">
-                            Few sentences about team member
+                            Current CST Student at BCIT
                         </p>
                         <a href="../html/account.html?view:NNeTyFBC1SS9xbV41tCYfxcjWjA2" class="btn btn-warning">View
                             Profile</a>
@@ -157,7 +189,7 @@
         <div class="container-fluid padding">
             <div class="row text-center">
                 <div class="col-md-4">
-                    <img src="../images/icons/Untitled-1.svg" height="80" width="150">
+                    <a href="main.html"><img src="../images/icons/Untitled-3.svg" width="150"></a>
                     <hr class="light">
                     <p>flairemail@flair.com</p>
                     <p>772 513 1097</p>
@@ -173,7 +205,9 @@
                 </div>
                 <div class="col-md-4">
                     <hr class="light">
-                    <h4><a href="about_us.html">About us</a></h4>
+                    <a href="about_us.html">
+                        <h4>About us</h4>
+                    </a>
                     <hr class="light">
                     <p>2800 Project</p>
                     <p>Made by Asher, Ben, Francis, Saksham</p>
@@ -205,6 +239,7 @@
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
     <script src="../javaScript/pageScripts/about_us.js"></script>
+    <script src="../javaScript/userManagement/signout.js"></script>
     <!--------------------------------------------------------------------->
     <!-- Make calls to your own JavaScript functions, here below-->
     <!---------------------------------------------------------------------->
@@ -213,3 +248,5 @@
 </body>
 
 </html>
+
+

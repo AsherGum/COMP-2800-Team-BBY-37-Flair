@@ -1,5 +1,24 @@
 
-        body{
+       
+       @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+       html,
+       body {
+           height: 100%;
+           width: 100%;
+           font-family: 'Poppins', sans-serif;
+       }
+       
+       
+       .navbar {
+           padding: .8rem;
+           background-color: #424242;
+           color: #FFF;
+       }
+       .nav-link {
+        font-size: 1.3em !important;
+    }
+       
+       body{
             overflow-x: hidden;
             
 
@@ -22,10 +41,10 @@
         }
 
         footer {
-            background-color: #3f3f3f;
+            background-color: #424242;
             color: #d5d5d5;
             padding-top: 2rem;
-        }
+          }
         
         hr.light {
             border-top: 1px solid #d5d5d5;

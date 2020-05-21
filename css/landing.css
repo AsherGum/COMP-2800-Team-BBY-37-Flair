@@ -10,14 +10,20 @@ body {
     padding-bottom: 3rem;
     
 }
+
+
 #frontLogo {
 
     padding-top: 1rem;
-    padding-left: 1rem;
+    padding-left: 2rem;
     width: 30%;
+    
 }
 #balancing {
     width: 100%;
+}
+.spacing {
+    line-height: 2;
 }
 
 .padding-top{
@@ -33,6 +39,7 @@ body {
 .text-description{
     text-align: justify ;
 }
+
 
 .landing-text {
     
