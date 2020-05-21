@@ -42,6 +42,10 @@
     <!----------------------->
 
     <!--Navbar -->
+    <!--This navbar block of code was adapted from code found here
+    source: https://mdbootstrap.com/docs/jquery/navigation/navbar/ --> 
+    <!--Uses Bootstrap classes to create and organize Navbar and dropdown-->
+
     <nav class="mb-1 navbar navbar-expand-lg navbar-dark sticky-top">
         <a class="navbar-brand" href="main.html"><img src="../images/icons/Untitled-1.svg" width="80" height="45"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
@@ -72,7 +76,8 @@
                         <a class="dropdown-item" href="account.html">My Profile</a>
 
 
-                        <form method="post"><button class="dropdown-item" type="submit" id="sign-out">Logout</button></form>
+                        <form method="post"><button class="dropdown-item" type="submit" id="sign-out">Logout</button>
+                        </form>
 
 
                     </div>
@@ -81,13 +86,14 @@
         </div>
     </nav>
     <!--/.Navbar -->
-    <!---Something About Flair-->
-
+    <!--Something About Flair-->
+    <!--Uses Bootstrap Classes to organize and seperate section-->
     <div class="container">
         <div class="row">
 
             <h2 class="display-1"></h2>
-            <h3 class="text-center padding-top spacing">Flair is a way for people to show off their talents.
+            <h3 class="text-center padding-top spacing">
+                Flair is a way for people to show off their talents.
                 <br>
                 It's a space for
                 people to connect and share
@@ -96,6 +102,7 @@
 
 
         </div>
+        <!--ID for hidden easteregg, displayed through key sequence 'amir' in window-->
         <div id="amirHidden" style="display:none">
 
             <h1><a href="easterEgg.html">Click to explore the INNER MIND</a></h1>
@@ -103,7 +110,8 @@
 
     </div>
 
-    <!---flair team-->
+    <!---Flair team-->
+    <!--Uses Bootstrap Classes to seperate section from Flair Member Profiles-->
     <div class="container-fluid padding">
         <br>
         <div class="row text-center">
@@ -113,7 +121,8 @@
             <hr>
         </div>
     </div>
-
+    <!--Flair Member Profiles-->
+    <!--Uses Bootstrap Classes to display profiles as Cards-->
     <div class="container-fluid padding">
         <div class="row padding">
             <div class="col-md-3">
@@ -136,7 +145,8 @@
                     <div class="card-body">
                         <h4 class="card-title">Ben</h4>
                         <p class="card-text">
-                            A student at BCIT in the CST program. Enjoys learning new things in the world of technology and travelling.
+                            A student at BCIT in the CST program. Enjoys learning new things in the world of technology
+                            and travelling.
                         </p>
                         <a href="../html/account.html?view:3WFqhgsdkcezIYV9KtIaE4vhWwm2" class="btn btn-warning">View
                             Profile</a>
@@ -171,53 +181,61 @@
             </div>
         </div>
     </div>
-<!--------  Footer       ------>
-<br class="padding-top">
-<footer id="colophon" class="site-footer" role="contentinfo">
-  <div class="social-wrapper">
-    <ul>
-      <li>
-        <a href="#" target="_blank">
-          <img src="http://www.iconarchive.com/download/i81499/lunartemplates/modern-social-media-circles/Instagram.ico" alt="Instagram Logo" class="instagram-icon"></a>
-      </li>
-      <li>
-        <a href="index.html" target="_blank">
-          <img src="http://www.iconarchive.com/download/i81494/lunartemplates/modern-social-media-circles/Facebook.ico" alt="Facebook Logo" class="facebook-icon"></a>
-      </li>
-      <li>
-        <a href="#" target="_blank">
-          <img src="../images/icons/favicon.png" alt="flair Logo" class="flair-icon"></a>
-      </li>
-      <li>
-        <a href="#" target="_blank">
-          <img src="http://www.iconarchive.com/download/i81513/lunartemplates/modern-social-media-circles/Youtube.ico" alt="Youtube Logo" class="youtube-icon"></a>
-      </li>
-      <li>
-        <a href="#" target="_blank">
-          <img src="http://www.iconarchive.com/download/i81510/lunartemplates/modern-social-media-circles/Twitter.ico" alt="Foursquare Logo" class="foursquare-icon"></a>
-      </li>
-    </ul>
-  </div>
+    <!--------  Footer       ------>
+    <!--This footer block of code was adapted from code found here
+    source: https://freefrontend.com/css-headers-footers/-->
+    <br class="padding-top">
+    <footer id="colophon" class="site-footer" role="contentinfo">
+        <div class="social-wrapper">
+            <ul>
+                <li>
+                    <a href="#" target="_blank">
+                        <img src="http://www.iconarchive.com/download/i81499/lunartemplates/modern-social-media-circles/Instagram.ico"
+                            alt="Instagram Logo" class="instagram-icon"></a>
+                </li>
+                <li>
+                    <a href="index.html" target="_blank">
+                        <img src="http://www.iconarchive.com/download/i81494/lunartemplates/modern-social-media-circles/Facebook.ico"
+                            alt="Facebook Logo" class="facebook-icon"></a>
+                </li>
+                <li>
+                    <a href="#" target="_blank">
+                        <img src="../images/icons/favicon.png" alt="flair Logo" class="flair-icon"></a>
+                </li>
+                <li>
+                    <a href="#" target="_blank">
+                        <img src="http://www.iconarchive.com/download/i81513/lunartemplates/modern-social-media-circles/Youtube.ico"
+                            alt="Youtube Logo" class="youtube-icon"></a>
+                </li>
+                <li>
+                    <a href="#" target="_blank">
+                        <img src="http://www.iconarchive.com/download/i81510/lunartemplates/modern-social-media-circles/Twitter.ico"
+                            alt="Foursquare Logo" class="foursquare-icon"></a>
+                </li>
+            </ul>
+        </div>
 
-  <nav class="footer-nav" role="navigation">
-    <p>Copyright &copy; 2020-
-      <?php echo date("Y"); ?> Flair GROUP 37- All rights reserved.</p>
-      <a href="about_us.html" target="_blank"><h5>ABOUT US</h5></a>
-    </nav>
-</footer>
+        <nav class="footer-nav" role="navigation">
+            <p>Copyright &copy; 2020-
+                <?php echo date("Y"); ?> Flair GROUP 37- All rights reserved.</p>
+            <a href="about_us.html" target="_blank">
+                <h5>ABOUT US</h5>
+            </a>
+        </nav>
+    </footer>
 
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related    -->
     <!----------------------------------------------->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
 
 
     <!--------------------------------------------------------------------->
