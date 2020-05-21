@@ -45,7 +45,7 @@ $("#submit").closest("form").on("submit", function (event) {
 	var first = document.getElementById("firstName").value;
 	var last = document.getElementById("lastName").value;
 	var username = document.getElementById("userName").value;
-	var Bio= document.getElementById("bio").value;
+	var Bio = document.getElementById("bio").value;
 
 	var user = firebase.auth().currentUser;
 
@@ -61,7 +61,7 @@ $("#submit").closest("form").on("submit", function (event) {
 			alert("Profile Updated!");
 			console.log("Profile successfully updated!");
 			window.location.href = "./account.html";
-			
+
 		})
 		// Error catch if profile is not able to be updated.
 		.catch(function (error) {
@@ -71,137 +71,147 @@ $("#submit").closest("form").on("submit", function (event) {
 		});
 })
 
-$("#deleteAccount").on('click', function (event){
+$("#deleteAccount").on('click', function (event) {
 	// Authentication state observer.
 	firebase.auth().onAuthStateChanged(function (user) {
 		if (user) {
+			//Prompt user to confirm deletion of account
+			let firstConfirm = window.confirm("Are you sure you want to delete your account?");
 
-			database.collection("Users").doc(user.uid).delete().then(function() {
-				console.log("User Document successfully deleted!");
-			}).catch(function(error) {
-				console.error("Error removing document: ", error);
-			});
+			if (firstConfirm) {
+				//Prompt user again to confirm deletion of account
+				let secondConfirm = window.confirm("Are you really sure? There's no going back!");
 
-			database.collection("Users").where("Followers", "array-contains", user.uid)
-			.get().then(function(querySnapshot) {
-				querySnapshot.forEach(function(doc) {
-					
-					database.collection("Users").doc(doc.id).update({
-						Followers: firebase.firestore.FieldValue.arrayRemove(user.uid)
-					}).then(result => {
-						console.log("deleted from followers")
-					}).catch(function(error) {
-						console.log("Error getting documents: ", error);
-					});
-				})
-			})
-			.catch(function(error) {
-				console.log("Error getting documents: ", error);
-			});
-
-			database.collection("Users").where("Following", "array-contains", user.uid)
-			.get().then(function(querySnapshot) {
-				querySnapshot.forEach(function(doc) {
-					
-					database.collection("Users").doc(doc.id).update({
-						Following: firebase.firestore.FieldValue.arrayRemove(user.uid)
-					}).then(result => {
-						console.log("deleted from following")
-					}).catch(function(error) {
-						console.log("Error getting documents: ", error);
-					});
-				})
-			})
-			.catch(function(error) {
-				console.log("Error getting documents: ", error);
-			});
-
-			database.collection("Challenges").where("owner", "==", user.uid)
-			.get().then(function(querySnapshot) {
-				querySnapshot.forEach(function(doc) {
-					
-					database.collection("Challenges").doc(doc.id).delete()
-					.then(result => {
-						console.log("deleted challenge")
-
-						let storageRef = firebase.storage().ref();
-
-						var deleteVid = storageRef.child('userVideos/' + doc.id + "/challengeVideo");
-						// Delete the file
-						deleteVid.delete().then(function() {
-						// File deleted successfully
-							console.log("challenge video deleted");
-						}).catch(function(error) {
-						// Uh-oh, an error occurred!
-							console.log("challenge video deletion FAILED");
-						});
-
-						var deletePhoto = storageRef.child('userVideosThumbnails/' + doc.id + "/thumbnail");
-						// Delete the file
-						deletePhoto.delete().then(function() {
-						// File deleted successfully
-							console.log("challenge video deleted");
-						}).catch(function(error) {
-						// Uh-oh, an error occurred!
-							console.log("challenge photo deletion FAILED");
-						});
-
-					}).catch(function(error) {
-						console.log("Error getting documents: ", error);
+				if (secondConfirm) {
+					database.collection("Users").doc(user.uid).delete().then(function () {
+						console.log("User Document successfully deleted!");
+					}).catch(function (error) {
+						console.error("Error removing document: ", error);
 					});
 
+					database.collection("Users").where("Followers", "array-contains", user.uid)
+						.get().then(function (querySnapshot) {
+							querySnapshot.forEach(function (doc) {
 
-				})
-			})
-			.catch(function(error) {
-				console.log("Error getting documents: ", error);
-			});
-
-			database.collection("userVideos").where("user", "==", user.uid)
-			.get().then(function(querySnapshot) {
-				querySnapshot.forEach(function(doc) {
-					
-					database.collection("userVideos").doc(doc.id).delete()
-					.then(result => {
-						console.log("deleted challenge")
-						let storageRef = firebase.storage().ref();
-
-						var deleteVid = storageRef.child('userVideos/' + doc.id + "/challengeVideo");
-						// Delete the file
-						deleteVid.delete().then(function() {
-						// File deleted successfully
-							console.log("challenge video deleted");
-						}).catch(function(error) {
-						// Uh-oh, an error occurred!
-							console.log("challenge video deletion FAILED");
+								database.collection("Users").doc(doc.id).update({
+									Followers: firebase.firestore.FieldValue.arrayRemove(user.uid)
+								}).then(result => {
+									console.log("deleted from followers")
+								}).catch(function (error) {
+									console.log("Error getting documents: ", error);
+								});
+							})
+						})
+						.catch(function (error) {
+							console.log("Error getting documents: ", error);
 						});
 
-						var deletePhoto = storageRef.child('userVideosThumbnails/' + doc.id + "/thumbnail");
-						// Delete the file
-						deletePhoto.delete().then(function() {
-						// File deleted successfully
-							console.log("challenge video deleted");
-						}).catch(function(error) {
-						// Uh-oh, an error occurred!
-							console.log("challenge video deletion FAILED");
-						});
-					}).catch(function(error) {
-						console.log("Error getting documents: ", error);
-					});
-					
-				})
-			})
-			.catch(function(error) {
-				console.log("Error getting documents: ", error);
-			});
+					database.collection("Users").where("Following", "array-contains", user.uid)
+						.get().then(function (querySnapshot) {
+							querySnapshot.forEach(function (doc) {
 
+								database.collection("Users").doc(doc.id).update({
+									Following: firebase.firestore.FieldValue.arrayRemove(user.uid)
+								}).then(result => {
+									console.log("deleted from following")
+								}).catch(function (error) {
+									console.log("Error getting documents: ", error);
+								});
+							})
+						})
+						.catch(function (error) {
+							console.log("Error getting documents: ", error);
+						});
+
+					database.collection("Challenges").where("owner", "==", user.uid)
+						.get().then(function (querySnapshot) {
+							querySnapshot.forEach(function (doc) {
+
+								database.collection("Challenges").doc(doc.id).delete()
+									.then(result => {
+										console.log("deleted challenge")
+
+										let storageRef = firebase.storage().ref();
+
+										var deleteVid = storageRef.child('userVideos/' + doc.id + "/challengeVideo");
+										// Delete the file
+										deleteVid.delete().then(function () {
+											// File deleted successfully
+											console.log("challenge video deleted");
+										}).catch(function (error) {
+											// Uh-oh, an error occurred!
+											console.log("challenge video deletion FAILED");
+										});
+
+										var deletePhoto = storageRef.child('userVideosThumbnails/' + doc.id + "/thumbnail");
+										// Delete the file
+										deletePhoto.delete().then(function () {
+											// File deleted successfully
+											console.log("challenge video deleted");
+										}).catch(function (error) {
+											// Uh-oh, an error occurred!
+											console.log("challenge photo deletion FAILED");
+										});
+
+									}).catch(function (error) {
+										console.log("Error getting documents: ", error);
+									});
+
+
+							})
+						})
+						.catch(function (error) {
+							console.log("Error getting documents: ", error);
+						});
+
+					database.collection("userVideos").where("user", "==", user.uid)
+						.get().then(function (querySnapshot) {
+							querySnapshot.forEach(function (doc) {
+
+								database.collection("userVideos").doc(doc.id).delete()
+									.then(result => {
+										console.log("deleted challenge")
+										let storageRef = firebase.storage().ref();
+
+										var deleteVid = storageRef.child('userVideos/' + doc.id + "/challengeVideo");
+										// Delete the file
+										deleteVid.delete().then(function () {
+											// File deleted successfully
+											console.log("challenge video deleted");
+										}).catch(function (error) {
+											// Uh-oh, an error occurred!
+											console.log("challenge video deletion FAILED");
+										});
+
+										var deletePhoto = storageRef.child('userVideosThumbnails/' + doc.id + "/thumbnail");
+										// Delete the file
+										deletePhoto.delete().then(function () {
+											// File deleted successfully
+											console.log("challenge video deleted");
+										}).catch(function (error) {
+											// Uh-oh, an error occurred!
+											console.log("challenge video deletion FAILED");
+										});
+									}).catch(function (error) {
+										console.log("Error getting documents: ", error);
+									});
+
+							})
+						})
+						.catch(function (error) {
+							console.log("Error getting documents: ", error);
+						});
+				} else {
+					return;
+				}
+			} else {
+				return;
+			}
 		} else {
-		// User is signed out.
-		console.log("user is logged out");
-		// Go to login page
-		window.location.href = "../html/login.html";
+			// User is signed out.
+			console.log("user is logged out");
+			// Go to login page
+			window.location.href = "../html/login.html";
 		}
 	});
-	
 })
-
