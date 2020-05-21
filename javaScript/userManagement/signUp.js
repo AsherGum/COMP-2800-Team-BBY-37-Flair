@@ -1,4 +1,18 @@
-//Sign up button clicked.
+/**
+ * Signs the user out when they click the button.
+ * 
+ * Code used: 
+ * 
+ * Firebase documentation example on how to
+ * send email verification.
+ * @author Firebase Documentation
+ * @see https://firebase.google.com/docs/auth/web/manage-users?authuser=0#send_a_user_a_verification_email
+ * 
+ * Firebase documentation example on how to
+ * create a document with data
+ * @author Firebase Documentation
+ * @see https://firebase.google.com/docs/firestore/manage-data/add-data?authuser=0#set_a_document
+ */
 $("#submit").closest('form').on('submit', function (event) {
 	event.preventDefault();
 	// Loading in email, password, first and last name, and university of user.
