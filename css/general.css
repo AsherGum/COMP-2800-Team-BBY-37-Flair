@@ -1,9 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
-
-body, html {
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+html,
+body {
     height: 100%;
     width: 100%;
-
-    background-color: #222222;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }

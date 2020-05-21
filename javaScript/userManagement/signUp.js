@@ -46,7 +46,7 @@ $("#submit").closest('form').on('submit', function (event) {
 					if (doc.exists) {
 						console.log("Document data:", doc.data());
 						if (userFirstName == doc.data().FirstName) {
-							window.location.href = "../index.html";
+							window.location.href = "main.html";
 						}
 					} else {
 						// doc.data() will be undefined in this case.

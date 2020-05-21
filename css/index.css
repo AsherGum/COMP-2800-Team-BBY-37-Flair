@@ -1,10 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
-
-body, html {
-    margin: 0;
-    padding: 0;
-    font-family: 'Roboto', sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+html,
+body {
+    height: 100%;
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
 }
+
+
+.navbar {
+    padding: .8rem;
+    background-color: #424242;
+    color: #FFF;
+}
+.nav-link {
+    font-size: 1.3em !important;
+}
+
 
 main {
     display: grid;
@@ -31,9 +42,8 @@ aside {
     display: none;
 }
 footer {
-  left: 0;
-  bottom: 0;
-    background-color: #3f3f3f;
+    grid-area: footer;
+    background-color: #424242;
     color: #d5d5d5;
     padding-top: 2rem;
 }
@@ -108,7 +118,6 @@ section > p {
 }
 
 .card{
-    -webkit-mask-image: -webkit-radial-gradient(center, circle cover, white 100%, black 100%);
     cursor: pointer;
     overflow: hidden;
 }
@@ -303,7 +312,7 @@ hr.light {
     width: 75%;
 }
 
-#submit {
+/**#submit {
     background-color: #222222;
     color: white;
     width: 80px;
@@ -317,7 +326,7 @@ hr.light {
     margin-right: auto;
     margin-top: 15px;
     margin-bottom: 0;
-}
+}**/
 .padding {
     padding-top: 3rem;
     padding-left: 3rem;
