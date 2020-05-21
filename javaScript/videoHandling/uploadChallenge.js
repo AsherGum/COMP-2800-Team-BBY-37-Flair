@@ -20,13 +20,16 @@ function videoUpload(videoData, imageURI, userTags) {
     const userTitle = document.getElementById("inputTitle").value.trim();
     const userDescription = document.getElementById("inputDescription").value.trim();
     const userCategory = document.getElementById("inputCategory").value;
-
     const image = imageURI;
     let docRefID;
+    const maxTitleLength = 150;
+    const maxDescLength = 300;
 
-    //Quick check for empty strings; Need better validation
-    if (userTitle.length === 0 || 
+    //Quick check for form completion, empty strings, and length
+    if (userTitle.length === 0 ||
+        userTitle.length > maxTitleLength ||
         userDescription.length === 0 || 
+        userDescription.length > maxDescLength ||
         userCategory == undefined)  {
             //need more elegance than alert in the future
             alert("Please complete Title, Category, and Description");
@@ -230,12 +233,21 @@ document.getElementById('inputTitle').addEventListener('focusout', function() {
     checkEmptyInput("inputTitle");
 })
 
+//event listener for title input to check the length
+document.getElementById('inputTitle').addEventListener('keyup', function() {
+    getInputLength("inputTitle", "title-count");
+})
+
+
 //event listener for description input to check if it's empty
 document.getElementById('inputDescription').addEventListener('focusout', function() {
     checkEmptyInput("inputDescription");
 })
 
-
+//event listener for description input to check the length
+document.getElementById('inputDescription').addEventListener('keyup', function() {
+    getInputLength("inputDescription", "desc-count");
+})
 
 /**
  * Button handling for just the challenge video response upload page

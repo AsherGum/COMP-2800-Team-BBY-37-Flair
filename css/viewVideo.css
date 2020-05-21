@@ -47,7 +47,7 @@ body{
     color: #6c757d;
     cursor: pointer;
 }
-.proile-rating{
+.profile-rating{
     font-size: 12px;
     color: #818182;
     margin-top: 5%;
@@ -114,12 +114,7 @@ hr.dark {
     font-size: 1.3em !important;
 }
 
-#thumbsUp {
-    background: url(../images/icons/thumbs.svg);
-    background-repeat: no-repeat;
-    height: 2em;
 
-}
 
 footer {
   left: 0;
