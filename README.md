@@ -6,6 +6,11 @@
 * Firebase (https://firebase.google.com/)
 * loading.io (https://loading.io/css/)
 * W3Schools (https://www.w3schools.com/)
+* Freepik(http://www.freepik.com/) from FlatIcon (FlatIcon (https://www.flaticon.com/)
+* Navbar from MDBootstrap (https://mdbootstrap.com/docs/jquery/navigation/navbar/)
+* Easter Egg Keystroke code from Vojislav Grujić (https://medium.com/javascript-in-plain-english/how-to-detect-a-sequence-of-keystrokes-in-javascript-83ec6ffd8e93)
+* Easter Egg Keystroke code from user "Niet the Dark Absol" (https://stackoverflow.com/questions/32236313/how-to-track-a-series-of-key-presses-in-javascript)
+* Login from colorlib (https://colorlib.com/etc/lf/Login_v10/index.html)
 
 
 ## What is Flair?
@@ -25,7 +30,8 @@ Flair was created by a team of BCIT (British Columbia Institute of Technology) s
 Configuring your environment to begin contributing is simple! Just follow these easy steps
 * Clone the repository
 * Install node if you haven't already (https://nodejs.org/en/)
-* In the command line, navigate to the repository folder and run "npm install"
+* On Windows OS, you'll need to open the node.js command line. On mac or linux, the regular command line will work.
+* In the command line, change directories to the repository folder and run "npm install"
 
 That's it! All the required packages will be installed.  
 
