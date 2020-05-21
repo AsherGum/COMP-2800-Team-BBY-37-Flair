@@ -45,7 +45,7 @@ $("#submit").closest('form').on('submit', function (event) {
 					// Makes sure document exists.
 					if (doc.exists) {
 						console.log("Document data:", doc.data());
-						if (userFirstName == doc.data().FirstName) {
+						if (userEmail == doc.data().Email) {
 							window.location.href = "main.html";
 						}
 					} else {
