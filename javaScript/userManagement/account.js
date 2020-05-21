@@ -1,9 +1,11 @@
 // Gets the user uid of the clicked account page
-var globalUser = window.location.href;
+let globalUser = window.location.href;
 globalUser = globalUser.substring((globalUser.length - 28), globalUser.length);
+
+//Used to track the state of the 2 clickable containers,
+//that show videos: Uploaded Challenges and Uploaded Responses
 let home = true;
-// Body.
-let body = document.getElementsByTagName("body");
+
 // Main container.
 let content = document.getElementsByClassName("userVideos")[0];
 
@@ -11,7 +13,27 @@ let content = document.getElementsByClassName("userVideos")[0];
 //Loading circle is turned on
 loading("loading_insertion", true);
 
-// Authentication state observer.
+/**
+ * Checks if user is logged in and checks if there
+ * is redirect information in the URL. 
+ * 
+ * Then queries database for the user information and populates
+ * the DOM with their personal information as well as
+ * any challenge videos and challenge response videos they've created.
+ * 
+ * 
+ * Code used: 
+ * 
+ * Firebase documentation example on how to
+ * check user authentication state:
+ * @author Firebase Documentation
+ * @see https://firebase.google.com/docs/auth/web/manage-users?authuser=0
+ * 
+ * Firebase documentation on how to query database:
+ * @author Firebase documentation
+ * @see https://firebase.google.com/docs/firestore/query-data/queries?authuser=0
+ * 
+ */
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
         if (globalUser.substring((globalUser.length - 12), globalUser.length) == "account.html") {
@@ -20,10 +42,8 @@ firebase.auth().onAuthStateChanged(function (user) {
         } else {
             document.getElementById("editProf").style.display = 'none';
         }
-        //globalUser = user.uid;
-        // User is signed in.
 
-        /*
+        /* unfinished Followed users functionality
         var ref = firebase.database().ref('/Users/' + user.uid + '/following');
         ref.once(globalUser).then(function(snap) {
             var array = snap.val();
@@ -48,12 +68,15 @@ firebase.auth().onAuthStateChanged(function (user) {
                 // Reads the data required.
                 upImages();
                 document.getElementById("accountName").innerHTML = doc.data().UserName;
-                //document.getElementById("last").innerHTML = doc.data().LastName;
                 document.getElementById("username").innerHTML = "@" + doc.data().UserName;
+                document.getElementById("userBio").innerHTML = doc.data().Bio;
+
+
+                /** Unfinished follower functionality */
+                //document.getElementById("last").innerHTML = doc.data().LastName;
                 //document.getElementById("email").innerHTML = doc.data().Email;
                 //document.getElementById("university").innerHTML = doc.data().UserName;
                 //document.getElementById("phone").innerHTML = doc.data().PhoneNumber;
-                document.getElementById("userBio").innerHTML = doc.data().Bio;
                 //document.getElementById("followers").innerHTML = doc.data().Followers.length;
                 //document.getElementById("following").innerHTML = doc.data().Following.length;
                 //document.getElementById("challenges").innerHTML = doc.data().Challenges.length;
@@ -64,7 +87,7 @@ firebase.auth().onAuthStateChanged(function (user) {
                 docRef.where("owner", "==", globalUser).get().then(function (querySnapshot) {
                     querySnapshot.forEach(function (post) {
                         if (post) {
-                            // Create the post.
+                            // Create the video onto the page.
                             getUploadedVideos(post.data().challenge,
                                 post.data().imageURL,
                                 post.id, post.data().upvotes, "challenge");
@@ -87,12 +110,23 @@ firebase.auth().onAuthStateChanged(function (user) {
         console.log("user is logged out");
         // Go to log-in page.
         window.location.href = "../html/login.html";
-
-
     }
 });
 
-// When user clicks Follow button
+/**
+ * Event handler for when the follow button is clicked.
+ * Adds the user to 'following' array in the user document.
+ * 
+ * Uses code from Firebase documentation for auth state checking:
+ * @author Firebase documentation
+ * @see https://firebase.google.com/docs/auth/web/manage-users?authuser=0
+ * 
+ * Uses code from Firebase documentation for array handling:
+ * @author Firebase documentation
+ * @see https://firebase.google.com/docs/firestore/manage-data/add-data?authuser=0#update_fields_in_nested_objects
+ * 
+ * 
+ */
 $("#follow").click(function () {
     // Get the users data.
     firebase.auth().onAuthStateChanged(function (user) {
