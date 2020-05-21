@@ -1,13 +1,29 @@
-// Authentication state observer.
+/**
+ * Checks if user is logged in and checks if there
+ * is redirect information in the URL. 
+ * 
+ * Then queries database for the user information and populates
+ * the DOM with their personal information
+ * 
+ * Code used: 
+ * 
+ * Firebase documentation example on how to
+ * check user authentication state:
+ * @author Firebase Documentation
+ * @see https://firebase.google.com/docs/auth/web/manage-users?authuser=0
+ * 
+ * Firebase documentation on how to query database:
+ * @author Firebase documentation
+ * @see https://firebase.google.com/docs/firestore/query-data/queries?authuser=0
+ * 
+ */
 firebase.auth().onAuthStateChanged(function (user) {
 	if (user) {
 		// User is signed in.
 		console.log("User is logged in");
 
-
-
 		// Get User information.
-		var docRef = database.collection("Users").doc(user.uid);
+		let docRef = database.collection("Users").doc(user.uid);
 		docRef.get().then(function (doc) {
 			// Makes sure document exists.
 			if (doc.exists) {
@@ -26,8 +42,6 @@ firebase.auth().onAuthStateChanged(function (user) {
 		}).catch(function (error) {
 			console.log("Error getting document:", error);
 		});
-
-
 	} else {
 		// User is signed out.
 		console.log("user is logged out");
@@ -37,17 +51,25 @@ firebase.auth().onAuthStateChanged(function (user) {
 	}
 });
 
-// Submit button clicked.
+/**
+ * When the submit button is clicked it updates user information that was
+ * stored in the database.
+ * 
+ * Code used: 
+ * 
+ * Firebase documentation on how to update database data.
+ * @author Firebase documentation
+ * @see https://firebase.google.com/docs/firestore/manage-data/add-data?authuser=0
+ * 
+ */
 $("#submit").closest("form").on("submit", function (event) {
 	event.preventDefault();
-
 	// Getting all the values.
-	var first = document.getElementById("firstName").value;
-	var last = document.getElementById("lastName").value;
-	var username = document.getElementById("userName").value;
-	var Bio = document.getElementById("bio").value;
-
-	var user = firebase.auth().currentUser;
+	let first = document.getElementById("firstName").value;
+	let last = document.getElementById("lastName").value;
+	let username = document.getElementById("userName").value;
+	let Bio = document.getElementById("bio").value;
+	let user = firebase.auth().currentUser;
 
 	// Add user profile to database.
 	database.collection("Users").doc(user.uid).update({
@@ -71,6 +93,23 @@ $("#submit").closest("form").on("submit", function (event) {
 		});
 })
 
+/**
+ * When the delete button is clicked, it deletes user data from the database.
+ * Cycles through all the collections in our database querying
+ * for the user doc ID and removing those documents that contain 
+ * the matching user.
+ * Code used: 
+ * 
+ * Firebase documentation example on how to
+ * check user authentication state:
+ * @author Firebase Documentation
+ * @see https://firebase.google.com/docs/auth/web/manage-users?authuser=0
+ * 
+ * Firebase documentation on how to delete database data.
+ * @author Firebase documentation
+ * @see https://firebase.google.com/docs/firestore/manage-data/delete-data?authuser=0
+ * 
+ */
 $("#deleteAccount").on('click', function (event) {
 	// Authentication state observer.
 	firebase.auth().onAuthStateChanged(function (user) {
@@ -133,7 +172,7 @@ $("#deleteAccount").on('click', function (event) {
 
 										let storageRef = firebase.storage().ref();
 
-										var deleteVid = storageRef.child('userVideos/' + doc.id + "/challengeVideo");
+										let deleteVid = storageRef.child('userVideos/' + doc.id + "/challengeVideo");
 										// Delete the file
 										deleteVid.delete().then(function () {
 											// File deleted successfully
@@ -143,7 +182,7 @@ $("#deleteAccount").on('click', function (event) {
 											console.log("challenge video deletion FAILED");
 										});
 
-										var deletePhoto = storageRef.child('userVideosThumbnails/' + doc.id + "/thumbnail");
+										let deletePhoto = storageRef.child('userVideosThumbnails/' + doc.id + "/thumbnail");
 										// Delete the file
 										deletePhoto.delete().then(function () {
 											// File deleted successfully
@@ -173,7 +212,7 @@ $("#deleteAccount").on('click', function (event) {
 										console.log("deleted challenge")
 										let storageRef = firebase.storage().ref();
 
-										var deleteVid = storageRef.child('userVideos/' + doc.id + "/challengeVideo");
+										let deleteVid = storageRef.child('userVideos/' + doc.id + "/challengeVideo");
 										// Delete the file
 										deleteVid.delete().then(function () {
 											// File deleted successfully
@@ -183,7 +222,7 @@ $("#deleteAccount").on('click', function (event) {
 											console.log("challenge video deletion FAILED");
 										});
 
-										var deletePhoto = storageRef.child('userVideosThumbnails/' + doc.id + "/thumbnail");
+										let deletePhoto = storageRef.child('userVideosThumbnails/' + doc.id + "/thumbnail");
 										// Delete the file
 										deletePhoto.delete().then(function () {
 											// File deleted successfully
