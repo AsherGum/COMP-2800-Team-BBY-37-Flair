@@ -17,10 +17,17 @@
     <!-- Your own CSS files -->
     <!------------------------>
     <link rel="stylesheet" href="../css/general.css">
+    <link rel="stylesheet" href="../css/loading_circle.css">
     <link rel="stylesheet" href="../css/viewVideo.css">
 </head>
 
-    <!-- Styling -->
+<body>
+    <!-- Facebook Javascript SDK scripts -->
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v7.0"></script>
+
+
+    <!-- Nav Bar -->
   <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
         <div class="container-fluid">
 
@@ -50,11 +57,14 @@
 
         </div>
     </nav>
+
+
       <div class="container emp-profile">
         <div class="my-1">
-          <h1 id="title" class="display-3"></h1>
-          <h3>Category:</h3>
-      </div>
+          <h1 id="title"></h1>
+          <h3>Category: <span id="category"></span></h3>
+          <div id="loading_insertion"></div>
+        </div>
 
       <div class="container-fluid padding">
           <div class="row padding">
@@ -74,7 +84,18 @@
                         <p>Views:</p><p id="views"></p><br/>
                         <p>Likes:</p><p id="likes"></p>
                         <button class="btn" type="button" id="thumbsUp"></button><br/>
+
+                        <div>
+                            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="Check out this cool video on Flair!"  data-show-count="false" link rel="canonical"
+                        href="/web/tweet-button">Tweet</a>
+                        </div>
+
+
+                        <div class="fb-share-button" data-href="https://mipee-e5ade.web.app" data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmipee-e5ade.web.app%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+
+
                         <p>Number of Attempts:</a><p id="attempts"></p>
+
                     </div>
                 </div>
                 <div class="container my-5">
@@ -90,7 +111,7 @@
                   <ul id="tag_container"></ul>
                   <div>
                       <hr class="dark">
-                      <h2>Description</h2>
+                      <h4>Description</h4>
                       <p id="description"></p>
                   </div>
                   <div class="container">
@@ -109,36 +130,39 @@
 
     </div>
 <!--------  Footer       ------>
-<footer>
-  <div class="container-fluid padding">
-      <div class="row text-center">
-          <div class="col-md-4">
-              <img src="../images/icons/Untitled-1.svg"height="80" width="150">
-              <hr class="light">
-              <p>flairemail@flair.com</p>
-              <p>772 513 1097</p>
-
-          </div>
-          <div class="col-md-4">
-              <hr class="light">
-              <h4>Connect</h4>
-              <hr class="light">
-              <p>Instagram</p>
-              <p>Facebook</p>
-
-          </div>
-          <div class="col-md-4">
-              <hr class="light">
-              <h4><a href="about_us.html">About us</a></h4>
-              <hr class="light">
-              <p>2800 Project</p>
-              <p>Made by Asher, Ben, Francis, Saksham</p>
-
-          </div>
-      </div>
+<br class="padding-top">
+<footer id="colophon" class="site-footer" role="contentinfo">
+  <div class="social-wrapper">
+    <ul>
+      <li>
+        <a href="#" target="_blank">
+          <img src="http://www.iconarchive.com/download/i81499/lunartemplates/modern-social-media-circles/Instagram.ico" alt="Instagram Logo" class="instagram-icon"></a>
+      </li>
+      <li>
+        <a href="index.html" target="_blank">
+          <img src="http://www.iconarchive.com/download/i81494/lunartemplates/modern-social-media-circles/Facebook.ico" alt="Facebook Logo" class="facebook-icon"></a>
+      </li>
+      <li>
+        <a href="#" target="_blank">
+          <img src="../images/icons/favicon.png" alt="flair Logo" class="flair-icon"></a>
+      </li>
+      <li>
+        <a href="#" target="_blank">
+          <img src="http://www.iconarchive.com/download/i81513/lunartemplates/modern-social-media-circles/Youtube.ico" alt="Youtube Logo" class="youtube-icon"></a>
+      </li>
+      <li>
+        <a href="#" target="_blank">
+          <img src="http://www.iconarchive.com/download/i81510/lunartemplates/modern-social-media-circles/Twitter.ico" alt="Foursquare Logo" class="foursquare-icon"></a>
+      </li>
+    </ul>
   </div>
-</footer>
 
+  <nav class="footer-nav" role="navigation">
+    <p>Copyright &copy; 2020-
+      <?php echo date("Y"); ?> Flair GROUP 37- All rights reserved.</p>
+      <a href="about_us.html" target="_blank"><h5>ABOUT US</h5></a>
+    </nav>
+</footer>
 
     <!-- Firebase Scripts -->
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
@@ -148,12 +172,11 @@
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-database.js"></script>
     <script src="../javaScript/firebaseScripts/firebaseConfig.js"></script>
 
-        <!-- Import JQuery -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- Import JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
 
-</head>
-<body>
+
 
 
 
@@ -161,7 +184,7 @@
 
 
     <!----------------------------------------------->
-    <!-- JS: Boostrap, Firebase, API related    -->
+    <!-- JS: Bootstrap, Firebase, API related    -->
     <!----------------------------------------------->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
@@ -173,7 +196,32 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
     </script>
     <!-- Page Scripts -->
+    <script src="../javaScript/general/general.js"></script>
     <script src="../javaScript/videoHandling/viewVideo.js"></script>
+
+    <!-- Twitter for Websites given javascript from
+    https://developer.twitter.com/en/docs/twitter-for-websites/javascript-api/guides/set-up-twitter-for-websites
+
+    -->
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <script>window.twttr = (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0],
+          t = window.twttr || {};
+        if (d.getElementById(id)) return t;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://platform.twitter.com/widgets.js";
+        fjs.parentNode.insertBefore(js, fjs);
+
+        t._e = [];
+        t.ready = function(f) {
+          t._e.push(f);
+        };
+
+        return t;
+      }(document, "script", "twitter-wjs"));</script>
+
+
 
 </body>
 </html>

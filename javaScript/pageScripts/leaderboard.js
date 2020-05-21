@@ -3,8 +3,10 @@ var storage = firebase.storage();
 console.log("Getting Posts");
 
 var getPosts = database.collection("Challenges");
+ //Start loading circle
+loading("loading_insertion", true);
 
-getPosts.orderBy("upvotes", "desc").limit(10).get().then(function (querySnapshot) {
+getPosts.orderBy("upvotes", "desc").limit(10).get().then(function (querySnapshot) {  
   querySnapshot.forEach(function (post) {
       // Make sure post exists.
       console.log(post.id, " => ", post.data());
@@ -17,6 +19,8 @@ getPosts.orderBy("upvotes", "desc").limit(10).get().then(function (querySnapshot
                       post.id, post.data().owner, post.data().upvotes, 0);
       }
   })
+  //End loading circle
+  loading("loading_insertion", false);
 });
 
 function getPost(category, div){

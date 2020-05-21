@@ -1,6 +1,9 @@
 //Global variable to hold tags added to this challenge
 let inputTags = [];
 
+//Global variable to check if user has attempted an upload already
+let attemptedUpload = false;
+
 
 /**
  * Upload Functionality for uploading a

@@ -11,6 +11,7 @@
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <!-- Styling -->
+    <link rel="stylesheet" href="../css/loading_circle.css">
     <link href="../css/leaderboard.css" rel="stylesheet">
 
     <title>Leaderboard</title>
@@ -64,66 +65,75 @@
 
 
     <!--------  Top Categories      ------>
-    <h2>Top 10 Clips For This Week</h2>
-    <div class="content"></div>
+    <div class="container">
 
-    <h2>Top 10 Comedy Clips This Week </h2>
-    <div class="content"></div>
+        <h2>Top 10 Clips For This Week</h2>
+        <div class="content"></div>
 
-    <h2>Top 10 Physical Clips This Week </h2>
-    <div class="content"></div>
+        <div id="loading_insertion"></div>
 
-    <h2>Top 10 Gaming Clips This Week </h2>
-    <div class="content"></div>
+        <h2>Top 10 Comedy Clips This Week </h2>
+        <div class="content"></div>
 
-    <h2>Top 10 Pet Clips This Week </h2>
-    <div class="content"></div>
+        <h2>Top 10 Physical Clips This Week </h2>
+        <div class="content"></div>
 
-    <h2>Top 10 Educational Clips This Week </h2>
-    <div class="content"></div>
+        <h2>Top 10 Gaming Clips This Week </h2>
+        <div class="content"></div>
 
-    <h2>Top 10 Skills/Talents Clips This Week </h2>
-    <div class="content"></div>
+        <h2>Top 10 Pet Clips This Week </h2>
+        <div class="content"></div>
 
-    <h2>Top 10 Arts and Crafts Clips This Week </h2>
-    <div class="content"></div>
+        <h2>Top 10 Educational Clips This Week </h2>
+        <div class="content"></div>
 
-    <h2>Top 10 Other Clips This Week </h2>
-    <div class="content"></div>
-        
+        <h2>Top 10 Skills/Talents Clips This Week </h2>
+        <div class="content"></div>
+
+        <h2>Top 10 Arts and Crafts Clips This Week </h2>
+        <div class="content"></div>
+
+        <h2>Top 10 Other Clips This Week </h2>
+        <div class="content"></div>
+    </div>
+
+
 
 
 <!--------  Footer       ------>
-<footer>
-  <div class="container-fluid padding">
-      <div class="row text-center">
-          <div class="col-md-4">
-              <img src="../images/icons/Untitled-1.svg"height="80" width="150">
-              <hr class="light">
-              <p>flairemail@flair.com</p>
-              <p>772 513 1097</p>
-
-          </div>
-          <div class="col-md-4">
-              <hr class="light">
-              <h4>Connect</h4>
-              <hr class="light">
-              <p>Instagram</p>
-              <p>Facebook</p>
-
-          </div>
-          <div class="col-md-4">
-              <hr class="light">
-              <h4><a href="about_us.html">About us</a></h4>
-              <hr class="light">
-              <p>2800 Project</p>
-              <p>Made by Asher, Ben, Francis, Saksham</p>
-
-          </div>
-      </div>
+<br class="padding-top">
+<footer id="colophon" class="site-footer" role="contentinfo">
+  <div class="social-wrapper">
+    <ul>
+      <li>
+        <a href="#" target="_blank">
+          <img src="http://www.iconarchive.com/download/i81499/lunartemplates/modern-social-media-circles/Instagram.ico" alt="Instagram Logo" class="instagram-icon"></a>
+      </li>
+      <li>
+        <a href="index.html" target="_blank">
+          <img src="http://www.iconarchive.com/download/i81494/lunartemplates/modern-social-media-circles/Facebook.ico" alt="Facebook Logo" class="facebook-icon"></a>
+      </li>
+      <li>
+        <a href="#" target="_blank">
+          <img src="../images/icons/favicon.png" alt="flair Logo" class="flair-icon"></a>
+      </li>
+      <li>
+        <a href="#" target="_blank">
+          <img src="http://www.iconarchive.com/download/i81513/lunartemplates/modern-social-media-circles/Youtube.ico" alt="Youtube Logo" class="youtube-icon"></a>
+      </li>
+      <li>
+        <a href="#" target="_blank">
+          <img src="http://www.iconarchive.com/download/i81510/lunartemplates/modern-social-media-circles/Twitter.ico" alt="Foursquare Logo" class="foursquare-icon"></a>
+      </li>
+    </ul>
   </div>
-</footer>
 
+  <nav class="footer-nav" role="navigation">
+    <p>Copyright &copy; 2020-
+      <?php echo date("Y"); ?> Flair GROUP 37- All rights reserved.</p>
+      <a href="about_us.html" target="_blank"><h5>ABOUT US</h5></a>
+    </nav>
+</footer>
 
 
 
@@ -137,11 +147,9 @@
     <!--------------------------------------------------------------------->
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
-
-     <!--------------------------------------------------------------------->
-    <!-- Make calls to your own JavaScript functions, here below-->
-    <!---------------------------------------------------------------------->
+    <script src="../javaScript/general/general.js"></script>
     <script src="../javaScript/pageScripts/leaderboard.js"></script>
+
 
 
 </body>

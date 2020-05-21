@@ -10,6 +10,8 @@ document.getElementById("submit_link").href = "./uploadResponse.html?challenge:"
 var postOwner;
 var ownerTag;
 
+loading("loading_insertion", true);
+
 var docRef = database.collection("Challenges").doc(docID);
 // Get the document.
 docRef.get().then(function(doc) {
@@ -17,9 +19,8 @@ docRef.get().then(function(doc) {
     const dataDoc = doc;
     let newViewCount = doc.data().views;
     newViewCount++;
-    console.log(newViewCount);
+   
 
-    
 
     //update the view challenge attempts link
     document.getElementById("view_attempts").href = "./viewChallengeResponses.html?challenge:" + docID + "?" + doc.data().challenge;
@@ -37,7 +38,7 @@ docRef.get().then(function(doc) {
         }
     // Populate the DOM on the main page.
     }).then(function() {
-        createPost(dataDoc);
+        getVideoData(dataDoc);
 
         //Check if user has liked the video or not, then
         //toggle the button if true 
@@ -51,13 +52,20 @@ docRef.get().then(function(doc) {
         database.collection("Challenges").doc(docID).update({
             views: newViewCount
         })
+        .then(function() {
+            loading("loading_insertion", false);
+        })
         .catch(error => {
             console.log(error);
         })
     });
 });
 
-function createPost(doc){
+/**
+ * Fills all the DOM elements on the page with the information about the challenge video.
+ * @param {user database information (obj)} doc 
+ */
+function getVideoData(doc){
     // Set page title to post title.
     document.title = doc.data().challenge;
     document.getElementById('title').innerHTML = doc.data().challenge;
@@ -67,6 +75,7 @@ function createPost(doc){
     document.getElementById('attempts').innerHTML = doc.data().attempts;
     document.getElementById('owner').innerHTML = '@' + ownerTag;
     document.getElementById('description').innerHTML = doc.data().description;
+    document.getElementById('category').innerHTML = convertCategoryValue(doc.data().challengeCategory);
 
     let tagsArray = doc.data().tags;
     let tagsContainer = document.getElementById("tag_container");
@@ -118,7 +127,14 @@ $("#follow").click(function(){
     })
 });
 
-
+/**
+ * Called when the upvote button is clicked.
+ * Checks if user has liked a post before by checking if the video
+ * doc ID is in their 'likedVideos' array in the database.
+ * 
+ * If it exists, unlike the post and remove the video id from the array
+ * If it doesn't exist, add it to the array and 'like' the post
+ */
 function upvoteButtonHandler() {
     //Needs to check if user has liked video before
     // Get the users data.

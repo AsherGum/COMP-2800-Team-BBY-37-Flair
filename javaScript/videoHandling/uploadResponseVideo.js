@@ -1,9 +1,6 @@
 
 
 
-
-
-
 /**
  * Upload Functionality for uploading a
  * RESPONSE VIDEO TO A CHALLENGE
@@ -22,9 +19,8 @@ function videoUpload(videoData, imageURI, challengeDocID) {
     const image = imageURI;
     let docRefID;
     let userInfo;
+    let challengeAttempts;
     let userEmail;
-    let userVideoURL;
-    let userImageURL;
 
     //check for user state
     firebase.auth().onAuthStateChanged(function (user) {
@@ -38,6 +34,7 @@ function videoUpload(videoData, imageURI, challengeDocID) {
             const userVideo = videoData;
             userInfo = user.uid;
             userEmail = user.email;
+            
 
             if (userTitle.length === 0 || 
                 userDescription.length === 0)  {
@@ -71,6 +68,7 @@ function videoUpload(videoData, imageURI, challengeDocID) {
                 let storageRef = firebase.storage().ref();
                 let uploadTask = storageRef.child('userVideos/' + docRefID + "/challengeVideo").put(userVideo);
 
+                //Source: https://firebase.google.com/docs/storage/web/upload-files
                 // Register three observers:
                 // 1. 'state_changed' observer, called any time the state changes.
                 // 2. Error observer, called on failure.
@@ -94,7 +92,6 @@ function videoUpload(videoData, imageURI, challengeDocID) {
                     uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
                         console.log('File available at', downloadURL);
                         userVideoURL = downloadURL;
-
                         // Add image URL location.
                         database.collection("userVideos").doc(docRef.id).update({
                             videoURL: downloadURL,
@@ -128,8 +125,7 @@ function videoUpload(videoData, imageURI, challengeDocID) {
                                 // Handle successful uploads on complete.
                                 uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
                                     console.log('File available at', downloadURL);
-                                    userImageURL = downloadURL;
-
+                                    let userImageURL = downloadURL;
                                     // Add image URL location.
                                     database.collection("userVideos").doc(docRefID).update({
                                         imageURL: downloadURL,
@@ -137,19 +133,33 @@ function videoUpload(videoData, imageURI, challengeDocID) {
                                         //Add this challenge video reference to the
                                         //challenge video collection document
                                     }).then(function () {
-                                        database.collection('Challenges').doc(challengeDocID).collection('Responses').add({
+                                        database.collection('Challenges').doc(challengeDocID).collection('Responses').doc(userInfo).set({
                                             userVideo: docRefID,
                                             user: userInfo,
                                             userEmail: userEmail,
                                             videoURL: userVideoURL,
                                             imageURL: userImageURL
 
-
+                                        //Increment the attempts value for the challenge
+                                        //Get the attempts value and increment it
                                         }).then(function() {
                                             console.log("wrote to challenge document succesfully");
+                                            database.collection('Challenges').doc(challengeDocID).get()
+                                            .then(function(doc) {
+                                                challengeAttempts = doc.data().attempts;
+                                                challengeAttempts++;
+                                            })
+                                            //assign the attempts value
+                                            .then(function() {
+                                                database.collection('Challenges').doc(challengeDocID).update({
+                                                    attempts: challengeAttempts
+                                                })
+                                                .then(function() {
+                                                     window.location.href = "./viewVideoResponse.html?view:" + docRefID;
+                                                })
+                                            })
 
-                                            // NEED TO REDIRECT USER TO ANOTHER PAGE
-                                            window.location.href = "../html/main.html";
+                                            
                                         })
                                     });
                                 });
@@ -186,7 +196,8 @@ document.getElementById('inputDescription').addEventListener('focusout', functio
  * Button handling for just the challenge video response upload page
  */
 document.getElementById('video_upload_button').addEventListener('click', function() {
-    /*parseSearchURL called from general.js
+    /*
+    parseSearchURL called from general.js
     input URL should be similar to: 
     /html/uploadChallenge.html?challenge:docID
     */
@@ -198,6 +209,7 @@ document.getElementById('video_upload_button').addEventListener('click', functio
 
     let confirmation = window.confirm("Are you sure you want to upload your video?");
     if (confirmation) {
+        attemptedUpload = true;
         videoUpload(data, imageURI, challengeDocIDString);
     } else {
         return;
@@ -221,4 +233,24 @@ document.getElementById("reset_button").addEventListener('click', function() {
     }
 })
 
+/**
+ * Called on page load to populate challenge
+ * title as well as update the href on the back to challenge button
+ */
+function getChallengeInfo() {
+    const challengeDocIDArray = parseSearchURL();
+    const challengeDocIDString = challengeDocIDArray[0];
 
+    database.collection("Challenges").doc(challengeDocIDString).get()
+    .then(doc => {
+        const backButton = document.getElementById("back-challenge");
+        const title = document.getElementById("challenge-title");
+
+        backButton.href = "./viewVideo.html?view:" + challengeDocIDString;
+        title.innerHTML = doc.data().challenge;
+    })
+}
+
+window.onload = function() {
+    getChallengeInfo();
+}

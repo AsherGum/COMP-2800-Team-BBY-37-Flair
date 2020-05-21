@@ -15,6 +15,7 @@
        <!------------------------>
     <!-- Your own CSS files -->
     <!------------------------>
+    <link rel="stylesheet" href="../css/loading_circle.css">
     <link rel="stylesheet" href="../css/viewVideo.css">
 </head>
 
@@ -52,6 +53,7 @@
         <div class="my-1">
           <h1 id="title" class="display-3"></h1>
           <h3>Original challenge: <span id="challenge_title"></span></h3>
+          <div id="loading_insertion"></div>
       </div>
 
       <div class="container-fluid padding">
@@ -72,7 +74,14 @@
                         <p>Views:</p><p id="views"></p><br/>
                         <p>Likes:</p><p id="likes"></p>
                         <button class="btn" type="button" id="thumbsUp"></button> <br/>
-                        
+                        <div>
+                            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="Check out this cool video on Flair!"  data-show-count="false" link rel="canonical"
+                        href="/web/tweet-button">Tweet</a>
+                        </div>
+
+
+                        <div class="fb-share-button" data-href="" data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+
                     </div>
                 </div>
                 <div class="container my-5">
@@ -86,7 +95,7 @@
               <div class="col-lg-4">
                   <div>
                       <hr class="dark">
-                      <h2>Description</h2>
+                      <h4>Description</h4>
                       <p id="description"></p>
                   </div>
                   <div class="container">
@@ -105,34 +114,38 @@
 
     </div>
 <!--------  Footer       ------>
-<footer>
-  <div class="container-fluid padding">
-      <div class="row text-center">
-          <div class="col-md-4">
-              <img src="../images/icons/Untitled-1.svg"height="80" width="150">
-              <hr class="light">
-              <p>flairemail@flair.com</p>
-              <p>772 513 1097</p>
-
-          </div>
-          <div class="col-md-4">
-              <hr class="light">
-              <h4>Connect</h4>
-              <hr class="light">
-              <p>Instagram</p>
-              <p>Facebook</p>
-
-          </div>
-          <div class="col-md-4">
-              <hr class="light">
-              <h4><a href="about_us.html">About us</a></h4>
-              <hr class="light">
-              <p>2800 Project</p>
-              <p>Made by Asher, Ben, Francis, Saksham</p>
-
-          </div>
-      </div>
+<br class="padding-top">
+<footer id="colophon" class="site-footer" role="contentinfo">
+  <div class="social-wrapper">
+    <ul>
+      <li>
+        <a href="#" target="_blank">
+          <img src="http://www.iconarchive.com/download/i81499/lunartemplates/modern-social-media-circles/Instagram.ico" alt="Instagram Logo" class="instagram-icon"></a>
+      </li>
+      <li>
+        <a href="index.html" target="_blank">
+          <img src="http://www.iconarchive.com/download/i81494/lunartemplates/modern-social-media-circles/Facebook.ico" alt="Facebook Logo" class="facebook-icon"></a>
+      </li>
+      <li>
+        <a href="#" target="_blank">
+          <img src="../images/icons/favicon.png" alt="flair Logo" class="flair-icon"></a>
+      </li>
+      <li>
+        <a href="#" target="_blank">
+          <img src="http://www.iconarchive.com/download/i81513/lunartemplates/modern-social-media-circles/Youtube.ico" alt="Youtube Logo" class="youtube-icon"></a>
+      </li>
+      <li>
+        <a href="#" target="_blank">
+          <img src="http://www.iconarchive.com/download/i81510/lunartemplates/modern-social-media-circles/Twitter.ico" alt="Foursquare Logo" class="foursquare-icon"></a>
+      </li>
+    </ul>
   </div>
+
+  <nav class="footer-nav" role="navigation">
+    <p>Copyright &copy; 2020-
+      <?php echo date("Y"); ?> Flair GROUP 37- All rights reserved.</p>
+      <a href="about_us.html" target="_blank"><h5>ABOUT US</h5></a>
+    </nav>
 </footer>
 
 
