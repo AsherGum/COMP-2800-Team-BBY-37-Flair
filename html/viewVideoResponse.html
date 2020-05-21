@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +14,7 @@
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link type="../css/view" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
 
-       <!------------------------>
+    <!------------------------>
     <!-- Your own CSS files -->
     <!------------------------>
     <link rel="stylesheet" href="../css/loading_circle.css">
@@ -21,158 +22,182 @@
     <link rel="stylesheet" href="../css/responses.css">
 </head>
 
-    <!-- Styling -->
-   <!--------  Nav-Bar       ------>
+<body>
+    <!-- Facebook share button code from
+    https://developers.facebook.com/docs/plugins/share-button/
+    -->
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous"
+        src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v7.0&appId=1313183148875756&autoLogAppEvents=1">
+    </script>
 
-   <nav class="mb-1 navbar navbar-expand-lg navbar-dark sticky-top">
-    <a class="navbar-brand" href="main.html"><img src="../images/icons/Untitled-1.svg" width="80" height="45"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="uploadChallenge.html">Create Challenge</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="categories.html">Categories</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="leaderboard.html">Leaderboard</a>
-            </li>
+    <!--------  Nav-Bar       ------>
 
-        </ul>
-        <ul class="navbar-nav ml-auto nav-flex-icons">
-            <li class="nav-item">
-                <a class="nav-link waves-effect waves-light">
-                    <i class="fab fa-twitter"></i>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link waves-effect waves-light">
-                    <i class="fab fa-google-plus-g"></i>
-                </a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-user">Profile</i>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right dropdown-default"
-                    aria-labelledby="navbarDropdownMenuLink-333">
-                    <a class="dropdown-item" href="account.html">My Profile</a>
+    <nav class="mb-1 navbar navbar-expand-lg navbar-dark sticky-top">
+        <a class="navbar-brand" href="main.html"><img src="../images/icons/Untitled-1.svg" width="80" height="45"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="uploadChallenge.html">Create Challenge</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="categories.html">Categories</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="leaderboard.html">Leaderboard</a>
+                </li>
 
-
-                    <button class="dropdown-item" type="submit" id="submit">
-                        <form method="post">Logout</form>
-                    </button>
-
-
-                </div>
-            </li>
-        </ul>
-    </div>
-</nav>
-<!--/.Navbar -->
-      <div class="container">
-        <div class="my-1">
-          <h1 id="title" class="display-3"></h1>
-          <h3>Original challenge: <span id="challenge_title"></span></h3>
-          <div id="loading_insertion"></div>
-      </div>
-
-      <div class="container-fluid padding">
-          <div class="row padding">
-
-            <div class="col-lg-8">
-                <div class="container">
-                  <video width="320" height="240" controls id="video_player">
-                      <source type="video/webm">
-                    Your browser does not support the video tag.
-                  </video>
-                </div>
-                <div class="col-md-4">
-                    <div class="profile-work">
-                        <p>Video by:</p> <p id='owner'></p>
-                            <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Follow" id='follow'/><br>
-
-                        <p>Views:</p><p id="views"></p><br/>
-                        <p>Likes:</p><p id="likes"></p>
-                        <button class="btn" type="button" id="thumbsUp"></button> <br/>
-                        <div>
-                            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="Check out this cool video on Flair!"  data-show-count="false" link rel="canonical"
-                        href="/web/tweet-button">Tweet</a>
-                        </div>
+            </ul>
+            <ul class="navbar-nav ml-auto nav-flex-icons">
+                <li class="nav-item">
+                    <a class="nav-link waves-effect waves-light">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link waves-effect waves-light">
+                        <i class="fab fa-google-plus-g"></i>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user">Profile</i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-default"
+                        aria-labelledby="navbarDropdownMenuLink-333">
+                        <a class="dropdown-item" href="account.html">My Profile</a>
 
 
-                        <div class="fb-share-button" data-href="" data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+                        <button class="dropdown-item" type="submit" id="submit">
+                            <form method="post">Logout</form>
+                        </button>
+
 
                     </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!--/.Navbar -->
+    <div class="container">
+        <div class="my-1">
+            <h1 id="title" class="display-3"></h1>
+            <h3>Original challenge: <span id="challenge_title"></span></h3>
+            <div id="loading_insertion"></div>
+        </div>
+
+        <div class="container-fluid padding">
+            <div class="row padding">
+
+                <div class="col-lg-8">
+                    <div class="container">
+                        <video width="320" height="240" controls id="video_player">
+                            <source type="video/webm">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="profile-work">
+                            <p>Video by:</p>
+                            <p id='owner'></p>
+                            <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Follow"
+                                id='follow' /><br>
+
+                            <p>Views:</p>
+                            <p id="views"></p><br />
+                            <p>Likes:</p>
+                            <p id="likes"></p>
+                            <button class="btn" type="button" id="thumbsUp"></button> <br />
+                            <div>
+                                <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button"
+                                    data-text="Check out this cool video on Flair!" data-show-count="false" link
+                                    rel="canonical" href="/web/tweet-button">Tweet</a>
+                            </div>
+
+
+                            <div class="fb-share-button" data-href="" data-layout="button" data-size="small"><a
+                                    target="_blank"
+                                    href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse"
+                                    class="fb-xfbml-parse-ignore">Share</a></div>
+
+                        </div>
+                    </div>
+                    <div class="container my-5">
+                        <a href="" id="view_attempts">
+                            <input type="submit" value="Back to View Attempts"
+                                class="btn btn-block btn-outline-warning">
+                        </a>
+                    </div>
+
+
                 </div>
-                <div class="container my-5">
-                    <a href="" id="view_attempts">
-                        <input type="submit" value="Back to View Attempts" class="btn btn-block btn-outline-warning">
-                    </a>
+                <div class="col-lg-4">
+                    <div>
+                        <hr class="dark">
+                        <h4>Description</h4>
+                        <p id="description"></p>
+                    </div>
+                    <div class="container">
+                        <a href="" id="submit_link">
+                            <input type="submit" value="Attempt Challenge" id="submit"
+                                class="btn btn-block btn-warning">
+                        </a>
+                    </div>
+
                 </div>
+
 
 
             </div>
-              <div class="col-lg-4">
-                  <div>
-                      <hr class="dark">
-                      <h4>Description</h4>
-                      <p id="description"></p>
-                  </div>
-                  <div class="container">
-                    <a href="" id="submit_link">
-                        <input type="submit" value="Attempt Challenge" id="submit" class="btn btn-block btn-warning">
-                    </a>
-                </div>
 
-              </div>
-
-
-
-          </div>
-
-      </div>
+        </div>
 
     </div>
-<!--------  Footer       ------>
-<br class="padding-top">
-<footer id="colophon" class="site-footer" role="contentinfo">
-  <div class="social-wrapper">
-    <ul>
-      <li>
-        <a href="#" target="_blank">
-          <img src="http://www.iconarchive.com/download/i81499/lunartemplates/modern-social-media-circles/Instagram.ico" alt="Instagram Logo" class="instagram-icon"></a>
-      </li>
-      <li>
-        <a href="index.html" target="_blank">
-          <img src="http://www.iconarchive.com/download/i81494/lunartemplates/modern-social-media-circles/Facebook.ico" alt="Facebook Logo" class="facebook-icon"></a>
-      </li>
-      <li>
-        <a href="#" target="_blank">
-          <img src="../images/icons/favicon.png" alt="flair Logo" class="flair-icon"></a>
-      </li>
-      <li>
-        <a href="#" target="_blank">
-          <img src="http://www.iconarchive.com/download/i81513/lunartemplates/modern-social-media-circles/Youtube.ico" alt="Youtube Logo" class="youtube-icon"></a>
-      </li>
-      <li>
-        <a href="#" target="_blank">
-          <img src="http://www.iconarchive.com/download/i81510/lunartemplates/modern-social-media-circles/Twitter.ico" alt="Foursquare Logo" class="foursquare-icon"></a>
-      </li>
-    </ul>
-  </div>
+    <!--------  Footer       ------>
+    <br class="padding-top">
+    <footer id="colophon" class="site-footer" role="contentinfo">
+        <div class="social-wrapper">
+            <ul>
+                <li>
+                    <a href="#" target="_blank">
+                        <img src="http://www.iconarchive.com/download/i81499/lunartemplates/modern-social-media-circles/Instagram.ico"
+                            alt="Instagram Logo" class="instagram-icon"></a>
+                </li>
+                <li>
+                    <a href="index.html" target="_blank">
+                        <img src="http://www.iconarchive.com/download/i81494/lunartemplates/modern-social-media-circles/Facebook.ico"
+                            alt="Facebook Logo" class="facebook-icon"></a>
+                </li>
+                <li>
+                    <a href="#" target="_blank">
+                        <img src="../images/icons/favicon.png" alt="flair Logo" class="flair-icon"></a>
+                </li>
+                <li>
+                    <a href="#" target="_blank">
+                        <img src="http://www.iconarchive.com/download/i81513/lunartemplates/modern-social-media-circles/Youtube.ico"
+                            alt="Youtube Logo" class="youtube-icon"></a>
+                </li>
+                <li>
+                    <a href="#" target="_blank">
+                        <img src="http://www.iconarchive.com/download/i81510/lunartemplates/modern-social-media-circles/Twitter.ico"
+                            alt="Foursquare Logo" class="foursquare-icon"></a>
+                </li>
+            </ul>
+        </div>
 
-  <nav class="footer-nav" role="navigation">
-    <p>Copyright &copy; 2020-
-      <?php echo date("Y"); ?> Flair GROUP 37- All rights reserved.</p>
-      <a href="about_us.html" target="_blank"><h5>ABOUT US</h5></a>
-    </nav>
-</footer>
+        <nav class="footer-nav" role="navigation">
+            <p>Copyright &copy; 2020-
+                <?php echo date("Y"); ?> Flair GROUP 37- All rights reserved.</p>
+            <a href="about_us.html" target="_blank">
+                <h5>ABOUT US</h5>
+            </a>
+        </nav>
+    </footer>
 
 
     <!-- Firebase Scripts -->
@@ -183,12 +208,11 @@
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-database.js"></script>
     <script src="../javaScript/firebaseScripts/firebaseConfig.js"></script>
 
-        <!-- Import JQuery -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- Import JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
 
-</head>
-<body>
+
 
 
 
@@ -212,4 +236,5 @@
     <script src="../javaScript/videoHandling/viewVideoResponse.js"></script>
 
 </body>
+
 </html>
