@@ -1,4 +1,24 @@
-// Authentication state observer.
+/**
+ * Checks if user is logged in and checks if there
+ * is redirect information in the URL. 
+ * 
+ * Then queries database for the user information and populates
+ * the DOM with their personal information as well as
+ * any challenge videos and challenge response videos they've created.
+ * 
+ * 
+ * Code used: 
+ * 
+ * Firebase documentation example on how to
+ * check user authentication state:
+ * @author Firebase Documentation
+ * @see https://firebase.google.com/docs/auth/web/manage-users?authuser=0
+ * 
+ * Firebase documentation on how to query database:
+ * @author Firebase documentation
+ * @see https://firebase.google.com/docs/firestore/query-data/queries?authuser=0
+ * 
+ */
 firebase.auth().onAuthStateChanged(function (user) {
 	if (user) {
 		// User is signed in.
@@ -37,7 +57,22 @@ firebase.auth().onAuthStateChanged(function (user) {
 	}
 });
 
-// Submit button clicked.
+/**
+ * When the submit button is clicked it updates user information that was
+ * stored in the database.
+ * 
+ * Code used: 
+ * 
+ * Firebase documentation example on how to
+ * check user authentication state:
+ * @author Firebase Documentation
+ * @see https://firebase.google.com/docs/auth/web/manage-users?authuser=0
+ * 
+ * Firebase documentation on how to update database data.
+ * @author Firebase documentation
+ * @see https://firebase.google.com/docs/firestore/manage-data/add-data?authuser=0
+ * 
+ */
 $("#submit").closest("form").on("submit", function (event) {
 	event.preventDefault();
 
@@ -71,6 +106,21 @@ $("#submit").closest("form").on("submit", function (event) {
 		});
 })
 
+/**
+ * When the delete button is clicked, it deletes user data from the database.
+ * 
+ * Code used: 
+ * 
+ * Firebase documentation example on how to
+ * check user authentication state:
+ * @author Firebase Documentation
+ * @see https://firebase.google.com/docs/auth/web/manage-users?authuser=0
+ * 
+ * Firebase documentation on how to delete database data.
+ * @author Firebase documentation
+ * @see https://firebase.google.com/docs/firestore/manage-data/delete-data?authuser=0
+ * 
+ */
 $("#deleteAccount").on('click', function (event) {
 	// Authentication state observer.
 	firebase.auth().onAuthStateChanged(function (user) {
