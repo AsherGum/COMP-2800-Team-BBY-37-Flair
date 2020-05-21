@@ -1,6 +1,9 @@
 
 //Sign out button clicked, signs out of firebase authentification.
-$("#submit").closest('form').on('submit', function (event) {
+$("#sign-out").closest('form').on('submit', function (event) {
     event.preventDefault();
-    firebase.auth().signOut();
+    firebase.auth().signOut().then(function() {
+        window.location.href = "./main.html"
+    })
+    
 });
