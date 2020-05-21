@@ -181,7 +181,15 @@ function upImages() {
     }
 }
 
-
+/**
+ * Event handler for when the video view column is switched.
+ * Adds the user uploaded challenge videos.
+ * 
+ * Uses code from Firebase documentation for query searching:
+ * @author Firebase documentation
+ * @see https://firebase.google.com/docs/firestore/query-data/queries?authuser=0
+ *
+ */
 $("#home-tab").on('click', function (param) {
     if (!home) {
         //Loading circle is turned on
@@ -209,7 +217,15 @@ $("#home-tab").on('click', function (param) {
     }
 })
 
-
+/**
+ * Event handler for when the video view column is switched.
+ * Adds the user uploaded response videos.
+ * 
+ * Uses code from Firebase documentation for query searching:
+ * @author Firebase documentation
+ * @see https://firebase.google.com/docs/firestore/query-data/queries?authuser=0
+ *
+ */
 $("#profile-tab").on('click', function (param) {
     if (home) {
         //turn on loading circle
