@@ -14,6 +14,24 @@ let attemptedUpload = false;
  * for reference
  * @param {blob} videoData 
  * @param {string} imageURI 
+ * 
+ * Uses code from:
+ * 
+ * Firebase documentation example on how to
+ * check user authentication state:
+ * @author Firebase Documentation
+ * @see https://firebase.google.com/docs/auth/web/manage-users?authuser=0
+ * 
+ * 
+ * Firebase documentation on how to add documents into database:
+ * @author Firebase Documentation
+ * @see https://firebase.google.com/docs/firestore/manage-data/add-data?authuser=0#update_fields_in_nested_objects
+ * 
+ * 
+ * Firebase documentation on how to upload files into firestore storage:
+ * @author Firebase Documentation
+ * @see https://firebase.google.com/docs/storage/web/upload-files?authuser=0
+ * 
  */
 function videoUpload(videoData, imageURI, userTags) {
     const date = new Date();
@@ -28,13 +46,12 @@ function videoUpload(videoData, imageURI, userTags) {
     //Quick check for form completion, empty strings, and length
     if (userTitle.length === 0 ||
         userTitle.length > maxTitleLength ||
-        userDescription.length === 0 || 
+        userDescription.length === 0 ||
         userDescription.length > maxDescLength ||
         userCategory == undefined ||
-        videoData == undefined)  {
-            //need more elegance than alert in the future
-            alert("Please complete Title, Category, and Description");
-            return;
+        videoData == undefined) {
+        alert("Please complete Title, Category, and Description");
+        return;
     }
 
     //check for user state
@@ -45,9 +62,8 @@ function videoUpload(videoData, imageURI, userTags) {
                 return;
             }
 
-            //Will need to add some sort of data checking/sanitization here
             const userVideo = videoData;
-           
+
             database.collection("Challenges").add({
                 challenge: userTitle,
                 owner: user.uid,
@@ -62,14 +78,12 @@ function videoUpload(videoData, imageURI, userTags) {
                 videoURL: "",
                 upvotes: 0,
                 description: userDescription,
-                //likedBy: "",
                 comments: "",
                 inappropriateFlags: 0,
                 views: 0,
                 attempts: 0,
-                
 
-            //Uploading the VIDEO here
+                //Uploading the VIDEO here
             }).then(function (docRef) {
                 console.log(`Uploaded with docRef: ${docRef.id}`);
                 docRefID = docRef.id;
@@ -137,16 +151,12 @@ function videoUpload(videoData, imageURI, userTags) {
                                     }).then(function () {
                                         console.log("image URL successfully updated!");
 
-
-
-
-                                        // NEED TO REDIRECT USER TO ANOTHER PAGE
-                                        window.location.href = "../html/main.html";
+                                        window.location.href = "../html/viewVideo.html?view:" + docRefID;
                                     });
                                 });
                             })
 
-                        }).catch(function(error) {
+                        }).catch(function (error) {
                             console.log(error);
                         });
                     });
@@ -156,12 +166,12 @@ function videoUpload(videoData, imageURI, userTags) {
             alert("Please log-in before uploading a video!");
             console.log("User wasn't logged in");
         }
-     })
+    })
 }
 
 /**
  * The handler that is called when add tag button is clicked
- * or enter button is clicked. Checks if it is a blank string
+ * or enter key is pressed. Checks if it is a blank string
  * 
  */
 function addTag() {
@@ -187,10 +197,9 @@ function createTagButton(tagValue) {
     tagButton.type = "button";
     tagButton.classList.add("btn");
     tagButton.classList.add("btn-outline-secondary");
-    
 
     //On click should hide tag and remove it from tags array
-    tagButton.onclick = function() {
+    tagButton.onclick = function () {
         this.style.display = "none";
         //Check to see if it's just a 1 element array
         if (inputTags.length === 1) {
@@ -209,17 +218,16 @@ function createTagButton(tagValue) {
     }
 
     tagInsertion.appendChild(tagButton);
-
 }
 
-//Clicking the "Add Tag" Button
-document.getElementById("add_tag").addEventListener('click', function() {
+//Event listener for clicking the "Add Tag" Button
+document.getElementById("add_tag").addEventListener('click', function () {
     addTag();
     document.getElementById("inputTag").value = "";
 });
 
-//Typing ENTER instead of clicking the "Add Tag" button
-document.getElementById("inputTag").addEventListener('keypress', function(event) {
+//Eevnt listener for pressing ENTER instead of clicking the "Add Tag" button
+document.getElementById("inputTag").addEventListener('keypress', function (event) {
     if (event.key === 'Enter') {
         event.preventDefault();
         addTag();
@@ -230,30 +238,32 @@ document.getElementById("inputTag").addEventListener('keypress', function(event)
 
 
 //event listener for title input to check if it's empty
-document.getElementById('inputTitle').addEventListener('focusout', function() {
+document.getElementById('inputTitle').addEventListener('focusout', function () {
     checkEmptyInput("inputTitle");
 })
 
 //event listener for title input to check the length
-document.getElementById('inputTitle').addEventListener('keyup', function() {
+document.getElementById('inputTitle').addEventListener('keyup', function () {
     getInputLength("inputTitle", "title-count");
 })
 
 
 //event listener for description input to check if it's empty
-document.getElementById('inputDescription').addEventListener('focusout', function() {
+document.getElementById('inputDescription').addEventListener('focusout', function () {
     checkEmptyInput("inputDescription");
 })
 
 //event listener for description input to check the length
-document.getElementById('inputDescription').addEventListener('keyup', function() {
+document.getElementById('inputDescription').addEventListener('keyup', function () {
     getInputLength("inputDescription", "desc-count");
 })
 
 /**
- * Button handling for just the challenge video response upload page
+ * Event listener for the Upload Challenge button.
+ * Creates an image using the CreateImage function in videoPlayer.js and
+ * uploads the video information into firebase.
  */
-document.getElementById('video_upload_button').addEventListener('click', function() {
+document.getElementById('video_upload_button').addEventListener('click', function () {
     let imageURI = createImage();
     let confirmation = window.confirm("Are you sure you want to upload the challenge?");
 
@@ -265,9 +275,10 @@ document.getElementById('video_upload_button').addEventListener('click', functio
 });
 
 /**
- * Button handling for the reset button to rest all fields
+ * Event listener for the Reset button.
+ * Button handling for the reset button to reset all fields
  */
-document.getElementById("reset_button").addEventListener('click', function() {
+document.getElementById("reset_button").addEventListener('click', function () {
     let confirm = window.confirm("Are you sure you want to reset your data?");
 
     if (confirm) {

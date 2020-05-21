@@ -86,7 +86,7 @@ function checkEmptyInput(elementId) {
 
 /**
  * Used to clear form input forms
- * Tied to the reset button
+ * Tied to the reset button on the video upload pages
  * @param {string} elementId 
  */
 function clearInputField(elementId) {
