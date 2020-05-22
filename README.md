@@ -32,6 +32,17 @@
 * Photo of Amir Amintabar (https://amintabar.wordpress.com/)
 #### Footer icons
 * Social media icons from IconArchive (www.iconarchive.com)
+#### Flair Images
+Flair Logo, images, and design all commissioned by Francis Sapanta
+* image/icons/handstand.png
+* image/icons/main_logo.png
+* image/icons/navbar_logo.png
+* image/icons/rsz_flairlogo2.png
+* image/icons/showoff.png
+* image/icons/favicon.png
+* image/icons/untitled-1.svg
+* image/icons/untitled-2.svg
+* image/icons/untitled-3.svg
 
 
 
