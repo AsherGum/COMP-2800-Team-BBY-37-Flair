@@ -1,21 +1,25 @@
-body{
-    background:#343638;
+body {
+    background: #343638;
     font-size: small;
 }
-.emp-profile{
+
+.emp-profile {
     padding: 3%;
     margin-top: 3%;
     margin-bottom: 3%;
     border-radius: 0.5rem;
     background: #fff;
 }
-.profile-img{
+
+.profile-img {
     text-align: center;
 }
-.profile-img img{
+
+.profile-img img {
     width: 70%;
     height: 100%;
 }
+
 .profile-img .file {
     position: relative;
     overflow: hidden;
@@ -26,19 +30,23 @@ body{
     font-size: 15px;
     background: #212529b8;
 }
+
 .profile-img .file input {
     position: absolute;
     opacity: 0;
     right: 0;
     top: 0;
 }
-.profile-head h5{
+
+.profile-head h5 {
     color: #333;
 }
-.profile-head h6{
+
+.profile-head h6 {
     color: Black;
 }
-.profile-edit-btn{
+
+.profile-edit-btn {
     border: none;
     border-radius: 1.5rem;
     width: 70%;
@@ -47,60 +55,69 @@ body{
     color: #6c757d;
     cursor: pointer;
 }
-.profile-rating{
+
+.profile-rating {
     font-size: 12px;
     color: #818182;
     margin-top: 5%;
 }
-.proile-rating span{
+
+.proile-rating span {
     color: #495057;
     font-size: 15px;
     font-weight: 600;
 }
-.profile-head .nav-tabs{
-    margin-bottom:5%;
+
+.profile-head .nav-tabs {
+    margin-bottom: 5%;
 }
-.profile-head .nav-tabs .nav-link{
-    font-weight:600;
+
+.profile-head .nav-tabs .nav-link {
+    font-weight: 600;
     border: none;
 }
-.profile-head .nav-tabs .nav-link.active{
+
+.profile-head .nav-tabs .nav-link.active {
     border: none;
-    border-bottom:2px solid #ff9900;
+    border-bottom: 2px solid #ff9900;
 }
-.profile-work{
+
+.profile-work {
     padding: 14%;
     margin-top: -15%;
 }
-.profile-work p{
+
+.profile-work p {
     font-size: 12px;
     color: #818182;
     font-weight: 600;
     margin-top: 10%;
 }
-.profile-work a{
+
+.profile-work a {
     text-decoration: none;
     color: #495057;
     font-weight: 600;
     font-size: 14px;
 }
-.profile-work ul{
+
+.profile-work ul {
     list-style: none;
 }
-.profile-tab label{
+
+.profile-tab label {
     font-weight: 600;
 }
-.profile-tab p{
+
+.profile-tab p {
     font-weight: 600;
     color: orange;
 }
 
-
 .navbar {
     padding: .8rem;
-
-
 }
+
 hr.dark {
     border-top: 1px solid #d5d5d5;
     width: 75%;
@@ -114,11 +131,12 @@ hr.dark {
     font-size: 1.3em !important;
 }
 
-
-//footer reference found here: https://freefrontend.com/css-headers-footers/
+/* Footer CSS code used from: 
+https://freefrontend.com/css-headers-footers/
+*/
 footer {
-  left: 0;
-  bottom: 0;
+    left: 0;
+    bottom: 0;
     background-color: #3f3f3f;
     color: #d5d5d5;
     padding-top: 2rem;
@@ -128,50 +146,62 @@ hr.light {
     border-top: 1px solid #d5d5d5;
     width: 75%;
 }
+
 .site-footer {
-  background-color: #343A40;
-	text-align: center;
-	margin: 10px 0;
-	padding: 10px 0;
+    background-color: #343A40;
+    text-align: center;
+    margin: 10px 0;
+    padding: 10px 0;
 }
 
 #social-wrapper {
-	text-align: center;
+    text-align: center;
 }
 
 .social-wrapper {
-	text-align: center;
+    text-align: center;
 }
 
 .social-wrapper ul li {
-	display: inline;
-	margin: 0 5px;
-}
-.flair-icon{
-	margin-top: .625em;
-	width: 70px;
-	height: 80px;
-	opacity: .6;
-	filter: alpha(opacity=60); 
-  border-radius: 25px;
-}
-.facebook-icon,.instagram-icon,.youtube-icon,.foursquare-icon{
-	margin-top: .625em;
-	width: 40px;
-	height: 40px;
-	opacity: .6;
-	filter: alpha(opacity=60);
-  border-radius: 25px;
+    display: inline;
+    margin: 0 5px;
 }
 
-.flair-icon:hover,.facebook-icon:hover,.instagram-icon:hover,.youtube-icon:hover,.foursquare-icon:hover {
-	opacity: 1.0;
-	filter: alpha(opacity=100); /* For IE8 and earlier */
+.flair-icon {
+    margin-top: .625em;
+    width: 70px;
+    height: 80px;
+    opacity: .6;
+    filter: alpha(opacity=60);
+    border-radius: 25px;
+}
+
+.facebook-icon,
+.instagram-icon,
+.youtube-icon,
+.foursquare-icon {
+    margin-top: .625em;
+    width: 40px;
+    height: 40px;
+    opacity: .6;
+    filter: alpha(opacity=60);
+    border-radius: 25px;
+}
+
+.flair-icon:hover,
+.facebook-icon:hover,
+.instagram-icon:hover,
+.youtube-icon:hover,
+.foursquare-icon:hover {
+    opacity: 1.0;
+    filter: alpha(opacity=100);
+    /* For IE8 and earlier */
 }
 
 .footer-nav p {
-	text-align: center;
+    text-align: center;
 }
+
 hr.light {
     border-top: 1px solid #d5d5d5;
     width: 75%;

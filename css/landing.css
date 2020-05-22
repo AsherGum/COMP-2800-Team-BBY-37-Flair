@@ -1,53 +1,54 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
 html,
 body {
     height: 100%;
     width: 100%;
     font-family: 'Poppins', sans-serif;
 }
+
 #home {
     background-color: #FF7400;
     padding-bottom: 3rem;
-    
 }
 
 
 #frontLogo {
-
     padding-top: 1rem;
     padding-left: 2rem;
     width: 30%;
-    
 }
+
 #balancing {
     width: 100%;
 }
+
 .spacing {
     line-height: 2;
 }
 
-.padding-top{
- padding-top: 2rem;
+.padding-top {
+    padding-top: 2rem;
 }
 
-.padding { 
+.padding {
     padding-bottom: 1rem;
 }
+
 .padding-subtitles {
     padding-left: 0.5rem;
 }
-.text-description{
-    text-align: justify ;
+
+.text-description {
+    text-align: justify;
 }
 
-
 .landing-text {
-    
     color: #FFF;
     padding-top: 2rem;
     padding-left: 2rem;
-
 }
+
 .display-2 {
     font-size: 8vw;
     font-weight: 800;
@@ -56,12 +57,13 @@ body {
 
 .display-3 {
     font-size: 6vw;
-    
     padding-bottom: 1rem;
 }
+
 .subtitles {
     font-weight: 1000;
 }
+
 .btn {
     background-color: #FF7400;
     border: none;
@@ -71,13 +73,13 @@ body {
     text-align: center;
     display: inline-block;
     border-radius: 20px;
-  }
-  
-  .btn-default:hover {
+}
+
+.btn-default:hover {
     color: #FFF;
     background: #FBAF13;
-     }
+}
 
-hr.hr{
-    border:5px #FBAF13;
+hr.hr {
+    border: 5px #FBAF13;
 }
