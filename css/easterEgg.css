@@ -1,35 +1,51 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
-        body{
-            overflow-x: hidden;
-            
+html,
+body {
+    height: 100%;
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+}
 
-        }
+.navbar {
+    padding: .8rem;
+    background-color: #424242;
+    color: #FFF;
+}
 
-        .landing{
-            background-image: url(../images/icons/ameer.JPG);
-            
-            width: 100%;
-            height: 50rem;
-            position: relative;
+.nav-link {
+    font-size: 1.3em !important;
+}
 
-        }
-        .caption {
-            width: 100%;
-            max-width: 100%;
-            position: absolute;
-            top: 40%;
-            color: white;
-        }
+body {
+    overflow-x: hidden;
+}
 
-        footer {
-            background-color: #3f3f3f;
-            color: #d5d5d5;
-            padding-top: 2rem;
-        }
-        
-        hr.light {
-            border-top: 1px solid #d5d5d5;
-            width: 75%;
-        }
-        
+.landing {
+    background-image: url(../images/icons/ameer.JPG);
+    width: 100%;
+    height: 50rem;
+    position: relative;
+}
 
+.caption {
+    width: 100%;
+    max-width: 100%;
+    position: absolute;
+    top: 40%;
+    color: white;
+}
+
+/* Footer CSS code used from: 
+https://freefrontend.com/css-headers-footers/
+*/
+footer {
+    background-color: #424242;
+    color: #d5d5d5;
+    padding-top: 2rem;
+}
+
+hr.light {
+    border-top: 1px solid #d5d5d5;
+    width: 75%;
+}

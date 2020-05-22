@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
 
+<head>
+    <!--This page uses the boilerplate code from COMP1800-->
     <meta charset="utf-8">
-    <title>My BCIT Project</title>
-        <link rel="shortcut icon" href="../images/icons/favicon.png" />
+    <link rel="shortcut icon" href="../images/icons/favicon.png" />
     <meta name="comp1800 boilerplate code" content="my bcit project">
     <meta name="author" content="BCIT">
 
@@ -16,14 +16,14 @@
     <!----------------------------------------------->
     <!-- CSS: Bootstrap, Firebase, other API -->
     <!----------------------------------------------->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
 
     <!-- Firebase Scripts -->
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-firestore.js"></script>
-
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-storage.js"></script>
 
     <!------------------------>
@@ -31,85 +31,86 @@
     <!------------------------>
     <link href="../css/signup.css" rel="stylesheet">
 </head>
+
 <body>
-
-
     <!----------------------->
     <!--  HTML Section -->
     <!----------------------->
-    <div class="container">
-        <div class="row">
-            <div class="padding col-5">
-                <img class="mx-auto d-block" src="../images/icons/Untitled-1.svg"width="100%"
-                height="150">
+
+    <!-- Uses container, row, and column sizing classes
+    from Bootstrap-->
+    <div id="home">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-1">
+                    <a href="../index.html"><img id="frontLogo" src="../images/icons/rsz_flairlogo2.png"></a>
+
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="container emp-profile">
-        <div class="form">
-
-
-            <div class="tab-content">
-              <div id="signup">
-                <h1>Sign Up for Free</h1>
-
-                <form action="/" method="post">
-
-                    <div class="container h-100">
-                        <div class="row h-100 justify-content-center align-items-center">
-                            <div class="col-10 col-md-8 col-lg-6">
-                                <!-- Form -->
-                                <form class="form-example" action="" method="post">
-
-                                    <!-- Input fields -->
-                                    <div class="form-group">
-                                        <label for="firstName">First Name:</label>
-                                        <input type="text" class="form-control firstname" id="firstname" placeholder="First Name...">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="firstName">Last Name:</label>
-                                        <input type="text" class="form-control lastname" id="lastname" placeholder="Last Name...">
-                                    </div><div class="form-group">
-                                        <label for="firstName">Username:</label>
-                                        <input type="text" class="form-control username" id="username" placeholder="Username...">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="firstName">Email:</label>
-                                        <input type="text" class="form-control email" id="email" placeholder="Email...">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="password">Password:</label>
-                                        <input type="password" class="form-control password" id="password" placeholder="Password...">
-                                    </div>
-                                    <button type="submit" class="btn btn-primary btn-customized" id="submit">Sign up</button>
-                                    
-                                    
-                                    <!-- End input fields -->
-                                 </form>
-                                <!-- Form end -->
-                                <br>
-                                <p>Already have an account? <a style="text-decoration: none;" href="./login.html">Click here</a></p>
-                                
+    <!-- Uses Bootstrap classes including
+        form, containers, form-groups, and column layout 
+        for the sign up form -->
+    <div class="form">
+        <h1 class="title">Sign Up for Free</h1>
+        <div id="signup">
+            <form action="/" method="post">
+                <div class="container padding-bottom">
+                    <div class="col-10 col-md-8 col-lg-6 ">
+                        <form class="form-example" action="" method="post">
+                            <!-- Input fields -->
+                            <div class="form-group">
+                                <label for="firstName">Username:</label>
+                                <input type="text" class="form-control username" id="username"
+                                    placeholder="Username...">
                             </div>
-                        </div>
+                            <div class="form-group">
+                                <label for="firstName">Email:</label>
+                                <input type="text" class="form-control email" id="email" placeholder="Email...">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password:</label>
+                                <input type="password" class="form-control password" id="password"
+                                    placeholder="Password...">
+                            </div>
+                            <br>
+                            <button type="submit" class="login-form-btn" id="submit">Sign up</button>
+                        </form>
+                        <br>
+                        <p>Already have an account? <a style="text-decoration: none;" href="./login.html">Click here</a>
+                        </p>
                     </div>
-
-              </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <div class="footer-bottom-wrapper">
     </div>
 
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related    -->
     <!----------------------------------------------->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
 
-
-
+    <!--------------------------------------------------------------------->
+    <!-- JS files: Your own JavaScript functions included here    -->
+    <!--------------------------------------------------------------------->
 
     <script src="../javaScript/firebaseScripts/firebaseConfig.js"></script>
+    <script src="../javaScript/general/general.js"></script>
     <script src="../javaScript/userManagement/signUp.js"></script>
 
 </body>
+
 </html>

@@ -1,20 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
-html,body {
+html,
+body {
     height: 100%;
     width: 100%;
-    color: 222;
-    
-    font-family: 'Roboto', sans-serif;
-
+    font-family: 'Poppins', sans-serif;
 }
 
 .navbar {
-    font-size: x-small;
     padding: .8rem;
-
-
+    background-color: #424242;
+    color: #FFF;
 }
+
+.navbar {
+    padding: .8rem;
+}
+
 hr.dark {
     border-top: 1px solid #d5d5d5;
     width: 75%;
@@ -28,9 +30,12 @@ hr.dark {
     font-size: 1.3em !important;
 }
 
-
-
+/* Footer CSS code used from: 
+https://freefrontend.com/css-headers-footers/
+*/
 footer {
+    left: 0;
+    bottom: 0;
     background-color: #3f3f3f;
     color: #d5d5d5;
     padding-top: 2rem;
@@ -41,45 +46,88 @@ hr.light {
     width: 75%;
 }
 
+.site-footer {
+    background-color: #343A40;
+    text-align: center;
+    margin: 10px 0;
+    padding: 10px 0;
+}
 
+#social-wrapper {
+    text-align: center;
+}
 
+.social-wrapper {
+    text-align: center;
+}
 
+.social-wrapper ul li {
+    display: inline;
+    margin: 0 5px;
+}
 
+.flair-icon {
+    margin-top: .625em;
+    width: 70px;
+    height: 80px;
+    opacity: .6;
+    filter: alpha(opacity=60);
+    border-radius: 25px;
+}
 
+.facebook-icon,
+.instagram-icon,
+.youtube-icon,
+.foursquare-icon {
+    margin-top: .625em;
+    width: 40px;
+    height: 40px;
+    opacity: .6;
+    filter: alpha(opacity=60);
+    border-radius: 25px;
+}
 
+.flair-icon:hover,
+.facebook-icon:hover,
+.instagram-icon:hover,
+.youtube-icon:hover,
+.foursquare-icon:hover {
+    opacity: 1.0;
+    filter: alpha(opacity=100);
+    /* For IE8 and earlier */
+}
 
+.footer-nav p {
+    text-align: center;
+}
 
-
-
-.content {
-
-    
+hr.light {
+    border-top: 1px solid #d5d5d5;
+    width: 75%;
 }
 
 h2 {
     margin: 24px;
 }
 
-.card{
+.card {
     margin: 12px;
     width: 256px;
-    height: 500px;
+    height: 380px;
     cursor: pointer;
     display: inline-flex;
-
 }
 
-.card img{
-    height: 500px;
+.card img {
+    height: 380px;
 }
 
-.card #accountName{
+.card #accountName {
     font-size: small;
     position: absolute;
     color: white;
     top: 36px;
 }
-
 
 .card p {
     font-size: small;
@@ -89,37 +137,25 @@ h2 {
     color: white;
 }
 
-
-
-@media (min-width: 400px) and (max-width: 840px) {
-
-    .content {
-        
-    }
-
-}
-
 @media (min-width: 841px) {
-
     .content {
         overflow: auto;
         white-space: nowrap;
     }
 
-    .card #likes{
+    .card #likes {
         font-size: small;
         position: absolute;
         color: white;
         top: 55vh;
         left: 220px;
     }
-    
-    .card #view{
+
+    .card #view {
         width: 24px;
         height: 24px;
         position: absolute;
         top: 54.3vh;
         left: 190px;
     }
-
 }

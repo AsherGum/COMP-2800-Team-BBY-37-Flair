@@ -1,3 +1,11 @@
+/**
+ * Firebase configuration set up as shown on 
+ * the Firebase documentation about how to get started:
+ * @author Firebase documentation
+ * @see https://firebase.google.com/docs/web/setup?authuser=0
+ * 
+ */
+
 const firebaseConfig = {
     apiKey: "AIzaSyCrZxHyhpgxa_Ou80t84gkZfsFgOsPzNuI",
     authDomain: "mipee-e5ade.firebaseapp.com",
@@ -10,4 +18,4 @@ const firebaseConfig = {
 
 // Initialize firebase config & database.
 firebase.initializeApp(firebaseConfig);
-var database = firebase.firestore();
+let database = firebase.firestore();

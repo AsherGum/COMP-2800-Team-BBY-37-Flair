@@ -1,16 +1,26 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="utf-8">
   <title>Flair Video Recorder</title>
   <link rel="shortcut icon" href="../images/icons/favicon.png" />
-
-  <!-- Charset -->
-  <meta charset="utf-8">
-
-  <!-- Viewport -->
+  <!----------------------------------------------->
+  <!--  Meta tag for rendering on mobile devices -->
+  <!----------------------------------------------->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!----------------------------------------------->
+  <!-- CSS: Bootstrap, Firebase, other API -->
+  <!----------------------------------------------->
+
+  <!-- This set of scripts and meta element code from the videojs-record
+    library example page from here:
+
+        @author Thijs Triemstra (https://github.com/thijstriemstra)
+       @see https://github.com/collab-project/videojs-record/blob/master/examples/audio-video.html
+        All the files in the videoAdapter folder are part of the videojs-record library
+
+    -->
 
   <!-- Control of cache errors -->
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -18,105 +28,106 @@
 
   <!-- Control of expiry date -->
   <meta http-equiv="Expires" content="0">
-
   <link href="../javaScript/videoAdapter/video-js.min.css" rel="stylesheet">
   <link href="../javaScript/videoAdapter/videojs.record.css" rel="stylesheet">
   <link href="../javaScript/videoAdapter/examples.css" rel="stylesheet">
-
   <script src="../javaScript/videoAdapter/video.js"></script>
   <script src="../javaScript/videoAdapter/RecordRTC.js"></script>
   <script src="../javaScript/videoAdapter/adapter.js"></script>
-
-  <script src="../javaScript/videoAdapter/videojs.record.js"></script>
-
   <script src="../javaScript/videoAdapter/videojs.record.js"></script>
   <script src="../javaScript/videoAdapter/browser-workarounds.js"></script>
+
+  <!-- End of the videojs-record libraries-->
 
   <!-- Firebase Scripts -->
   <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-firestore.js"></script>
-
   <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-storage.js"></script>
-
   <script src="../javaScript/firebaseScripts/firebaseConfig.js"></script>
 
   <!-- BOOTSTRAP-->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-
-
-  <!--
-        <script src="../javaScript/firebaseScripts/firebaseAuth.js"></script>
-    -->
   <!------------------------>
   <!-- Your own CSS files -->
   <!------------------------>
   <link rel="stylesheet" href="../css/responses.css">
-
-
-
-
-
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
-    <div class="container-fluid">
+  <!----------------------->
+  <!--  HTML Section -->
+  <!----------------------->
 
-      <a href="../index.html" class="navbar-brand"><img src="../images/icons/Untitled-1.svg" width="100"
-          height="40"></a>
-      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav">
-          <li class="nav-link">
-            <a class="nav-link" href="uploadChallenge.html">Create Challenge</a>
-          </li>
-          <li class="nav-link">
-            <a class="nav-link" href="categories.html">Categories</a>
-          </li>
-          <li class="nav-link">
-            <a class="nav-link" href="leaderboard.html">Leaderboard</a>
-          </li>
-
-
-        </ul>
-        <ul class="navbar-nav ml-auto">
-          <a href="account.html" class="nav-item nav-link">My Account</a>
-        </ul>
-
-      </div>
-
+  <!--Navbar -->
+  <!--This navbar block of code was adapted from code found here
+  source: https://mdbootstrap.com/docs/jquery/navigation/navbar/ -->
+  <!--Uses Bootstrap classes to create and organize Navbar and dropdown-->
+  <nav class="mb-1 navbar navbar-expand-lg navbar-dark sticky-top">
+    <a class="navbar-brand" href="main.html"><img src="../images/icons/Untitled-1.svg" width="80" height="45"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+      aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="uploadChallenge.html">Create Challenge</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="categories.html">Categories</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="leaderboard.html">Leaderboard</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto nav-flex-icons">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-user">Profile</i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
+            <a class="dropdown-item" href="account.html">My Profile</a>
+            <form method="post"><button class="dropdown-item" type="submit" id="sign-out">Logout</button></form>
+          </div>
+        </li>
+      </ul>
     </div>
   </nav>
+  <!--/.Navbar -->
 
 
-
+  <!--Response Upload-->
+  <!--The code within this section of code
+  Uses Bootstrap classes including column layouts, 
+  containers, spacing, flexbox, form, and text formatting in order
+  to display the content -->
   <div class="head text-center">
-    <h1>
-      Upload your response!
-    </h1>
+    <h1>Upload your response!</h1>
+    <h4>Original Challenge: <span id="challenge-title"></span></h4>
   </div>
   <div class="container emp-profile">
     <div class="row">
-
       <div class="col-sm-5">
+        <a href="" id="back-challenge"><button class="btn btn-warning">Back to Challenge Page</button></a>
         <p class="text-center">Record yourself attempting the challenge using the webcam recorder below!</p>
-
         <div class="container py-3 d-flex justify-content-center">
           <video id="myVideo" playsinline class="video-js vjs-default-skin"></video>
         </div>
       </div>
-      <div class="col-sm-7">
 
+      <div class="col-sm-7">
         <div class="d-flex justify-content-center">
-          <label for="inputTitle" class="col-form-label">Video Title:</label>
+          <label for="inputTitle" class="col-form-label">Your Video Title:</label>
         </div>
         <div class="d-flex justify-content-center">
-          <input type="text" name="title" id="inputTitle">
+          <textarea type="text" name="title" id="inputTitle"></textarea>
+        </div>
+        <div class="d-flex justify-content-center">
+          <p class="text-muted"><span id="title-count"></span>/150</p>
         </div>
         <div class="d-flex justify-content-center">
           <label for="inputDescription" class="col-form-label">Description:</label>
@@ -124,53 +135,81 @@
         <div class="d-flex justify-content-center">
           <textarea name="description" id="inputDescription" cols="30" rows="10" class="col-form-label "></textarea>
         </div>
+        <div class="d-flex justify-content-center">
+          <p class="text-muted"><span id="desc-count"></span>/300</p>
+        </div>
         <div class="d-flex justify-content-center py-2">
           <button class="btn btn-danger mx-3" id="reset_button">Reset form</button>
           <button class="btn btn-warning" id="video_upload_button">Upload</button>
         </div>
       </div>
     </div>
-
   </div>
-
-  <footer>
-    <div class="container-fluid padding">
-      <div class="row text-center">
-        <div class="col-md-4">
-          <img src="../images/icons/navbar_logo.png">
-          <hr class="light">
-          <p>flairemail@flair.com</p>
-          <p>772 513 1097</p>
-
-        </div>
-        <div class="col-md-4">
-          <hr class="light">
-          <h4>Connect</h4>
-          <hr class="light">
-          <p>Instagram</p>
-          <p>Facebook</p>
-
-        </div>
-        <div class="col-md-4">
-          <hr class="light">
-          <h4><a href="about_us.html">About us</a></h4>
-          <hr class="light">
-          <p>2800 Project</p>
-          <p>Made by Asher, Ben, Francis, Saksham</p>
-
-        </div>
-      </div>
+  <!--------  Footer       ------>
+  <!--This footer block of code was adapted from code found here
+  source: https://freefrontend.com/css-headers-footers/-->
+  <br class="padding-top">
+  <footer id="colophon" class="site-footer" role="contentinfo">
+    <div class="social-wrapper">
+      <ul>
+        <li>
+          <a href="#" target="_blank">
+            <img
+              src="http://www.iconarchive.com/download/i81499/lunartemplates/modern-social-media-circles/Instagram.ico"
+              alt="Instagram Logo" class="instagram-icon"></a>
+        </li>
+        <li>
+          <a href="index.html" target="_blank">
+            <img
+              src="http://www.iconarchive.com/download/i81494/lunartemplates/modern-social-media-circles/Facebook.ico"
+              alt="Facebook Logo" class="facebook-icon"></a>
+        </li>
+        <li>
+          <a href="#" target="_blank">
+            <img src="../images/icons/favicon.png" alt="flair Logo" class="flair-icon"></a>
+        </li>
+        <li>
+          <a href="#" target="_blank">
+            <img src="http://www.iconarchive.com/download/i81513/lunartemplates/modern-social-media-circles/Youtube.ico"
+              alt="Youtube Logo" class="youtube-icon"></a>
+        </li>
+        <li>
+          <a href="#" target="_blank">
+            <img src="http://www.iconarchive.com/download/i81510/lunartemplates/modern-social-media-circles/Twitter.ico"
+              alt="Foursquare Logo" class="foursquare-icon"></a>
+        </li>
+      </ul>
     </div>
+
+    <nav class="footer-nav" role="navigation">
+      <p>Copyright &copy; 2020 Flair GROUP 37- All rights reserved.</p>
+      <a href="about_us.html" target="_blank">
+        <h5>ABOUT US</h5>
+      </a>
+    </nav>
   </footer>
+  <!--/.Footer -->
+  <!----------------------------------------------->
+  <!-- JS: Boostrap, Firebase, API related    -->
+  <!----------------------------------------------->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+  </script>
 
-
-
-
+  <!--------------------------------------------------------------------->
+  <!-- JS files: Your own JavaScript functions included here    -->
+  <!--------------------------------------------------------------------->
 
   <script src="../javaScript/general/general.js"></script>
   <script src="../javaScript/videoHandling/videoPlayer.js"></script>
   <script src="../javaScript/videoHandling/uploadResponseVideo.js"></script>
+  <script src="../javaScript/userManagement/signout.js"></script>
 
 </body>
-
 </html>

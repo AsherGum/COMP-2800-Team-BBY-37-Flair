@@ -1,19 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link href="../css/login.css" rel="stylesheet">
-
     <title>Login Page</title>
 
-        <link rel="shortcut icon" href="../images/icons/favicon.png" />
+    <link rel="shortcut icon" href="../images/icons/favicon.png" />
 
-
-        <!-- Firebase Scripts -->
+    <!-- Firebase Scripts -->
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-firestore.js"></script>
@@ -24,33 +20,59 @@
     <!-- Import JQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
+    <!----------------------------------------------->
+    <!-- CSS: Bootstrap, Firebase, other API -->
+    <!----------------------------------------------->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
+
 <body>
-    <div class="container">
-        <h1 id="greeting"><img src="../images/icons/Untitled-1.svg" style="width:200px;height:100px;"><br>Welcome To Flair</h1>
-        <div class="loginForm">
-            <form>
-                <!-- Email container -->
-                <div id="emailContainer">
-                    <!-- Email input -->
-                    <input type="email" class="form-control" id="email" placeholder="Enter email">
+    <!--Top container-->
+    <!--Uses Bootstrap classes to create top section of page-->
+    <div id="home">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-1">
+                    <a href="../index.html"><img id="frontLogo" src="../images/icons/rsz_flairlogo2.png"></a>
+
                 </div>
-                <!-- Password container -->
-                <div id="passwordContainer">
-                    <!-- Password input -->
-                    <input type="password" class="form-control" id="password" placeholder="Password">
-                </div>
-                <!-- Submit container -->
-                <div id="submitContainer">
-                    <!-- Submit button -->
-                    <button type="submit" id="submit">Log In</button>
-                </div>
-            </form>
-            <p><a style="text-decoration: none;" href="./signUp.html">Click here to Sign Up</a></p>
+            </div>
         </div>
     </div>
 
-    <!-- Page Scripts-->
+    <!--User Inputs-->
+    <!--Uses Bootstrap classes to divide and organize user input form-->
+    <div class="container">
+        <div class="wrap-login">
+            <h1 class="title">LOGIN</h1>
+            <div class="loginForm ">
+                <form class="wrap-input">
+                    <!-- Email container -->
+                    <div class="margin-bottom" id="emailContainer">
+                        <!-- Email input -->
+                        <input class="input" type="email" class="form-control" id="email" placeholder="Email">
+                    </div>
+                    <!-- Password container -->
+                    <div class="margin-bottom" id="passwordContainer">
+                        <!-- Password input -->
+                        <input class="input" type="password" class="form-control" id="password" placeholder="Password">
+                    </div>
+                    <!-- Submit container -->
+                    <div id="submitContainer">
+                        <!-- Submit button -->
+                        <button class="login-form-btn" type="submit" id="submit">LOGIN</button>
+                    </div>
+                </form>
+                <p class="clickToSignUp"><a href="./signUp.html">Click here to Sign Up</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!--Footer-->
+    <div class="footer-bottom-wrapper">
+    </div>
+
     <!-- User Management-->
     <script src="../javaScript/userManagement/login.js"></script>
 </body>

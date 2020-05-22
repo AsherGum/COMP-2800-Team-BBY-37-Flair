@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
 
+<head>
+    <!--This page uses the boilerplate code from COMP1800-->
     <meta charset="utf-8">
     <title>Account Settings</title>
-        <link rel="shortcut icon" href="../images/icons/favicon.png" />
+    <link rel="shortcut icon" href="../images/icons/favicon.png" />
     <meta name="comp1800 boilerplate code" content="account Settings">
 
     <!----------------------------------------------->
@@ -15,7 +16,8 @@
     <!----------------------------------------------->
     <!-- CSS: Bootstrap, Firebase, other API -->
     <!----------------------------------------------->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
 
     <!-- Firebase Scripts -->
@@ -30,73 +32,140 @@
     <!-- Your own CSS files -->
     <!------------------------>
     <link href="../css/accountSet.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link href="../css/signup.css" rel="stylesheet">
 </head>
+
 <body>
-    <div class="container emp-profile">
-        <div class="form">
+    <!----------------------->
+    <!--  HTML Section -->
+    <!----------------------->
 
 
-            <div class="tab-content">
-              <div id="signup">
-                <h1>Account Settings</h1>
+    <!--Top container-->
+    <!--Uses Bootstrap classes to create top section of page-->
+    <div id="home">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-1">
+                    <a href="main.html"><img id="frontLogo" src="../images/icons/rsz_flairlogo2.png"></a>
 
-                <form action="/" method="post">
-
-                    <div class="container h-100">
-                        <div class="row h-100 justify-content-center align-items-center">
-                            <div class="col-10 col-md-8 col-lg-6">
-                                <!-- Form -->
-                                <form class="form-example" action="" method="post">
-
-                                    <!-- Input fields -->
-                                    <div class="form-group">
-                                        <label for="firstName">First Name:</label>
-                                        <input type="text" class="form-control firstname" id="firstName" placeholder="First Name...">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="firstName">Last Name:</label>
-                                        <input type="text" class="form-control lastname" id="lastName" placeholder="Last Name...">
-                                    </div><div class="form-group">
-                                        <label for="firstName">Username:</label>
-                                        <input type="text" class="form-control username" id="userName" placeholder="Username...">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="firstName">Email:</label>
-                                        <input type="text" class="form-control email" id="email" placeholder="Email..." readonly>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="Bio">Bio</label>
-                                        <input type="text" class="form-control password" id="bio" placeholder="Bio...">
-                                    </div>
-                                    <button type="submit" class="btn btn-primary btn-customized" id="submit">Confirm Changes</button>
-                                    <!-- End input fields -->
-                                 </form>
-                                <!-- Form end -->
-                            </div>
-                        </div>
-                    </div>
-
-              </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <p style="text-align: center; color: #ff2305;" id="deleteAccount"> Click here to delete account</p>
+    <!--User Inputs-->
+    <!--Uses Bootstrap classes to divide and organize user input form-->
+    <div class="form">
+        <h1 class="title">Account Settings</h1>
+        <div id="signup">
+            <form action="/" method="post">
+                <div class="container ">
+                    <div class="col-10 col-md-8 col-lg-6">
+                        <a href="../html/account.html" class="btn btn-warning">Back to
+                            Profile</a>
+                        <!-- Form -->
+                        <form class="form-example" action="" method="post">
+                            <!-- Input fields -->
+                            <div class="padding-top form-group">
+                                <label for="firstName">First Name:</label>
+                                <input type="text" class="form-control firstname" id="firstName"
+                                    placeholder="First Name...">
+                            </div>
+                            <div class="form-group">
+                                <label for="firstName">Last Name:</label>
+                                <input type="text" class="form-control lastname" id="lastName"
+                                    placeholder="Last Name...">
+                            </div>
+                            <div class="form-group">
+                                <label for="firstName">Username:</label>
+                                <input type="text" class="form-control username" id="userName"
+                                    placeholder="Username...">
+                            </div>
+                            <div class="form-group">
+                                <label for="firstName">Email:</label>
+                                <input type="text" class="form-control email" id="email" placeholder="Email..."
+                                    readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="Bio">Bio</label>
+                                <input type="text" class="form-control password" id="bio" placeholder="Bio...">
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-customized" id="submit">Confirm
+                                Changes</button>
+                            <!-- End input fields -->
+                            <div class="padding-top padding-bottom"> <a href="../html/account.html" id="deleteAccount"
+                                    class="btn btn-danger">Click here to delete account</a></div>
+                        </form>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!--------  Footer       ------>
+    <!--This footer block of code was adapted from code found here
+    source: https://freefrontend.com/css-headers-footers/-->
+
+    <br class="padding-top">
+    <footer id="colophon" class="site-footer" role="contentinfo">
+        <div class="social-wrapper">
+            <ul>
+                <li>
+                    <a href="#" target="_blank">
+                        <img src="http://www.iconarchive.com/download/i81499/lunartemplates/modern-social-media-circles/Instagram.ico"
+                            alt="Instagram Logo" class="instagram-icon"></a>
+                </li>
+                <li>
+                    <a href="index.html" target="_blank">
+                        <img src="http://www.iconarchive.com/download/i81494/lunartemplates/modern-social-media-circles/Facebook.ico"
+                            alt="Facebook Logo" class="facebook-icon"></a>
+                </li>
+                <li>
+                    <a href="#" target="_blank">
+                        <img src="../images/icons/favicon.png" alt="flair Logo" class="flair-icon"></a>
+                </li>
+                <li>
+                    <a href="#" target="_blank">
+                        <img src="http://www.iconarchive.com/download/i81513/lunartemplates/modern-social-media-circles/Youtube.ico"
+                            alt="Youtube Logo" class="youtube-icon"></a>
+                </li>
+                <li>
+                    <a href="#" target="_blank">
+                        <img src="http://www.iconarchive.com/download/i81510/lunartemplates/modern-social-media-circles/Twitter.ico"
+                            alt="Foursquare Logo" class="foursquare-icon"></a>
+                </li>
+            </ul>
+        </div>
+
+        <nav class="footer-nav" role="navigation">
+            <p>Copyright &copy; 2020 Flair GROUP 37- All rights reserved.</p>
+            <a href="about_us.html" target="_blank">
+                <h5>ABOUT US</h5>
+            </a>
+        </nav>
+    </footer>
+    <!--/.Footer -->
+
 
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related    -->
     <!----------------------------------------------->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
 
     <!--------------------------------------------------------------------->
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
 
     <script src="../javaScript/userManagement/accountSet.js"></script>
-
-     <!--------------------------------------------------------------------->
-    <!-- Make calls to your own JavaScript functions, here below-->
-    <!---------------------------------------------------------------------->
-
-
 </body>
 </html>

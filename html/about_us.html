@@ -2,8 +2,9 @@
 <html lang="en">
 
 <head>
+    <!--This page uses the boilerplate code from COMP1800-->
     <meta charset="utf-8">
-    <title>My BCIT Project</title>
+    <title>About us</title>
     <link rel="shortcut icon" href="../images/icons/favicon.png" />
     <meta name="comp1800 boilerplate code" content="my bcit project">
     <meta name="author" content="BCIT">
@@ -20,6 +21,16 @@
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
 
+    <!-- Firebase Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-database.js"></script>
+    <script src="../javaScript/firebaseScripts/firebaseConfig.js"></script>
+
+    <!-- Import JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <!------------------------>
     <!-- Your own CSS files -->
     <!------------------------>
@@ -32,69 +43,79 @@
     <!--  HTML Section -->
     <!----------------------->
 
-    <!--------  Nav-Bar       ------>
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
-        <div class="container-fluid">
+    <!--Navbar -->
+    <!--This navbar block of code was adapted from code found here
+    source: https://mdbootstrap.com/docs/jquery/navigation/navbar/ -->
+    <!--Uses Bootstrap classes to create and organize Navbar and dropdown-->
 
-            <a href="../index.html" class="navbar-brand"><img src="../images/icons/Untitled-1.svg" width="100"
-                    height="80"></a>
-            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav">
-                    <li class="nav-link">
-                        <a class="nav-link" href="uploadChallenge.html">Create Challenge</a>
-                    </li>
-                    <li class="nav-link">
-                        <a class="nav-link" href="categories.html">Categories</a>
-                    </li>
-                    <li class="nav-link">
-                        <a class="nav-link" href="leaderboard.html">Leaderboard</a>
-                    </li>
-
-
-                </ul>
-                <ul class="navbar-nav ml-auto">
-                    <a href="account.html" class="nav-item nav-link">My Account</a>
-                </ul>
-
-            </div>
-
+    <nav class="mb-1 navbar navbar-expand-lg navbar-dark sticky-top">
+        <a class="navbar-brand" href="main.html"><img src="../images/icons/Untitled-1.svg" width="80" height="45"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="uploadChallenge.html">Create Challenge</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="categories.html">Categories</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="leaderboard.html">Leaderboard</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto nav-flex-icons">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user">Profile</i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-default"
+                        aria-labelledby="navbarDropdownMenuLink-333">
+                        <a class="dropdown-item" href="account.html">My Profile</a>
+                        <form method="post"><button class="dropdown-item" type="submit" id="sign-out">Logout</button>
+                        </form>
+                    </div>
+                </li>
+            </ul>
         </div>
     </nav>
-    <!---Something About Flair-->
-    <div class="container-fluid padding">
-        <div class="row padding">
-            <div class="col-lg-6">
-                <h2 class="display-1">Flair</h2>
-                <h2>A dynamic and exciting way to show off your flairs.</h2>
+    <!--/.Navbar -->
+
+    <!--Something About Flair-->
+    <!--Uses Bootstrap Classes to organize and seperate section-->
+    <div class="container">
+        <div class="row">
+            <h2 class="display-1"></h2>
+            <h3 class="text-center padding-top spacing">
+                Flair is a way for people to show off their talents.
                 <br>
-                <hr>
-                <h3>Flair is a way for people to show off their talents. It's a space for people to connect and share
-                    their creativity and passions. We're a team of students from the British Columbia Institute of
-                    Technology and we believe that everyone has a talent to show. </h3>
-            </div>
-
+                It's a space for
+                people to connect and share
+                their creativity and passions. We're a team of students from the British Columbia Institute of
+                Technology and we believe that everyone has a talent to show. </h3>
         </div>
+        <!--ID for hidden easteregg, displayed through key sequence 'amir' in window-->
         <div id="amirHidden" style="display:none">
-
             <h1><a href="easterEgg.html">Click to explore the INNER MIND</a></h1>
         </div>
-
     </div>
 
-    <!---flair team-->
+    <!---Flair team-->
+    <!--Uses Bootstrap Classes to seperate section from Flair Member Profiles-->
     <div class="container-fluid padding">
         <br>
         <div class="row text-center">
-            <div class="col-12">
-                <h1 class="display-3">Meet the Team</h1>
+            <div class="container-orange col-12">
+                <h1 class="meet">Meet the Team</h1>
             </div>
             <hr>
         </div>
     </div>
-
+    <!--Flair Member Profiles-->
+    <!--Uses Bootstrap Classes to display profiles as Cards-->
     <div class="container-fluid padding">
         <div class="row padding">
             <div class="col-md-3">
@@ -103,12 +124,11 @@
                     <div class="card-body">
                         <h4 class="card-title">Asher</h4>
                         <p class="card-text">
-                            Few sentences about team member
+                            I like to eat watermelon and fried chicken. But I listen to dubstep.
                         </p>
                         <a href="../html/account.html?view:TRNhtP0v5pYfNDnBeaY19CfPmwu2" class="btn btn-warning">View
                             Profile</a>
                     </div>
-
                 </div>
             </div>
             <div class="col-md-3">
@@ -117,7 +137,8 @@
                     <div class="card-body">
                         <h4 class="card-title">Ben</h4>
                         <p class="card-text">
-                            A student at BCIT in the CST program. Enjoys learning new things in the world of technology and travelling. 
+                            A student at BCIT in the CST program. Enjoys learning new things in the world of technology
+                            and travelling.
                         </p>
                         <a href="../html/account.html?view:3WFqhgsdkcezIYV9KtIaE4vhWwm2" class="btn btn-warning">View
                             Profile</a>
@@ -143,7 +164,7 @@
                     <div class="card-body">
                         <h4 class="card-title">Saksham</h4>
                         <p class="card-text">
-                            Few sentences about team member
+                            Current CST Student at BCIT
                         </p>
                         <a href="../html/account.html?view:NNeTyFBC1SS9xbV41tCYfxcjWjA2" class="btn btn-warning">View
                             Profile</a>
@@ -153,63 +174,66 @@
         </div>
     </div>
     <!--------  Footer       ------>
-    <footer>
-        <div class="container-fluid padding">
-            <div class="row text-center">
-                <div class="col-md-4">
-                    <img src="../images/icons/Untitled-1.svg" height="80" width="150">
-                    <hr class="light">
-                    <p>flairemail@flair.com</p>
-                    <p>772 513 1097</p>
-
-                </div>
-                <div class="col-md-4">
-                    <hr class="light">
-                    <h4>Connect</h4>
-                    <hr class="light">
-                    <p>Instagram</p>
-                    <p>Facebook</p>
-
-                </div>
-                <div class="col-md-4">
-                    <hr class="light">
-                    <h4><a href="about_us.html">About us</a></h4>
-                    <hr class="light">
-                    <p>2800 Project</p>
-                    <p>Made by Asher, Ben, Francis, Saksham</p>
-
-                </div>
-            </div>
+    <!--This footer block of code was adapted from code found here
+    source: https://freefrontend.com/css-headers-footers/-->
+    <br class="padding-top">
+    <footer id="colophon" class="site-footer" role="contentinfo">
+        <div class="social-wrapper">
+            <ul>
+                <li>
+                    <a href="#" target="_blank">
+                        <img src="http://www.iconarchive.com/download/i81499/lunartemplates/modern-social-media-circles/Instagram.ico"
+                            alt="Instagram Logo" class="instagram-icon"></a>
+                </li>
+                <li>
+                    <a href="index.html" target="_blank">
+                        <img src="http://www.iconarchive.com/download/i81494/lunartemplates/modern-social-media-circles/Facebook.ico"
+                            alt="Facebook Logo" class="facebook-icon"></a>
+                </li>
+                <li>
+                    <a href="#" target="_blank">
+                        <img src="../images/icons/favicon.png" alt="flair Logo" class="flair-icon"></a>
+                </li>
+                <li>
+                    <a href="#" target="_blank">
+                        <img src="http://www.iconarchive.com/download/i81513/lunartemplates/modern-social-media-circles/Youtube.ico"
+                            alt="Youtube Logo" class="youtube-icon"></a>
+                </li>
+                <li>
+                    <a href="#" target="_blank">
+                        <img src="http://www.iconarchive.com/download/i81510/lunartemplates/modern-social-media-circles/Twitter.ico"
+                            alt="Foursquare Logo" class="foursquare-icon"></a>
+                </li>
+            </ul>
         </div>
-    </footer>
 
+        <nav class="footer-nav" role="navigation">
+            <p>Copyright &copy; 2020 Flair GROUP 37- All rights reserved.</p>
+            <a href="about_us.html" target="_blank">
+                <h5>ABOUT US</h5>
+            </a>
+        </nav>
+    </footer>
+    <!--/.Footer -->
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related    -->
     <!----------------------------------------------->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
-
-    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-firestore.js"></script>
-    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
 
     <!--------------------------------------------------------------------->
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
     <script src="../javaScript/pageScripts/about_us.js"></script>
-    <!--------------------------------------------------------------------->
-    <!-- Make calls to your own JavaScript functions, here below-->
-    <!---------------------------------------------------------------------->
+    <script src="../javaScript/userManagement/signout.js"></script>
 
 
 </body>
-
 </html>

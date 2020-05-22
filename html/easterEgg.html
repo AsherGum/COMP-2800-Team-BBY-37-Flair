@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <!--This page uses the boilerplate code from COMP1800-->
     <meta charset="utf-8">
     <title>Easter Egg</title>
     <link rel="shortcut icon" href="../images/icons/favicon.png" />
@@ -11,136 +13,162 @@
     <!--  Meta tag for rendering on mobile devices -->
     <!----------------------------------------------->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+
     <!----------------------------------------------->
     <!-- CSS: Bootstrap, Firebase, other API -->
     <!----------------------------------------------->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
-   
+
     <!------------------------>
     <!-- Your own CSS files -->
     <!------------------------>
     <link href="../css/easterEgg.css" rel="stylesheet">
 
 </head>
+
 <body>
 
     <!----------------------->
     <!--  HTML Section -->
     <!----------------------->
-       <!--------  Nav-Bar       ------>
-    
-       
- <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
-    <div class="container-fluid">
+    <!--Navbar -->
+    <!--This navbar block of code was adapted from code found here
+  source: https://mdbootstrap.com/docs/jquery/navigation/navbar/ -->
+    <!--Uses Bootstrap classes to create and organize Navbar and dropdown-->
 
-        <a href="../index.html" class="navbar-brand"><img src="../images/icons/Untitled-1.svg" width="100" height="40"></a>
-        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+    <nav class="mb-1 navbar navbar-expand-lg navbar-dark sticky-top">
+        <a class="navbar-brand" href="main.html"><img src="../images/icons/Untitled-1.svg" width="80" height="45"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav">
-                <li class="nav-link">
-                    <a class="nav-link" href="#">Amir</a>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="uploadChallenge.html">Amir</a>
                 </li>
-                <li class="nav-link">
-                    <a class="nav-link" href="#">Amir</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="categories.html">Amir</a>
                 </li>
-                <li class="nav-link">
-                    <a class="nav-link" href="#">Amir</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="leaderboard.html">Amir</a>
                 </li>
-
 
             </ul>
-            <ul class="navbar-nav ml-auto">
-                <a href="#" class="nav-item nav-link">Amir</a>
+            <ul class="navbar-nav ml-auto nav-flex-icons">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user">Amir</i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-default"
+                        aria-labelledby="navbarDropdownMenuLink-333">
+                        <a class="dropdown-item" href="account.html">Amir</a>
+
+
+                        <button class="dropdown-item" type="submit" id="submit">
+                            <form method="post">Amir</form>
+                        </button>
+
+
+                    </div>
+                </li>
             </ul>
-
         </div>
+    </nav>
+    <!--/.Navbar -->
 
-    </div>
-</nav>
-    <!--------  End of Nav-Bar       ------>
-
-
-<div class="landing">
-    <div class= "landing-text">
- 
-        <div class="home-inner">
-            
-        </div>
-
+    <!--Div for background image-->
+    <div class="landing">
+        <div class="landing-text">
+            <div class="-inner">
+            </div>
         </div>
     </div>
 
 
+    <!--Scrolling Text-->
+    <div class="caption text-center">
+        <h1>WELCOME HOME</h1>
+        <marquee behavior="scroll" scrollamount="32" direction="left">
+            <h3>Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir AmirAmir
+                Amir Amir Amir Amir</h3>
+        </marquee>
+        <marquee behavior="scroll" scrollamount="44" direction="right">
+            <h3>Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir AmirAmir
+                Amir Amir Amir Amir</h3>
+        </marquee>
+        <marquee behavior="scroll" scrollamount="20" direction="left">
+            <h3>Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir AmirAmir
+                Amir Amir Amir Amir</h3>
+        </marquee>
+        <marquee behavior="scroll" scrollamount="17" direction="right">
+            <h3>Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir AmirAmir
+                Amir Amir Amir Amir</h3>
+        </marquee>
+        <marquee behavior="scroll" scrollamount="72" direction="left">
+            <h3>Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir AmirAmir
+                Amir Amir Amir Amir</h3>
+        </marquee>
+        <marquee behavior="scroll" scrollamount="10" direction="right">
+            <h3>Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir AmirAmir
+                Amir Amir Amir Amir</h3>
+        </marquee>
 
-<div class="caption text-center">
-    <h1>WELCOME HOME</h1>
-    <marquee behavior="scroll" scrollamount="32" direction="left"><h3>Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir AmirAmir Amir Amir Amir Amir</h3></marquee>
-    <marquee behavior="scroll" scrollamount="44" direction="right"><h3>Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir AmirAmir Amir Amir Amir Amir</h3></marquee>
-    <marquee behavior="scroll" scrollamount="20" direction="left"><h3>Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir AmirAmir Amir Amir Amir Amir</h3></marquee>
-    <marquee behavior="scroll" scrollamount="17" direction="right"><h3>Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir AmirAmir Amir Amir Amir Amir</h3></marquee>
-    <marquee behavior="scroll" scrollamount="72" direction="left"><h3>Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir AmirAmir Amir Amir Amir Amir</h3></marquee>
-    <marquee behavior="scroll" scrollamount="10" direction="right"><h3>Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir Amir AmirAmir Amir Amir Amir Amir</h3></marquee>
-    
-</div>
+    </div>
 
+    <!--------  Footer       ------>
+    <!--Uses Bootstrap classes to create and organize footer-->
+    <footer>
+        <div class="container-fluid padding">
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <img src="../images/icons/Untitled-1.svg" height="80" width="150">
+                    <hr class="light">
+                    <p>Amir@Amir.com</p>
+                    <p>1-800-AMIR</p>
 
-</div>
+                </div>
+                <div class="col-md-4">
+                    <hr class="light">
+                    <h4>Connect</h4>
+                    <hr class="light">
+                    <p>Amir</p>
+                    <p>Amir</p>
+
+                </div>
+                <div class="col-md-4">
+                    <hr class="light">
+                    <h4><a href="#">Amir</a></h4>
+                    <hr class="light">
+                    <p>2800 Project</p>
+                    <p>Made by Amir, Amir, Amir, and Amir</p>
+
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related    -->
     <!----------------------------------------------->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
 
     <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-firestore.js"></script>
     <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
-    
-  
-    <!--------------------------------------------------------------------->
-    <!-- JS files: Your own JavaScript functions included here    -->
-    <!--------------------------------------------------------------------->
-    <script src=""></script>
-
-     <!--------------------------------------------------------------------->
-    <!-- Make calls to your own JavaScript functions, here below-->
-    <!---------------------------------------------------------------------->
-<!--------  Footer       ------>
-<footer>
-    <div class="container-fluid padding">
-        <div class="row text-center">
-            <div class="col-md-4">
-                <img src="../images/icons/Untitled-1.svg"height="80" width="150">
-                <hr class="light">
-                <p>flairemail@flair.com</p>
-                <p>772 513 1097</p>
-  
-            </div>
-            <div class="col-md-4">
-                <hr class="light">
-                <h4>Connect</h4>
-                <hr class="light">
-                <p>Instagram</p>
-                <p>Facebook</p>
-  
-            </div>
-            <div class="col-md-4">
-                <hr class="light">
-                <h4><a href="#">Amir</a></h4>
-                <hr class="light">
-                <p>2800 Project</p>
-                <p>Made by Asher, Ben, Francis, Saksham</p>
-  
-            </div>
-        </div>
-    </div>
-  </footer>
 
 </body>
-</html>                            
+
+</html>

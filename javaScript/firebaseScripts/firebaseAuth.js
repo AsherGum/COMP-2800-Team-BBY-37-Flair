@@ -1,4 +1,16 @@
-// Authentication state observer.
+
+/**
+ * Authentication state observer.
+ * Code used from Firebase documentation example on how to
+ * check user authentication state
+ * @author Firebase Documentation
+ * @see https://firebase.google.com/docs/auth/web/manage-users?authuser=0
+ * 
+ * 
+ * This code is used to check if the user has verified their email
+ * with the email authentication, and adds that as a field of data
+ * to their document in the database.
+ */
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
     // User is signed in.

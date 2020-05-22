@@ -5961,10 +5961,10 @@ function WebAssemblyRecorder(stream, config) {
 
     config = config || {};
 
-    config.width = config.width || 640;
-    config.height = config.height || 480;
-    config.frameRate = config.frameRate || 30;
-    config.bitrate = config.bitrate || 1200;
+    config.width = config.width || 320;
+    config.height = config.height || 240;
+    config.frameRate = config.frameRate || 60;
+    config.bitrate = config.bitrate || 1024;
 
     function createBufferURL(buffer, type) {
         return URL.createObjectURL(new Blob([buffer], {
@@ -6030,8 +6030,8 @@ function WebAssemblyRecorder(stream, config) {
                 worker.postMessage({
                     width: config.width,
                     height: config.height,
-                    bitrate: config.bitrate || 1200,
-                    timebaseDen: config.frameRate || 30,
+                    bitrate: config.bitrate || 1024,
+                    timebaseDen: config.frameRate || 60,
                     realtime: true
                 });
 

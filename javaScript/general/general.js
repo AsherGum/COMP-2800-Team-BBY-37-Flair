@@ -11,6 +11,10 @@
  * 
  * /html/selectCategory.html?searchCategory:will
  * 
+ * Code adapted from Carly Orr's COMP1800 Lecture material from BCIT
+ * @author Carly Orr
+ * @see COMP1800 Projects 1, Lecture 11a Javascript Relevant Bits
+ * 
  */
 function parseSearchURL() {
     let queryString = decodeURIComponent(window.location.search);
@@ -65,7 +69,6 @@ function convertCategoryValue(categoryValue) {
  * border red if true. Otherwise, it makes the border 
  * back to default style.
  * 
- * 
  * @param {string} elementId 
  *  The DOM element ID
  */
@@ -83,7 +86,7 @@ function checkEmptyInput(elementId) {
 
 /**
  * Used to clear form input forms
- * Tied to the reset button
+ * Tied to the reset button on the video upload pages
  * @param {string} elementId 
  */
 function clearInputField(elementId) {
@@ -91,8 +94,59 @@ function clearInputField(elementId) {
     element.value = "";
 }
 
+/**
+ * Using the loading circle code from:
+ * @author PlotDB Ltd.
+ * @see https://loading.io/css/
+ * 
+ * Creates a loading circle inside the DOM element container 
+ * specified. Can turn on the loading circle (isLoading is true) or
+ * turn off the loading circle when loading is complete (isLoading is false)
+ * 
+ * @param {DOM element ID} container 
+ * @param {boolean} isLoading 
+ */
+function loading(container, isLoading) {
+    const loadingContainer = document.getElementById(container);
+    const loadingCircle = document.createElement('div');
+    loadingCircle.classList.add("loading-circle");
+    loadingCircle.classList.add("container");
 
+    //This div span code is from https://loadin.io/css 
+    loadingCircle.innerHTML = `
+    <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    `;
 
+    //Loading is true, create the loading circle, append to container
+    if (isLoading) {
+        loadingContainer.appendChild(loadingCircle);
+    
+    //Loading is false, hide the loading circle
+    } else {
+        //Using querySelectorAll in case there are somehow many
+        //loading circle elements on the DOM
+        const circles = document.querySelectorAll(".loading-circle");
+        circles.forEach(circle => {
+            circle.style.display = "none";
+        })
 
+    }
+}
 
+/**
+ * Gets the length of a given element (a text form or input field)
+ * and writes it into the inner html of an output element. 
+ * Used for the length check of text fields in uploadChallenge and
+ * in uploadResponse.
+ * 
+ * @param {string} inputField 
+ *                  the desired text field to grab the string length from
+ * @param {string} outputElement 
+ *                  the desired element to write the length to
+ */
+function getInputLength(inputField, outputElement) {
+    const input = document.getElementById(inputField);
+    inputLength = input.value.length;
+    document.getElementById(outputElement).innerHTML = inputLength;
+}
 

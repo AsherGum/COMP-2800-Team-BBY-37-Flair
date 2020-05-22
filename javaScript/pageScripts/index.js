@@ -1,142 +1,143 @@
 
-// Initializes the post.
-var storage = firebase.storage();
-console.log("Getting Posts");
-
-// Authentication state observer.
+/**
+ * This is called to first check if the user is logged in.
+ * If the user is not logged in, they will be redirected to login.
+ * If they are logged in, then a query is made to the database to pull and
+ * populate the DOM with recent challenge videos.
+ * 
+ * 
+ * Code used from Firebase documentation example on how to
+ * check user authentication state
+ * @author Firebase Documentation
+ * @see https://firebase.google.com/docs/auth/web/manage-users?authuser=0
+ * 
+ * Code used from Firebase documentation example on how
+ * to query database
+ * @author Firebase Documentation
+ * @see https://firebase.google.com/docs/firestore/query-data/queries?authuser=0
+ *  
+ * */ 
 firebase.auth().onAuthStateChanged(function (user) {
-    if (user) {
-      // User is signed in.
-      console.log("user is logged in");
-  
-      // Check if user if verified.
-      if (user.emailVerified === true) {
-        // if verified, set users verification to true.
-        database.collection("Users").doc(user.uid).update({
-          isVerified: true,
-        }).then(function () {
-          console.log("user is verified");
-  
-        }).catch(function (error) {
-          // The document probably doesn't exist.
-          alert("Error updating Profile");
-          console.error("Error updating Profile", error);
-        });
-      }
-    } else {
-      // User is signed out.
-      console.log("user is logged out");
-      // Go to login page
-      window.location.href = "../html/login.html";
+  if (user) {
+    // User is signed in.
+    console.log("user is logged in");
+
+    // Check if user if verified.
+    if (user.emailVerified === true) {
+      // if verified, set users verification to true.
+      database.collection("Users").doc(user.uid).update({
+        isVerified: true,
+      }).then(function () {
+        console.log("user is verified");
+
+      }).catch(function (error) {
+        // The document probably doesn't exist.
+        alert("Error updating Profile");
+        console.error("Error updating Profile", error);
+      });
     }
+  } else {
+    // User is signed out.
+    console.log("user is logged out");
+    // Go to login page
+    window.location.href = "../html/login.html";
+  }
 
-    var getPosts = database.collection("Challenges");
-    // Gets the book postings. Query where() function.
-    getPosts.get().then(function (querySnapshot) {
-        querySnapshot.forEach(function (post) {
-            // Make sure post exists.
-            console.log(post.id, " => ", post.data());
-            if (post) {
-                console.log("post found");
-                // Create the post.
-                createPost(post.data().challenge,
-                            post.data().imageURL,
-                            post.data().videoURL,
-                            post.id, post.data().owner, post.data().upvotes);
-            }
-        })
-    });
+  //Turn the loading circle on
+  loading("content", true);
 
-
-
-
-    //Going to my account page
-    $("#myAccount").on("click", function name(event) {
-        openAccountPage(user.uid);
+  
+  /**
+   *  Queries the database for challenge video data.
+   */
+  let getPosts = database.collection("Challenges");
+  getPosts.get().then(function (querySnapshot) {
+    querySnapshot.forEach(function (challenge) {
+      // Make sure challenge exists.
+      if (challenge) {
+        // Create the challenge videos on the DOM
+        createChallengeVideo(challenge.data().challenge,
+        challenge.data().imageURL,
+        challenge.id, challenge.data().owner, challenge.data().upvotes);
+      }
     })
+    //Removes loading circle from DOM
+    loading("content", false);
+  });
+
+  /**
+   * On click listener for the myAccount button.
+   * Redirects user to the account page
+   */
+  $("#myAccount").on("click", function name(event) {
+    openAccountPage(user.uid);
+  })
 });
 
-
-// Opens the page that was clicked. carries user ID
+/**
+ * Opens the page that was clicked. Saves user ID so
+ * that the account page correctly populates the page
+ * with their account data.
+ * @param {string} id 
+ */
 function openAccountPage(id) {
-    localStorage.setItem("globalUser", id);
-    window.location.href = "./html/account.html";
+  localStorage.setItem("globalUser", id);
+  window.location.href = "../html/account.html";
 }
 
 
-// Body.
-var body = document.getElementsByTagName("body");
-
 // Main container.
-var content = document.getElementsByClassName("content")[0];
+let content = document.getElementsByClassName("content")[0];
 
-//Create a book posting with its title, price, image URL (picture), and unique ID (to keep track of book post) as inputs
-function createPost(title, imageURL, videoURL, id, owner, likesCount) {
-
-  var docUser = database.collection("Users").doc(owner);
+/**
+ * Create a challenge video DOM element with its title, image URL (picture), and unique ID (to keep track of post) as inputs.
+ * Queries the database for user data to fetch correct user data,
+ * then creates a clickable challenge video DOM element on the page inside
+ * the container.
+ * 
+ * @param {string} title 
+ * @param {string} imageURL 
+ * @param {string} videoURL 
+ * @param {string} id 
+ * @param {string} owner 
+ * @param {number} likesCount 
+ */
+function createChallengeVideo(title, imageURL, id, owner, likesCount) {
+  const docUser = database.collection("Users").doc(owner);
   docUser.get().then(function (user) {
 
-  // Create the post on the main page.
-    var vidBox = document.createElement("div");
+    // Create the post on the main page.
+    let vidBox = document.createElement("div");
     vidBox.className = "card";
 
     // Getting images.
-    var img = document.createElement("img");
+    let img = document.createElement("img");
     img.src = imageURL;
     img.id = id;
-    img.onclick = function() {
-      window.location.href = "./html/viewVideo.html?view:" + id;
+    img.onclick = function () {
+      window.location.href = "../html/viewVideo.html?view:" + id;
     }
- 
-    var info = document.createElement("p");
+
+    let info = document.createElement("p");
     info.innerHTML = title;
 
-    var accountName = document.createElement("p");
+    let accountName = document.createElement("p");
     accountName.id = "accountName";
     accountName.innerHTML = '@' + user.data().UserName;
 
-    var eye = document.createElement('img');
-    eye.src = "./images/icons/like.png"
-    eye.id = "view";
+    let like = document.createElement('img');
+    like.src = "../images/icons/like.png"
+    like.id = "view";
 
-    var likes = document.createElement("h4");
+    let likes = document.createElement("h4");
     likes.id = "likes";
     likes.innerHTML = likesCount;
 
-
-
     content.appendChild(vidBox);
     vidBox.appendChild(info);
-    vidBox.appendChild(eye);
+    vidBox.appendChild(like);
     vidBox.appendChild(accountName);
     vidBox.appendChild(likes);
     vidBox.appendChild(img);
-    
   });
-
-    
-
 }
-
-/* Changed it so that the link is created when the card is created,
-so this code is depreciated.
-
-Changed it because the code was causing our Flair icon to link
-to an empty video.
-
-
-
-// Clicker for opening the description post.
-$("body").unbind().on("click", 'img', function (event) {
-    event.preventDefault();
-    console.log(event);
-    openPage(event.target.id);
-
-});
-
-// Opens description the post that was clicked.
-function openPage(id) {
-    localStorage.setItem("postID", id);
-    window.location.href = "./html/viewVideo.html?view:" + id;
-}
-*/
