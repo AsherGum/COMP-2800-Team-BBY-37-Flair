@@ -40,8 +40,6 @@ $("#submit").closest('form').on('submit', function (event) {
 			// Add user Profile to database.
 			database.collection("Users").doc(user.uid).set({
 				Email: user.email,
-				FirstName: "",
-				LastName: "",
 				PhoneNumber: "",
 				UserName: userName,
 				profilePicture: "",
@@ -49,6 +47,7 @@ $("#submit").closest('form').on('submit', function (event) {
 				Followers: [],
 				Following: [],
 				Challenges: [],
+				Bio: "",
 				isVerified: false
 
 			});
