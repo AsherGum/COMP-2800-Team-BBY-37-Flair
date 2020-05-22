@@ -41,6 +41,8 @@ aside {
     grid-area: aside;
     display: none;
 }
+
+//footer reference found here: https://freefrontend.com/css-headers-footers/
 footer {
     grid-area: footer;
     background-color: #424242;
