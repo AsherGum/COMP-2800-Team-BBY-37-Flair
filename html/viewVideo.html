@@ -59,7 +59,6 @@
         <li class="nav-item">
           <a class="nav-link" href="leaderboard.html">Leaderboard</a>
         </li>
-
       </ul>
       <ul class="navbar-nav ml-auto nav-flex-icons">
 
@@ -71,9 +70,7 @@
           <div class="dropdown-menu dropdown-menu-right dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
             <a class="dropdown-item" href="account.html">My Profile</a>
 
-
             <form method="post"><button class="dropdown-item" type="submit" id="sign-out">Logout</button></form>
-
 
           </div>
         </li>
@@ -81,8 +78,10 @@
     </div>
   </nav>
   <!--/.Navbar -->
+
   <!--View Video -->
-  <!--Uses Bootstrap Classes to organize and seperate section-->
+  <!--Uses Bootstrap classes including containers, margin spacing,
+    column layouts, flexbox, and text formatting to layout the content -->
   <div class="container">
     <div class="my-1">
       <h1 id="title"></h1>
@@ -92,7 +91,6 @@
 
     <div class="container-fluid padding">
       <div class="row padding">
-
         <div class="col-lg-8">
           <div class="container">
             <video width="320" height="240" controls id="video_player">
@@ -119,11 +117,8 @@
                   data-size="small"><a target="_blank"
                     href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmipee-e5ade.web.app%2F&amp;src=sdkpreparse"
                     class="fb-xfbml-parse-ignore">Share</a></div>
-
               </div>
-
               <p>Number of Attempts: <span id="attempts"></span></p>
-
             </div>
           </div>
           <div class="container my-5">
@@ -131,8 +126,6 @@
               <input type="submit" value="View Attempts" class="btn btn-block btn-warning">
             </a>
           </div>
-
-
         </div>
         <div class="col-lg-4">
           <h2>Tags</h2>
@@ -147,15 +140,9 @@
               <input type="submit" value="Accept Challenge" id="submit" class="btn btn-block btn-warning">
             </a>
           </div>
-
         </div>
-
-
-
       </div>
-
     </div>
-
   </div>
   <!--------  Footer       ------>
   <!--This footer block of code was adapted from code found here
@@ -194,18 +181,17 @@
     </div>
 
     <nav class="footer-nav" role="navigation">
-      <p>Copyright &copy; 2020-
-        <?php echo date("Y"); ?> Flair GROUP 37- All rights reserved.</p>
+      <p>Copyright &copy; 2020 Flair GROUP 37- All rights reserved.</p>
       <a href="about_us.html" target="_blank">
         <h5>ABOUT US</h5>
       </a>
     </nav>
   </footer>
-<!--/.Footer -->
- 
-<!----------------------------------------------->
-<!-- JS: Boostrap, Firebase, API related    -->
-<!----------------------------------------------->
+  <!--/.Footer -->
+
+  <!----------------------------------------------->
+  <!-- JS: Boostrap, Firebase, API related    -->
+  <!----------------------------------------------->
   <!-- Firebase Scripts -->
   <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
@@ -226,11 +212,10 @@
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
   </script>
 
-
-
-  <!-- Twitter for Websites given javascript from
+  <!-- Twitter for Websites 
+    Used for displaying and linking the Tweet button
+    Code source:
     https://developer.twitter.com/en/docs/twitter-for-websites/javascript-api/guides/set-up-twitter-for-websites
-
     -->
   <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
   <script>
@@ -247,23 +232,17 @@
       t.ready = function (f) {
         t._e.push(f);
       };
-
       return t;
     }(document, "script", "twitter-wjs"));
   </script>
 
 
-    <!--------------------------------------------------------------------->
-    <!-- JS files: Your own JavaScript functions included here    -->
-    <!--------------------------------------------------------------------->
-     script src="../javaScript/general/general.js"></script>
-    <script src="../javaScript/videoHandling/viewVideo.js"></script>
-    <script src="../javaScript/userManagement/signout.js"></script>
-
-
-
-
+  <!--------------------------------------------------------------------->
+  <!-- JS files: Your own JavaScript functions included here    -->
+  <!--------------------------------------------------------------------->
+  <script src="../javaScript/general/general.js"></script>
+  <script src="../javaScript/videoHandling/viewVideo.js"></script>
+  <script src="../javaScript/userManagement/signout.js"></script>
 
 </body>
-
 </html>
