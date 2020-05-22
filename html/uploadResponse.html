@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="utf-8">
   <title>Flair Video Recorder</title>
@@ -13,6 +12,15 @@
   <!----------------------------------------------->
   <!-- CSS: Bootstrap, Firebase, other API -->
   <!----------------------------------------------->
+
+  <!-- This set of scripts and meta element code from the videojs-record
+    library example page from here:
+
+        @author Thijs Triemstra (https://github.com/thijstriemstra)
+       @see https://github.com/collab-project/videojs-record/blob/master/examples/audio-video.html
+        All the files in the videoAdapter folder are part of the videojs-record library
+
+    -->
 
   <!-- Control of cache errors -->
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -29,6 +37,8 @@
   <script src="../javaScript/videoAdapter/videojs.record.js"></script>
   <script src="../javaScript/videoAdapter/browser-workarounds.js"></script>
 
+  <!-- End of the videojs-record libraries-->
+
   <!-- Firebase Scripts -->
   <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
@@ -44,7 +54,6 @@
   <!-- Your own CSS files -->
   <!------------------------>
   <link rel="stylesheet" href="../css/responses.css">
-
 </head>
 
 <body>
@@ -56,7 +65,6 @@
   <!--This navbar block of code was adapted from code found here
   source: https://mdbootstrap.com/docs/jquery/navigation/navbar/ -->
   <!--Uses Bootstrap classes to create and organize Navbar and dropdown-->
-
   <nav class="mb-1 navbar navbar-expand-lg navbar-dark sticky-top">
     <a class="navbar-brand" href="main.html"><img src="../images/icons/Untitled-1.svg" width="80" height="45"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
@@ -74,10 +82,8 @@
         <li class="nav-item">
           <a class="nav-link" href="leaderboard.html">Leaderboard</a>
         </li>
-
       </ul>
       <ul class="navbar-nav ml-auto nav-flex-icons">
-
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
@@ -85,11 +91,7 @@
           </a>
           <div class="dropdown-menu dropdown-menu-right dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
             <a class="dropdown-item" href="account.html">My Profile</a>
-
-
             <form method="post"><button class="dropdown-item" type="submit" id="sign-out">Logout</button></form>
-
-
           </div>
         </li>
       </ul>
@@ -99,29 +101,25 @@
 
 
   <!--Response Upload-->
-  <!--Uses Bootstrap Classes to organize and seperate section-->
+  <!--The code within this section of code
+  Uses Bootstrap classes including column layouts, 
+  containers, spacing, flexbox, form, and text formatting in order
+  to display the content -->
   <div class="head text-center">
-    <h1>
-      Upload your response!
-    </h1>
-    <h4>
-      Original Challenge: <span id="challenge-title"></span>
-
-    </h4>
+    <h1>Upload your response!</h1>
+    <h4>Original Challenge: <span id="challenge-title"></span></h4>
   </div>
   <div class="container emp-profile">
     <div class="row">
-
       <div class="col-sm-5">
         <a href="" id="back-challenge"><button class="btn btn-warning">Back to Challenge Page</button></a>
         <p class="text-center">Record yourself attempting the challenge using the webcam recorder below!</p>
-
         <div class="container py-3 d-flex justify-content-center">
           <video id="myVideo" playsinline class="video-js vjs-default-skin"></video>
         </div>
       </div>
-      <div class="col-sm-7">
 
+      <div class="col-sm-7">
         <div class="d-flex justify-content-center">
           <label for="inputTitle" class="col-form-label">Your Video Title:</label>
         </div>
@@ -146,7 +144,6 @@
         </div>
       </div>
     </div>
-
   </div>
   <!--------  Footer       ------>
   <!--This footer block of code was adapted from code found here
@@ -205,7 +202,6 @@
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
   </script>
 
-
   <!--------------------------------------------------------------------->
   <!-- JS files: Your own JavaScript functions included here    -->
   <!--------------------------------------------------------------------->
@@ -216,5 +212,4 @@
   <script src="../javaScript/userManagement/signout.js"></script>
 
 </body>
-
 </html>

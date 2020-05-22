@@ -78,14 +78,10 @@ $("#submit").closest('form').on('submit', function (event) {
 			}).catch(function (error) {
 				// An error happened.
 			});
-
-
 		} else {
 			// User is signed out.
 			console.log("user is logged out");
 		}
-
-
 	});
 });
 

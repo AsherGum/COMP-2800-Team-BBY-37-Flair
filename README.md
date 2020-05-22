@@ -6,7 +6,7 @@
 * Firebase (https://firebase.google.com/)
 * loading.io (https://loading.io/css/)
 * W3Schools (https://www.w3schools.com/)
-* Freepik(http://www.freepik.com/) from FlatIcon (FlatIcon (https://www.flaticon.com/)
+* The thumbs up icon from author: Freepik(http://www.freepik.com/) from FlatIcon (FlatIcon (https://www.flaticon.com/)
 * Navbar from MDBootstrap (https://mdbootstrap.com/docs/jquery/navigation/navbar/)
 * Easter Egg Keystroke code from Vojislav Grujić (https://medium.com/javascript-in-plain-english/how-to-detect-a-sequence-of-keystrokes-in-javascript-83ec6ffd8e93)
 * Easter Egg Keystroke code from user "Niet the Dark Absol" (https://stackoverflow.com/questions/32236313/how-to-track-a-series-of-key-presses-in-javascript)
@@ -26,10 +26,12 @@
 * GAMES- Photo by Nadine Shaabana on Unsplash
 * OTHER- Photo by Hello I'm Nik :film_frames: on Unsplash
 * PETS- Photo by Krista Mangulsone on Unsplash
-* PHYICAL- Photo by Anastase Maragos on Unsplash
+* PHYSICAL- Photo by Anastase Maragos on Unsplash
 * TALENT- Photo by Quino Al on Unsplash
 #### Used on our Easter egg page
 * Photo of Amir Amintabar (https://amintabar.wordpress.com/)
+#### Footer icons
+* Social media icons from IconArchive (www.iconarchive.com)
 
 
 
